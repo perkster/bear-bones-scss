@@ -15,10 +15,10 @@ Obviously, its meant to work with the Bear Bones theme and thus has things named
 * scss/plugins/
 * scss/templates/
 * scss/theme/
-* scss/_bb-setup
-* scss/_layout
-* scss/_theme-style
-* scss/_theme
+* scss/theme/_bb-setup
+* scss/theme/_layout
+* scss/theme/_theme-style
+* scss/theme/_theme
 * style.scss
 
 ### Bear Bones folder ###
@@ -55,4 +55,4 @@ This is the folder that holds all the files that have the design elements.
 * layout - Where the site layout structure is set.
 * theme-style - loads up all of the style files rather than having to include them all on the main style.scss file
 * theme - this is where you can include any css plugins, js plugins, templates and other theme specific style files.
-* style - Files are loaded in this order: bb-setup, theme-style, bear-bones/bear-bones, plugins (include-media), theme
+* style - Files are loaded in this order: theme/bb-setup, theme/theme-style, bear-bones/bear-bones, theme/plugins (include-media), theme/theme
