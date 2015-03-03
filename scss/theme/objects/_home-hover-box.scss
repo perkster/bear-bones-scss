@@ -1,0 +1,143 @@
+/************ Theme / Objects / HOME HOVER BOX ***********/
+
+.home-phb__title-text {
+	@extend .h1;
+	color: white;
+}
+
+.home-phb__content {
+	color: white;
+	font-style: italic;
+	font-size: $h4-default * 1em;
+}
+
+.home-phb__link-text {
+	text-transform: uppercase;
+	font-style: normal;
+}
+.home-phb--half-width {
+	width: 50%;
+	float: left;
+}
+.home-phb__link {
+	display: block;
+	height: 100%;
+}
+
+.home-phb__info {
+	height: 100%;
+	width: 100%;
+}
+.home-phb__content-inner {
+	position: absolute;
+	height: 100%;
+	text-shadow: -1px -1px 2px $nobel;
+}
+
+.home-phb--full-width {
+	.home-phb__content-inner {
+		left: 10%;
+		top: 60%;
+		width: 80%;
+	}
+}
+
+.home-phb--half-width {
+	.home-phb__content-inner {
+		left: 20%;
+		top: 20%;
+		width: 60%;
+	}
+}
+///************** DEFAULTS ****************/
+.bb-phb {
+	overflow: hidden;
+    position: relative;
+}
+
+.bb-phb__img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+.bb-phb__img--none {
+	min-height: 275px;
+}
+
+.bb-phb__info {
+	position: absolute;
+	top: 0;
+	//margin: 4%;
+	//width: 100%;
+	display: table-row;
+	//width: 92%; //width should be 100% - margin (L/R)
+}
+
+.bb-phb__content-wrapper, .bb-phb__icon-wrapper {
+	display: table-cell;
+	vertical-align: top;
+}
+
+.bb-phb__icon-wrapper {
+	padding-right: 0.25em;
+}
+.bb-phb__icon-inner {
+	//padding: 0.25em;
+	height: 2em;
+	max-height: 2em;
+	min-width: 1.75em;
+	text-align: center;
+	display: table-cell;
+	vertical-align: middle;
+}
+.bb-phb__icon {
+	
+}
+
+.bb-phb__content-wrapper {
+	width: 100%;
+}
+.bb-phb__content-inner {
+	
+}
+.bb-phb__title {
+	margin-bottom: 0;
+}
+.bb-phb__title-text  {
+	/*height: 2em;
+	max-height: 2em;
+	padding: 0.25em*/
+}
+
+.bb-phb__content {
+	position: relative;
+    overflow: hidden;
+	//padding: 0.25em 0.5em;
+}
+.bb-phb__link-text-wrapper {
+
+}
+.bb-phb__link-text {
+	//@extend %btn;
+}
+
+
+/********* Transitions *************/
+.bb-phb__img {
+	//transform: scaleY(1);
+    //transition: all 0.7s ease-in-out;
+}
+.bb-phb__content {
+	//transition: all 0.5s linear;
+    //opacity: 0;
+}
+
+.bb-phb:hover img {
+	//transform: scale(10);
+    //opacity: 0;
+}
+
+
+.bb-phb:hover .bb-phb__content { 
+    //opacity: 1;
+}          

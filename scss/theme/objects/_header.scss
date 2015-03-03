@@ -1,0 +1,53 @@
+/*************** HEADER ***************/
+
+.header-wrapper {
+	@extend %full-width-wrapper;
+	margin: 1em 0;
+	@media ( $mq-smartphone-and-up ) {
+
+	}
+	@media ( $mq-mobile ) {
+
+	}
+}
+.header-inner {
+	@extend %full-width-inner;
+}
+
+.header {
+	//@media ( $mq-lap-and-up ) {
+	@include media( ">=menu-bp" ) { 
+		display: table;
+		width: 100%;
+	}
+}
+
+.header__site-info, .header__right-of-logo {
+	@include media( ">=menu-bp" ) { 
+		display: table-cell;
+		vertical-align: bottom;
+	}
+}
+
+.header__site-info {
+	@include media( ">=menu-bp" ) { 
+		width: 17%;
+	}
+}
+
+.header__link {
+	display: block;
+}
+.header__title {
+
+}
+.header__logo {
+	display: block;
+}
+
+.header__right-of-logo {
+	//@media ( $mq-lap-and-up ) {
+	@include media( ">=menu-bp" ) { 
+	
+	}
+}

@@ -1,0 +1,74 @@
+/********************  Bear Bones / Base / WORDPRESS-REQUIRED ******************/
+/* =WordPress Core http://codex.wordpress.org/CSS#WordPress_Generated_Classes */
+
+.alignnone, .wp-caption.alignnone {
+    margin: 0;
+}
+
+.aligncenter,
+div.aligncenter {
+    display: block;
+    margin: 0 auto;
+}
+
+.alignright, .wp-caption.alignright {
+    float:right;
+}
+
+.alignleft, .wp-caption.alignleft {
+    float: left;
+}
+
+
+a img.alignright {
+    float: right;
+}
+
+a img.alignnone {
+    
+}
+
+a img.alignleft {
+    float: left;
+}
+
+a img.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+/* Caption */
+.wp-caption {
+	//@extend %figcaption
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    max-width: 96%; /* Image does not overflow the content area */
+    padding: 5px 3px 10px;
+    text-align: center;
+}
+
+
+.wp-caption img {
+    border: 0 none;
+    height: auto;
+    margin: 0;
+    max-width: 98.5%;
+    padding: 0;
+    width: auto;
+}
+
+.wp-caption p.wp-caption-text {
+	@extend %smallprint;
+}
+.wp-caption-text {}
+.gallery-caption {}
+
+/* Post */
+.sticky {
+	//@extend %island;
+}
+
+.assistive-text {
+	@extend %accessibility;
+}

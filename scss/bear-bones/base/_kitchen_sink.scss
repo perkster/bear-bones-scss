@@ -1,0 +1,144 @@
+/********************  Bear Bones / Base / Kitchen Sink ******************/
+$ks : kitchen_sink__;
+
+.kitchen_sink {
+	background-color: #fff;
+}
+
+.kitchen_sink__h1, .kitchen_sink__h2, .kitchen_sink__h3 {
+	color: $accent_color2;
+}
+
+.kitchen_sink__h1 {
+	@include font-size($h1-default, 1.25);
+	border-bottom: thin solid $accent_color2;
+	padding-bottom: 1rem;
+}
+
+.kitchen_sink__h2 {
+	@include font-size($h3-default, 1);
+	//@extend .h2;
+}
+
+.kitchen_sink__h3 {
+	@extend .h3;
+}
+
+.kitchen_sink__topic_nav, .kitchen_sink__section, .kitchen_sink__subsection {
+	border-bottom: thin solid $accent_color2;
+	//@include set_margin_bottom($half-spacing-unit--em);
+	@extend .vr--half;
+	&:last-of-type{
+       border-bottom: 0;
+    }
+}
+.kitchen_sink__subsection {
+	@extend .push;
+}
+.kitchen_sink__subsection__item {
+	padding-bottom: $half-spacing-unit--em;
+	//@include set_margin_bottom($half-spacing-unit--em);
+	@extend .vr--half;
+	border-bottom: thin solid $accent_color2;
+}
+.margins_demo__container {
+	margin: 0 auto;
+	text-align: center;
+}
+.margins_demo, .paddings_demo {
+	display: inline-block;
+	text-align: center;
+	margin-right: $base-spacing-unit--em;
+	&:last-of-type{
+		padding-right: 0;
+	}
+}
+
+.margins_demo__item, .paddings_demo__item {
+	display: inline-block;
+	width: 6.25em;
+	vertical-align: middle;
+	border: thin solid $accent_color2;
+}
+.margins_demo__item {
+	background-color: white;
+	height: 6.25em;
+}
+.margins_demo {
+	background-color: $accent_color;
+}
+.margins_demo__thick {
+	margin: 1em;
+}
+.paddings_demo {
+	background-color: $accent_color;
+}
+.paddings_demo__item {
+	background-color: $accent_color2;
+	height: 5em;
+}
+.paddings_demo__thick {
+	padding: 1em;
+}
+
+.kitchen_sink_images__img {
+	max-height: 125px;
+}
+.kitchen_sink_zen_code {
+	margin-bottom: 0;
+	font-style: italic;
+	color: $accent_color2;
+}
+
+.kitchen_sink__btn {
+	@include btn (
+		$btn_bg_color, //*$bg_color: */
+		$btn_font_color, //*$font_color: */
+		$btn_border_color, //*$border_color : */
+		true, 	//*($btn-border: */
+		true, 	//*push*/
+		true, 	//*trans*/
+		false, 
+		false, 
+		$brand-round);
+	@include btn-size;
+}
+.kitchen_sink__btn--no_border {
+	@include btn (
+		$btn_bg_color, //*$bg_color: */
+		$btn_font_color, //*$font_color: */
+		$btn_border_color, //*$border_color : */
+		false, 	//*($btn-border: */
+		true, 	//*push*/
+		true, 	//*trans*/
+		false, 
+		false, 
+		$brand-round);
+	@include btn-size;
+}
+.kitchen_sink__btn--no_push {
+	@include btn (
+		$btn_bg_color, //*$bg_color: */
+		$btn_font_color, //*$font_color: */
+		$btn_border_color, //*$border_color : */
+		true, 	//*($btn-border: */
+		false, 	//*push*/
+		true, 	//*trans*/
+		false, 
+		false, 
+		$brand-round);
+	@include btn-size;
+}
+.kitchen_sink__btn--no_trans {
+	@include btn (
+		$btn_bg_color, //*$bg_color: */
+		$btn_font_color, //*$font_color: */
+		$btn_border_color, //*$border_color : */
+		true, 	//*($btn-border: */
+		true, 	//*push*/
+		false, 	//*trans*/
+		false, 
+		false, 
+		$brand-round);
+	@include btn-size;
+}

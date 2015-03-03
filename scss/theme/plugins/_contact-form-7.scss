@@ -1,0 +1,120 @@
+/************ Theme / Objects / CONTACT FORM 7 ***********/
+
+//Props to http://chriswharton.me/2013/07/contact-form-7-custom-styling/ for the good styling
+
+body input[type=text].wpcf7-not-valid, body input[type=email].wpcf7-not-valid, body input[type=tel].wpcf7-not-valid, body textarea.wpcf7-not-valid {
+border: 1px solid $orange-red;
+}
+
+body span.wpcf7-not-valid-tip {
+	display: block;
+	color: $orange-red;
+	border: none;
+	position: relative;
+	top: auto;
+	left: auto;
+	padding: 0;
+	//margin-top: 2px;
+	background: none;
+	font-size: 15px;
+	margin: 0 0 0.75em;
+}
+
+body div.wpcf7-validation-errors {
+	background: $misty-rose;
+	border: 1px solid $mona-lisa;
+	color: $orange-red;
+}
+
+body div.wpcf7-response-output {
+	margin: 10px 0;
+	padding: 20px;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	border-radius: 5px;
+}
+
+div.wpcf7-mail-sent-ng {
+	background: $papaya-whip;
+	border: 1px solid $macaroni-and-cheese;
+	color: $tree-poppy;
+}
+
+div.wpcf7-mail-sent-ok {
+	background: $honeydew;
+	border: 1px solid $pastel-green;
+	color: $forest-green;
+}
+
+div.wpcf7 {
+	margin: 0;
+	padding: 0;
+}
+
+div.wpcf7-response-output {
+	margin: 2em 0.5em 1em;
+	padding: 0.2em 1em;
+}
+
+div.wpcf7 .screen-reader-response {
+	position: absolute;
+	overflow: hidden;
+	clip: rect(1px, 1px, 1px, 1px);
+	height: 1px;
+	width: 1px;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+
+
+
+
+div.wpcf7-spam-blocked {
+	border: 2px solid #ffa500;
+}
+
+
+span.wpcf7-form-control-wrap {
+	position: relative;
+}
+
+span.wpcf7-not-valid-tip {
+	color: #f00;
+	font-size: 1em;
+	display: block;
+}
+
+.use-floating-validation-tip span.wpcf7-not-valid-tip { 
+	position: absolute;
+	top: 20%;
+	left: 20%;
+	z-index: 100;
+	border: 1px solid red;
+	background: #fff;
+	padding: .2em .8em;
+}
+
+span.wpcf7-list-item {
+	margin-left: 0.5em;
+}
+
+.wpcf7-display-none {
+	display: none;
+}
+
+div.wpcf7 img.ajax-loader {
+	border: none;
+	vertical-align: middle;
+	margin-left: 4px;
+}
+
+div.wpcf7 div.ajax-error {
+	display: none;
+}
+
+div.wpcf7 .placeheld {
+	color: $form-placeholder;
+}

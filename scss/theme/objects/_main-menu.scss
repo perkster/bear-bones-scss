@@ -1,0 +1,45 @@
+/************ Theme / Objects / MAIN MENU ***********/
+
+.main-menu-wrapper {
+	
+}
+.main-menu-inner {
+	overflow: auto;
+}
+
+.main-menu {
+	//@extend %dropdown-lap-and-up;
+	//@extend %nav-bar-lap-and-up;
+	text-transform: uppercase;
+	@include media( ">=menu-bp" ) { 
+		@include bb-dropdown();
+		//@include bb-navbar();
+		@include bb-navbar--justified();
+		> ul {
+			height: 1.5em;
+			> li {
+				a {
+					color: $menu-color;
+					font-weight: bold;
+					padding: 0.25em;
+					width: 100%;
+					display: block;
+					&:hover {
+						color: $menu-hover;
+					}
+				}
+			}
+		}
+		.sub-menu {
+			background-color: white;
+			border-top: thin solid $nobel;
+			margin-top: -3px;
+			z-index: 200;
+			li {
+		
+			}
+		}
+		border-bottom: thin solid $nobel;
+	}
+	
+}

@@ -1,0 +1,103 @@
+/************ Theme / Plugins / PAGE HOVER BOX ***********/
+
+/*
+ * Plugin url: https://github.com/perkster/bb-page-hover-box
+ *
+ * NOTES
+ * Normally don't include font-size & line-height, however icon & title have 
+ * these set because they need to be equal otherwise you end up with some pretty strange 
+ * behavior depending on the size of the icons.
+ */
+ 
+.bb-phb {
+	overflow: hidden;
+    position: relative;
+}
+
+.bb-phb__img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+.bb-phb__img--none {
+	min-height: 275px;
+}
+
+.bb-phb__info {
+	position: absolute;
+	top: 0;
+	display: table-row;
+	
+	//width should be 100% - margin (L/R)
+	margin: 4%;
+	width: 92%; 
+}
+
+.bb-phb__content-wrapper, .bb-phb__icon-wrapper {
+	display: table-cell;
+	vertical-align: top;
+}
+
+.bb-phb__icon-wrapper {
+	padding-right: 0.25em;
+}
+.bb-phb__icon-inner {
+	//padding: 0.25em; padding better handled on a per theme basis
+	height: 2em;
+	max-height: 2em;
+	min-width: 1.75em;
+	text-align: center;
+	display: table-cell;
+	vertical-align: middle;
+}
+.bb-phb__icon {
+	
+}
+
+.bb-phb__content-wrapper {
+	width: 100%;
+}
+.bb-phb__content-inner {
+	
+}
+.bb-phb__title {
+	margin-bottom: 0;
+}
+.bb-phb__title-text  {
+	height: 2em;
+	max-height: 2em;
+	padding: 0.25em
+}
+
+.bb-phb__content {
+	position: relative;
+    overflow: hidden;
+	padding: 0.25em 0.5em;
+}
+.bb-phb__link-text-wrapper {
+
+}
+.bb-phb__link-text {
+	@extend %btn;
+}
+
+
+/********* Transitions *************/
+.bb-phb__img {
+	//transform: scaleY(1);
+    //transition: all 0.7s ease-in-out;
+}
+.bb-phb__content {
+	transition: all 0.5s linear;
+    opacity: 0;
+}
+
+.bb-phb:hover img {
+	//transform: scale(10);
+    //opacity: 0;
+}
+
+
+.bb-phb:hover .bb-phb__content { 
+    opacity: 1;
+}          

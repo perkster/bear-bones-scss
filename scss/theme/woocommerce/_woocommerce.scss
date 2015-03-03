@@ -1,0 +1,12 @@
+/************ Theme / WooCommerce / WOOCOMMERCE ***********/
+
+.woocommerce {
+	clear: both;
+	.woocommerce-result-count, .woocommerce-ordering {
+		display: none;
+	}
+	
+	div.ppt, .pp_description {
+		display: none !important;
+	}
+}

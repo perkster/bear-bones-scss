@@ -1,0 +1,16 @@
+/********************  Theme / Pages / HOME  ******************/
+
+.home-widget-top-widget {
+	
+	&:nth-child(2) {
+		background-color: $pavlova;
+		@extend %full-width-wrapper;
+	}
+	&:nth-child(4) {
+		background-color: black;
+		@extend %full-width-wrapper;
+		//@include bb-navbar();
+
+	}
+}
+

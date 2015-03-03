@@ -1,0 +1,115 @@
+/*----------------- Theme / Bear Bones Setup --------------------*/
+
+@import "scss/bear-bones/variables/colors";
+@import "scss/bear-bones/variables/defaults";
+
+
+//************* RESPONSIVE DESIGN **************/
+$responsive : true;
+$lap-start:         760px;
+$desk-start:        1100px;
+$desk-wide-start:   1366px;
+
+$bp-mobile: 424px;
+$bp-smartphone-start : 425px;
+$bp-smartphone-end : 767px;
+$bp-tablet-start: 768px;
+$bp-tablet-end: 1023px;
+$bp-lap-start: 1024px;
+$bp-lap-end: 1223px;
+$bp-desk-start: 1224px;
+$bp-desk-wide-start:   1366px;
+
+
+$bp-1 : 1025px;
+$bp-1-below: 1025px;
+
+
+//For instructions on using: http://include-media.com/documentation/
+$breakpoints: (
+	'phone': 320px, 
+	'smartphone':425px,
+	'tablet': 768px,
+	'lap': 1024px,
+	'desk': 1224px,
+	'desk-wide': 1366px,
+	'menu-bp' : 600px,
+	'menu-mobile' : 425px
+);
+
+
+//********** MODULES / OBJECTS ***********/
+$use-arrows:        false;
+$use-block-list:    true;
+$use-breadcrumb:    false;
+$use-columns:       true;
+$use-flexbox:       false;
+$use-inuit-grids:         true;
+$use-island:        true;
+$use-marginalia:    true;
+$bb-use-media-stubornella:   true;
+$bb-use-simple-grids: true;
+$bb-use-jquery-tabs: true;
+
+
+//************* LAYOUT **************/
+$full-width-percentage: 90%;
+$full-width-max: 1200px;
+
+//********** MODULES / OBJECTS ***********/
+$use-arrows:        false;
+$use-buttons:         true;
+$output-all-buttons:  false;
+$use-block-list:    true;
+$use-breadcrumb:    false;
+$use-columns:       true;
+$use-flexbox:       false;
+$use-inuit-grids:         true;
+$use-island:        true;
+$use-marginalia:    true;
+$use-media:         true;
+$use-nav:           true;
+$use-pagination:    true;
+$use-pricing-table:	false;
+$use-rules:         true;
+
+//* Push: pushes in the margin. Certain defaults are included because they are used for other modules. */
+$use-push:		false;
+//* If using push: */
+	$palm-push: false;
+	$lap-push: false;
+	$lap-and-up-push: false;
+	$portable-push: false;
+	$desk-push: false; 
+
+
+$use-pull:		false;
+//* If using pull: */
+	$palm-pull: false;
+	$lap-pull: false;
+	$lap-and-up-pull: false;
+	$portable-pull: false;
+	$desk-pull: false; 
+
+$use-nav:           true;
+$use-pagination:    true;
+$use-pricing-table:	false;
+$use-rules:         true;
+
+//* Push: pushes in the margin. Certain defaults are included because they are used for other modules. */
+$use-push:		false;
+//* If using push: */
+	$palm-push: false;
+	$lap-push: false;
+	$lap-and-up-push: false;
+	$portable-push: false;
+	$desk-push: false; 
+
+
+$use-pull:		false;
+//* If using pull: */
+	$palm-pull: false;
+	$lap-pull: false;
+	$lap-and-up-pull: false;
+	$portable-pull: false;
+	$desk-pull: false; 

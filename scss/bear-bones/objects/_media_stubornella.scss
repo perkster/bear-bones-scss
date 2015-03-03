@@ -1,0 +1,26 @@
+@if $bb-use-media-stubornella == true{
+
+/********************  Bear Bones / Objects / MEDIA STUBORNELLA ******************/
+	
+	//** Place any image- and text-like content side-by-side, as per: stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code */
+	
+	%media { }
+	%media, %media__body {
+		overflow:hidden; _overflow:visible; zoom:1;
+	}
+	%media__img, %media__object, %media__image {
+		float:left; 
+		margin-right: $base-spacing-unit--em;
+		&:nth-child(n){
+			display:block;
+		}
+	}
+	%media__img--rev,%media__object--rev {float:right; margin-left: $base-spacing-unit--em;}
+
+    //** `.img`s in `.islet`s need an appropriately sized margin.  */
+	%media__img--islet {
+    //.islet .media__img, .islet .media__object{
+        margin-right:$half-spacing-unit--em;
+    }
+
+}//*endif */

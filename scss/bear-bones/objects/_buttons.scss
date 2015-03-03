@@ -1,0 +1,265 @@
+/********************  Bear Bones / Objects / BUTTONS ******************/
+/*	
+	This is a blend between the beautons of inuit.css (http://csswizardry.com/beautons/), 
+	Andy Clark 320 and up (http://stuffandnonsense.co.uk/projects/320andup/), 
+	Create a themable button set (http://blog.teamtreehouse.com/create-a-themable-button-set-with-sass), 	
+	as well as my own additions
+	
+	NOTE: This isn't the most DRY button set. I use way too many mixins, don't use placeholders properly and quite a few other things are done "incorrectly." However, there have been situations where I needed to create many different types of buttons within a website and this button module hasn't failed me yet (as far as producing the desired outcome).
+*/
+
+//* Mixins to be used */
+
+@mixin btn-push($btn-color, $state : 'regular') {
+	@if $state == 'regular' {
+		box-shadow: 0 .375em .313em -.313em rgba(black,.8), inset 0 .063em $off-wht, inset 0 -.188em rgba(black,.15);
+	}
+	@if $state == 'hover' {
+		box-shadow: 0 .125em $off-wht, inset 0 .063em $off-wht, inset 0 -.188em lighten($btn-color, 2%);
+	}
+	@if $state == 'active' {
+		box-shadow: 0 .063em $off-wht, inset 0 0 1.094em darken($btn-color, 40%), inset 0 .063em darken($btn-color, 20%),inset 0 -0.188em darken($btn-color, 20%); 
+	}
+}
+
+@mixin btn-border($border-color) {
+	border: .094em solid;
+	border-color: darken($border-color, 20%);
+}
+// $btn_bg_color, $btn_font_color, $btn_border_color, $btn--use-border, $btn--use-push, $btn_bg_color--hover
+@mixin btn-colors ($bg-color: $btn_bg_color, $font_color: $btn_font_color, $border-color : $btn_border_color, $btn-border: $btn--use-border, $push: $btn--use-push, $bg-color--hover : $btn_bg_color--hover) {
+	background-color: $bg-color;
+	color: $font_color;
+	@if $btn-border == true {
+		border: .094em solid;
+		border-color: $border-color;
+	} @else {
+		border: 0;
+	}
+	
+	@if $push == true {
+		@include btn-push($bg-color);
+		&:hover {
+			@include btn-push($bg-color--hover, 'hover');
+			background-color: $bg-color--hover;
+			color: $font_color;
+		}
+		&:active {
+			@include btn-push($bg-color, 'active');
+			color: $font_color;
+		}
+	} @else {
+		&:hover {		
+			background-color: $bg-color--hover;
+			color: $font_color;
+		}
+	}
+}
+
+@mixin btn (
+	$bg_color: $btn_bg_color, 
+	$font_color: $btn_font_color, 
+	$border_color : $btn_border_color,
+	$btn-border: $btn--use-border, 	
+	$btn-push: $btn--use-push, 
+	$btn-trans: $btn--use-trans, 
+	$btn-capitalize: $btn--text-capitalize, 
+	$btn-shadow: $btn--text-shadow, 
+	$btn-round: $btn--use-round,
+	$bg_color_hover : $btn_bg_color--hover) {
+	
+	@if($btn-round != false) {border-radius:$brand-round;	}
+	cursor:pointer;
+	display : inline-block;
+	*display : inline;
+	/* IE7 inline-block hack */
+	*zoom : 1;
+	font-family:inherit;        
+    font-size:$btn-font-size;
+	max-width: 100%;
+	text: {
+		@if $btn-capitalize == true { transform: uppercase; }
+		decoration: none;
+		@if $btn-shadow == true { shadow: 0 .063em rgba(black,.3); }
+	}
+	text-align : center;
+	vertical-align:middle;
+    white-space:nowrap;	
+	
+	@if $btn-trans == true {
+		@include transition(0.2s ease-in-out); 
+	}
+	
+	@include btn-colors($bg_color, $font_color, $border_color, $btn-border, $btn-push, $bg_color_hover);
+}
+
+//The following 2 mixins might seem irrelevant because it is easy to just put values directly in to the class but in order to keep consistent I use the mixins so I don't have to remember what the values are - especially if I'm working on multiple projects at the same time.
+
+@mixin btn-size ($btn-size: default) {
+	@if $btn-size == 'default' {
+		padding: $btn-padding-ends $btn_padding_sides;
+	}
+	@if $btn-size == 'small' {
+		padding: $btn-padding-ends * 0.5 $btn_padding_sides;
+	}
+	@if $btn-size == 'large' {
+		padding: $btn-padding-ends * 1.5 $btn_padding_sides;
+	}
+	@if $btn-size == 'huge' {
+		padding: $btn-padding-ends * 2.25 $btn_padding_sides;
+	}
+}
+
+@mixin btn-font ($btn-font: 'default') {
+	@if $btn-font == 'default' {
+		font-size: $btn-font-size;
+	}
+	@if $btn-font == 'kilo' {
+		font-size: 1.25 * $btn-font-size;
+	}
+	@if $btn-font == 'mega' {
+		font-size: 1.5 * $btn-font-size;
+	}
+	@if $btn-font == 'giga' {
+		font-size: 2 * $btn-font-size;
+	}
+}
+
+@mixin btn-circle ($diameter: 60px, $padding-top: 18px) {
+	width: $diameter;
+	height: $diameter;
+	padding: 0;
+	@include border-radius(50%);
+	padding-top: $padding-top;
+}
+
+@if $use-buttons == true{
+
+
+
+
+	/* If you don't want to have to include .btn with every button, uncomment this class and comment out the ".btn" class below. Then you'll only need ".btn--small" or ".btn--error" in order for it to display correctly. */
+
+	/*[class*=btn] { 
+		@include btn($btn-bg-color);
+	}*/
+
+	.btn, %btn {
+		@include btn($btn_bg_color, $btn_font_color, $btn_border_color, $btn--use-border );
+		@include btn-size;
+	}
+	.btn2 {
+		@include btn($btn2_bg_color, $btn2_font_color, $btn2_border_color);
+		@include btn-size;
+	}
+	
+	//Set up all btn placeholder classes
+	
+	%btn--small{
+		@include btn-size('small');
+	}
+	/* will make button full width of container */
+	%btn--full{
+		width:100%;
+		padding-right:0;           
+		padding-left: 0;            
+		text-align:center;
+	}
+
+	/* Make the button inherit sizing from its parent. */
+	%btn--natural{
+		vertical-align:baseline;
+		font-size:inherit;
+		line-height:inherit;
+		padding-right:0.5em;
+		padding-left: 0.5em;
+		padding-top: 0em;
+		padding-bottom: 0em;
+		
+	}
+
+	/* Font sizes */
+	%btn--kilo {
+		@include btn-font('kilo');
+	}
+	%btn--mega {
+		@include btn-font('mega');
+	}
+	%btn--giga {
+		@include btn-font('giga');
+	}
+
+	/* Button styles */
+	//* Use an overly-large number to ensure completely rounded, pill-like ends. */
+	%btn--soft{
+		border-radius:200px;        
+	}
+	%btn--hard{
+		border-radius:0;
+	}
+	%btn--circle {
+		@include btn-circle();
+	}
+
+	/* Button colors */
+	%btn--alert {
+		//$btn_bg_color, $btn_font_color, $btn_border_color, $btn--use-border, $btn--use-push, $btn_bg_color--hover
+		@include btn-colors($alert_color, $alert_color_font, darken($alert_color, 20%), $btn--use-border, $btn--use-push, darken($alert_color, 20%) );
+	}
+	%btn--error {
+		@include btn-colors($error_color, $error_color_font, darken($error_color, 20%), $btn--use-border, $btn--use-push, darken($error_color, 20%));
+	}
+	%btn--info {
+		@include btn-colors($info_color, $info_color_font, darken($info_color, 20%), $btn--use-border, $btn--use-push, darken($info_color, 20%));
+	}
+	%btn--info-dark {
+		@include btn-colors($info_dark_color, $info_dark_color_font, darken($info_dark_color, 20%), $btn--use-border, $btn--use-push, darken($info_dark_color, 20%) );
+	}
+	%btn--success {
+		@include btn-colors($success_color, $success_color_font,  darken($success_color, 20%), $btn--use-border, $btn--use-push, darken($success_color, 20%) );
+	}
+	%btn--warning {
+		@include btn-colors($warning_color, $warning_color_font,  darken($warning_color, 20%), $btn--use-border, $btn--use-push, darken($warning_color, 20%));
+	}
+	%btn--white {
+		@include btn-colors(white, #333, #999, true, $btn--use-push, #999);
+	}
+	
+
+	
+	@if $output-all-buttons == true{
+	
+		.btn--small {
+			@extend %btn--small
+		}
+		/* will make button full width of container */
+		.btn--full { @extend %btn--full }
+
+		/* Make the button inherit sizing from its parent. */
+		.btn--natural{ @extend %btn--natural }
+
+		/* Font sizes */
+		.btn--kilo{ @extend %btn--kilo }
+		.btn--mega{ @extend %btn--mega }
+		.btn--giga{ @extend %btn--giga }
+
+		/* Button styles */
+		//* Use an overly-large number to ensure completely rounded, pill-like ends. */
+		.btn--soft { @extend %btn--soft}
+		.btn--hard{ @extend %btn--hard }
+		.btn--circle{ @extend %btn--circle }
+
+		/* Button colors */
+		.btn--alert{ @extend %btn--alert }
+		.btn--error{ @extend %btn--error }
+		.btn--info{ @extend %btn--info }
+		.btn--info-dark{ @extend %btn--info-dark }
+		.btn--success{ @extend %btn--success }
+		.btn--warning{ @extend %btn--warning }
+		.btn--white{ @extend %btn--white }
+		
+	}
+	
+}
+
+

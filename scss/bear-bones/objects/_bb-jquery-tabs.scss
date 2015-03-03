@@ -1,0 +1,115 @@
+/********************  Bear Bones / Objects / BB jQUERY TABS ******************/
+/* Bear Bones Jquery Tabs
+ * Uses jquery-ui-core, jquery-tabs
+====================================*/
+//*NOTES: The commented out sections can be put in your theme files to have it look like a basic tabs-top tab panel */
+@mixin bb-jquery-tabs--top {
+//@extend %bb-cf;
+	&:after{
+        content:"";
+        display:table;
+        clear:both;
+	}
+	overflow: hidden;
+	width: 100%;
+	//-webkit-box-shadow:  0px 2px 0px 0px rgba(0, 0, 0, 0.03);
+	//box-shadow:  0px 2px 0px 0px rgba(0, 0, 0, 0.03);
+	margin: 1em 0;
+
+	> ul {
+		list-style: none;
+		margin: 0;
+		overflow: hidden;
+		padding: 0;
+		width: 100%;
+		//border-left: $border;
+		//border-bottom: 1px solid #e0e0e0;
+		z-index: 11;
+		> li {			
+			list-style: none;
+			list-style-type: none;
+			&.ui-state-active  {				
+				//border-bottom: thin solid #fff;
+				a {
+					//background: #fff;
+				}
+			}
+			&:first-child a { }
+			&:last-child a {  }
+			
+			
+			display: inline;
+			float: left;
+			//border-right: $border;
+			//border-top: $border;
+			//border-bottom: $border;
+			overflow: hidden;
+			padding: 0;
+			position: relative;
+			
+			> a {
+				//color: $font-color;
+				//background: $ui-background;
+				display: block;				
+				//outline: none;
+				//padding: 0.5em 1em;
+				-webkit-transition: all 200ms ease-in-out;
+				-moz-transition: all 200ms ease-in-out;
+				-o-transition: all 200ms ease-in-out;
+				-ms-transition: all 200ms ease-in-out;
+				transition: all 200ms ease-in-out;
+				//font-size: .75em;
+				&:hover  { 
+					//background: #fff; 
+				}
+			}
+		}
+	}
+	> .ui-tabs-panel {
+		//border: $border;
+		margin-top: -1px;
+		//padding: 1.75em 1em 1em;
+		z-index: 10;
+	}
+}
+
+%bb-jquery-tabs--top {
+	@include bb-jquery-tabs--top;
+}
+
+@mixin bb-jquery-tabs--right {
+//@extend %bb-cf;
+	&:after{
+        content:"";
+        display:table;
+        clear:both;
+	}
+	overflow: hidden;
+	width: 100%;
+	ul {
+		float: right;
+		min-width: $bb-ui-tabs-right-min-width;
+		margin-left: 0;
+		li {
+			list-style-type: none;
+			a {	
+				display: block;	
+				-webkit-transition: all 200ms ease-in-out;
+				-moz-transition: all 200ms ease-in-out;
+				-o-transition: all 200ms ease-in-out;
+				-ms-transition: all 200ms ease-in-out;
+				transition: all 200ms ease-in-out;
+			}			
+		}
+	}
+	> .ui-tabs-panel {
+		//border: $border;
+		//margin-top: -1px;
+		//padding: 1.75em 1em 1em;
+		z-index: 10;
+	}
+}
+
+%bb-jquery-tabs--right {
+	@include bb-jquery-tabs--right;
+}

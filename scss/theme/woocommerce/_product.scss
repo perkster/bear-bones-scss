@@ -1,0 +1,89 @@
+/************ Theme / WooCommerce / PRODUCT ***********/
+
+.woocommerce {
+	div.product {
+		div.images {
+			@extend %grid-item;
+			width: 27%;
+			margin-right: 3%;
+			margin-top: 0.75em;
+		}
+		div.summary {
+			@extend %grid-item;
+			width: 70%;
+		}
+	}
+	ul.products {
+		margin-top: 2em;
+		li.product {
+			float: left!important;
+			width: 33%!important;
+			margin: 0!important;
+			clear:none;
+			border: thin solid $nobel;
+		}
+		.social-share {
+			padding: 0 1em;
+		}
+	}
+	.product_meta {
+		display: none;
+	}
+	
+}
+
+.social-share--product {
+	border-top: thin solid $gainsboro;
+	margin-top: 2em;
+	padding-top: 0.5em;
+	.social-share__link {
+		margin-right: 1em;
+		color: $pavlova;
+		&:hover {
+			color: $nobel;
+		}
+	}
+}
+/*
+.woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
+    float: left;
+    margin: 0 2.5% 2.992em 0;
+    padding: 0;
+    position: relative;
+    width: 30.5%;
+}
+
+.woocommerce ul.products li.product:nth-child(2n), .woocommerce-page ul.products li.product:nth-child(2n), .woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
+	float: left;
+	clear: none!important;
+}
+
+
+.woocommerce .related ul li.product, .woocommerce .related ul.products li.product {
+	width: 30%;
+}
+
+#tab-additional_information h2, #tab-description h2 {
+	display: none;
+}
+
+.added_to_cart {
+	margin-left: 1.75em;
+}
+.woocommerce .donation {
+	min-width: 15em;
+	float: right;
+}
+
+li.wpmenucartli a.empty-wpmenucart-visible span {
+
+	display: none;
+
+}
+
+.post-content .button {
+	color: white;
+	&:hover {
+		color: white;
+	}
+} */

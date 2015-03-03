@@ -1,0 +1,177 @@
+/********************  Bear Bones / Base / Helpers ******************/
+
+//* Clear fix: http://www.css-101.org/articles/clearfix/latest-new-clearfix-so-far.php */
+@mixin set_cf() {
+	:after{
+        content:"";
+        display:table;
+        clear:both;
+    }
+}
+.cf{
+    @include set_cf();
+}
+
+/** Font weights */
+.weight--light      { font-weight:300!important; }
+.weight--normal     { font-weight:400!important; }
+.weight--semibold   { font-weight:600!important; }
+
+
+//* Flush */
+.flush          { margin:       0!important; }
+.flush--top     { margin-top:   0!important; }
+.flush--right   { margin-right: 0!important; }
+.flush--bottom  { margin-bottom:0!important; }
+.flush--left    { margin-left:  0!important; }
+.flush--ends    { margin-top:   0!important; margin-bottom:0!important; }
+.flush--sides   { margin-right: 0!important; margin-left:  0!important; }
+
+
+//** Add/remove paddings */
+.soft           { padding:       $base-spacing-unit--em!important; }
+.soft--top      { padding-top:   $base-spacing-unit--em!important; }
+.soft--right    { padding-right: $base-spacing-unit--em!important; }
+.soft--bottom   { padding-bottom:$base-spacing-unit--em!important; }
+.soft--left     { padding-left:  $base-spacing-unit--em!important; }
+.soft--ends     { padding-top:   $base-spacing-unit--em!important; padding-bottom:$base-spacing-unit--em!important; }
+.soft--sides    { padding-right: $base-spacing-unit--em!important; padding-left:  $base-spacing-unit--em!important; }
+
+.soft_half           { padding:       $half-spacing-unit--em!important; }
+.soft_half--top      { padding-top:   $half-spacing-unit--em!important; }
+.soft_half--right    { padding-right: $half-spacing-unit--em!important; }
+.soft_half--bottom   { padding-bottom:$half-spacing-unit--em!important; }
+.soft_half--left     { padding-left:  $half-spacing-unit--em!important; }
+.soft_half--ends     { padding-top:   $half-spacing-unit--em!important; padding-bottom:$half-spacing-unit--em!important; }
+.soft_half--sides    { padding-right: $half-spacing-unit--em!important; padding-left:  $half-spacing-unit--em!important; }
+
+.hard           { padding:       0!important; }
+.hard--top      { padding-top:   0!important; }
+.hard--right    { padding-right: 0!important; }
+.hard--bottom   { padding-bottom:0!important; }
+.hard--left     { padding-left:  0!important; }
+.hard--ends     { padding-top:   0!important; padding-bottom:0!important; }
+.hard--sides    { padding-right: 0!important; padding-left:  0!important; }
+
+
+//** Pull items full width of `.island` parents. */
+.full_bleed{
+    margin-right:-$base-spacing-unit--em!important;
+    margin-left: -$base-spacing-unit--em!important;
+
+    .islet &{
+        margin-right:-($half-spacing-unit--em)!important;
+        margin-left: -($half-spacing-unit--em)!important;
+    }
+}
+
+
+//* Add a help cursor to any element that gives the user extra information on `:hover`. */
+.informative{
+    cursor:help!important;
+}
+
+//* Mute an object by reducing its opacity. */
+.muted{
+    opacity:0.5!important;
+    filter:alpha(opacity = 50)!important;
+}
+
+//* Align items to the right where they imply progression/movement forward, e.g.:  <p class=proceed><a href=#>Read more...</a></p> */
+.proceed{
+    text-align:right!important;
+}
+
+//* Add a right-angled quote to links that imply movement, e.g.: <a href=# class=go>Read more</a> */
+.go:after{
+    content:"\00A0" "\00BB"!important;
+}
+
+/* Accessibility */
+//http://a11yproject.com/posts/how-to-hide-content/
+//** Hide content off-screen without resorting to `display:none;`, also provide breakpoint specific hidden elements. */
+@mixin accessibility{
+     position: absolute !important;
+    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px, 1px, 1px, 1px);
+    padding:0 !important;
+    border:0 !important;
+    height: 1px !important;
+    width: 1px !important;
+    overflow: hidden;
+}
+.accessibility,
+.visuallyhidden{
+    @include accessibility;
+}
+
+
+@if $responsive{
+    @each $state in palm, lap, lap-and-up, portable, desk, desk-wide{
+        @include media-query(#{$state}){
+            .accessibility--#{$state},
+            .visuallyhidden--#{$state}{
+                @include accessibility;
+            }
+        }
+    }
+}
+pre {
+	background-color: $info_color;
+}
+
+//Layout helpers
+.header--fixed {
+	position: fixed;
+	top: 0;
+	width: $content-width;
+}
+.footer--fixed {
+	position: fixed;
+	bottom: 0;
+	width: $content-width;
+}
+
+.div--center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.clear--left {
+	clear: left;
+}
+.clear--right {
+	clear: right;
+}
+.clear--both {
+	clear: both;
+}
+
+//*http://css-tricks.com/perfect-full-page-background-image/*/
+img.bg {
+  /* Set rules to fill background */
+  min-height: 100%;
+  min-width: $bg_image_width;
+	
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+	
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+img.full-width {
+	height: auto!important;
+	width: 100%!important;
+	max-width: 100%!important;
+}
+
+@media screen and (max-width: $bg_image_width) { /* Specific to this particular image */
+  img.bg {
+    left: 50%;
+    margin-left: -($bg_image_width / 2);   /* 50% */
+  }
+}

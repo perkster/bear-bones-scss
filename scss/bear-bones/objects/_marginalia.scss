@@ -1,0 +1,45 @@
+@if $use-marginalia == true{
+
+/********************  Bear Bones / Objects / MARGINALIA ******************/
+
+//** Taken straight from inuit.css: Marginalia are, per definition, notes in the margin of a document. 
+//*  The `marginalia__object` class can be applied to all kinds of content, like text or images, and is joined by a width class
+//**  <div class="marginalia"><div class="marginalia__object  desk-one-fifth"></div></div>
+//* Demo: jsfiddle.net/inuitcss/AemkH */
+
+//** Wait for a certain breakpoint to trigger ‘proper' marginalia. Up to this point, marginalia are inline with the other text. */
+.marginalia {
+	@include set_margin_bottom($base-spacing-unit--em);
+	@extend .soft--sides;
+	font-style: italic;
+}
+
+@media (min-width: $desk-start){
+    .marginalia{
+		margin: 0;
+		padding: 0;
+        position:relative;
+		@include font-size($milli-default);
+    }
+
+    .marginalia__object,
+    .marginalia__object--right{
+        position:absolute;
+    }
+
+    .marginalia__object{
+      right:100%;
+      padding-right:$base-spacing-unit--em;
+      text-align:right;
+    }
+
+    /** Align marginalia to the right of the text.   */
+    .marginalia__object--right{
+        left:100%;
+        padding-left:$base-spacing-unit--em;
+        text-align:left;
+    }
+}
+
+
+}//* endif */

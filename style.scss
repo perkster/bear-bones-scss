@@ -1,0 +1,23 @@
+/*
+Theme Name: 	Bear Bones Custom
+Template:       bear-bones-1.0.7
+Description: 	Custom theme built on the Bear Bones theme
+Version:		1.0.1
+Notes:  		This theme was developed by Wendy Shoef of http://www.perkstersolutions.com
+				Perkster Solutions works with designers in helping them bring their work online!
+*/
+
+//*-------------------     STYLE.CSS  -------------------*/
+//compass to import
+@import "compass/css3";
+
+@import "scss/theme/bb-setup";
+@import "scss/theme/theme-style";
+@import "scss/bear-bones/bear-bones";
+@import "scss/plugins/include-media";
+@import "scss/theme/theme";
+
+//* Example of sprite with compass
+/*@import "compass/utilities/sprites";
+@import "icon/*.png";
+@include all-icon-sprites; */

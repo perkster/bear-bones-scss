@@ -1,0 +1,256 @@
+/********************  Bear Bones / Base / Texture ******************/
+@mixin set_color(
+	$bg-color : $accent_color, 
+	$color : $accent_color--font, 
+	$link-color : $accent_color--link, 
+	$link-color-hover : $accent_color--font,
+	$link-background: $accent_color2 ) {
+	
+	
+	}
+
+%accent_color {
+	background-color: $accent_color;
+	color: $accent_color--font;
+	a {
+		color: $accent_color--link;
+		&:hover {
+			color: lighten($accent-color, 40%);
+			background-color: darken($accent-color, 30%);
+		}
+	}
+}
+%accent_color2 {
+	background-color: $accent_color2;
+	color: $accent_color2--font;
+	a {
+		color: $accent_color2--link;
+		&:hover {
+			color: lighten($accent-color2, 40%);
+			background-color: darken($accent-color2, 30%);
+		}
+	}
+}
+%accent_color3 {
+	background-color: $accent_color3;
+	color: $accent_color3--font;
+	a {
+		color: $accent_color3--link;
+		&:hover {
+			color: lighten($accent-color3, 40%);
+			background-color: darken($accent-color3, 30%);
+		}
+	}
+}
+%link-color {
+	color: $link-color!important;
+}
+%font-color {
+	color: $font-color!important;
+}
+
+%color--info {
+	background-color: $info_color;
+	color: $info_color_font;
+	a {
+		color: $info_color_font;
+	}
+}
+%color--alert {
+	background-color: $alert_color;
+	color: $alert_color_font;
+	a {
+		color: $alert_color_font;
+	}
+}
+%color--error {
+	background-color: $error_color;
+	color: $error_color_font;
+	a {
+		color: $error_color_font;
+	}
+}
+%color--error_light {
+	background-color: $error_light_color;
+	color: $error_light_color_font;
+	a {
+		color: $error_light_color_font;
+	}
+}
+%color--info_dark {
+	background-color: $info_dark_color;
+	color: $info_dark_color_font;
+	a {
+		color: $info_dark_color_font;
+	}
+}
+%color--inverse {
+	background-color: $inverse_color;
+	color: $inverse_color_font;
+	a {
+		color: $inverse_color_font;
+	}
+}
+%color--success {
+	background-color: $success_color;
+	color: $success_color_font;
+	a {
+		color: $success_color_font;
+	}
+}
+%color--success_light {
+	background-color: $success_light_color;
+	color: $success_light_color_font;
+	a {
+		color: $success_light_color_font;
+	}
+}
+%color--warning {
+	background-color: $warning_color;
+	color: $warning_color_font;
+	a {
+		color: $warning_color_font;
+	}
+}
+
+
+%border {
+	@include set_border( $base-ui-color);
+}
+%border--accent_color {
+	@include set_border( $accent_color );
+}
+
+%border--accent_color2{
+	@include set_border( $accent_color2 );
+}
+%border--block_list {
+	border-top: thin solid $base-ui-color;
+	&> li{
+		@include set_border( $base-ui-color, bottom, true );
+	}
+}
+%border--block_list--accent_color {
+	border-top: thin solid $accent_color;
+	&> li {
+		@include set_border( $accent_color, bottom, true );
+	}
+}
+%border--block_list--accent_color2  {
+	border-top: thin solid $accent_color2;
+	&> li{
+		@include set_border( $accent_color2, bottom, true );
+	}
+}
+
+//* Rounded corners */
+//* http://compass-style.org/reference/compass/css3/border_radius/  */
+//* @TODO: Set up border radius based on round for certain elements such as blockquote */
+
+    %brand-round {
+		@if ($brand-round-style == all) {
+			@include border-radius($brand-round);
+		} 
+		@elseif ($brand-round-style == top) {
+			@include border-top-radius($brand-round);
+		}
+		@elseif ($brand-round-style == bottom) {
+			@include border-bottom-radius($brand-round);
+		}
+		@elseif ($brand-round-style == left) {
+			@include border-left-radius($brand-round);
+		}
+		@elseif ($brand-round-style == right) {
+			@include border-right-radius($brand-round);
+		}
+		@else {
+			@include border-right-radius($brand-round);
+		}		
+	}
+	
+%fade {
+   opacity: 1;
+   transition: opacity .25s ease-in-out;
+   -moz-transition: opacity .25s ease-in-out;
+   -webkit-transition: opacity .25s ease-in-out;
+   &:hover {
+      opacity: 0.5;
+      }	
+}
+
+
+%fade--rev {
+   opacity: 0.5;
+   transition: opacity .25s ease-in-out;
+   -moz-transition: opacity .25s ease-in-out;
+   -webkit-transition: opacity .25s ease-in-out;
+   &:hover {
+      opacity: 1;
+      }	
+}
+
+//* Gradients */
+
+@mixin gradient-horizontal($startColor : $white, $endColor : $lightergrey) {
+	background-color: $endColor;
+	background-image  : -webkit-gradient(linear, 0 0, 100% 0, from($startColor), to($endColor)); // Safari 4+, Chrome 2+
+	background-image  : -webkit-linear-gradient(left, $startColor, $endColor); 					 // Safari 5.1+, Chrome 10+
+	background-image  : -moz-linear-gradient(left, $startColor, $endColor); 					 // FF 3.6+
+	background-image  : -ms-linear-gradient(left, $startColor, $endColor); 						 // IE10
+	background-image  : -o-linear-gradient(left, $startColor, $endColor); 						 // Opera 11.10
+	background-image  : linear-gradient(left, $startColor, $endColor); 							 // W3C
+	background-repeat : repeat-x; 
+}
+
+@mixin gradient-vertical($startColor : $white, $endColor:  $lightergrey) {
+	background-image  : -webkit-gradient(linear, 0 0, 0 100%, from($startColor), to($endColor)); // Safari 4+, Chrome 2+
+	background-image  : -webkit-linear-gradient(top, $startColor, $endColor); 					 // Safari 5.1+, Chrome 10+
+	background-color  : $endColor;
+	background-image  : -moz-linear-gradient(top, $startColor, $endColor);   					 // FF 3.6+
+	background-image  : -ms-linear-gradient(top, $startColor, $endColor); 						 // IE10
+	background-image  : -o-linear-gradient(top, $startColor, $endColor); 						 // Opera 11.10
+	background-image  : linear-gradient(top, $startColor, $endColor); 							 // W3C
+	background-repeat : repeat-x; 
+}
+
+@mixin gradient-directional($startColor : $white, $endColor : $lightergrey, $deg : 45deg) {
+	background-color  : $endColor;
+	background-image  : -moz-linear-gradient($deg, $startColor, $endColor); 					// FF 3.6+
+	background-image  : -ms-linear-gradient($deg, $startColor, $endColor); 						// IE10
+	background-image  : -webkit-linear-gradient($deg, $startColor, $endColor); 					// Safari 5.1+, Chrome 10+
+	background-image  : -o-linear-gradient($deg, $startColor, $endColor); 						// Opera 11.10
+	background-image  : linear-gradient($deg, $startColor, $endColor); 							// W3C
+	background-repeat : repeat-x; 
+}
+
+// GRADIENTS ====================================================
+
+%gradient--accent_color {
+@include gradient-vertical(lighten($accent_color, 40%), darken($accent_color, 10%)); }
+
+%gradient--accent_color2 {
+@include gradient-vertical(lighten($accent_color2, 40%), darken($accent_color2, 10%)); }
+
+%gradient--error {
+@include gradient-vertical(white, $error_color); }
+
+%gradient--grey {
+@include gradient-vertical(white, darken($color--lightergrey, 5%)); }
+
+%gradient--info {
+@include gradient-vertical($info_color, darken($info_color, 40%)); }
+
+%gradient--inverse {
+@include gradient-vertical(lighten($inverse_color, 5%), darken($inverse_color, 20%)); }
+
+%gradient--success {
+@include gradient-vertical(white, $success_color); }
+
+%gradient--warning {
+//@include gradient-vertical(lighten($warning_color, 30%), darken($warning_color, 10%)); }
+@include gradient-vertical(white, $warning_color); }
+
+
+%arrow-down:after {
+    content: "\25BE";
+}

@@ -1,0 +1,33 @@
+/********************  Theme / Style / LISTS  ******************/
+/**
+ * Lists 
+ * 1. Remove margin
+ * 2. Set default padding-left so it lines up with paragraph. Default is 40px which is 
+      too much; easier to add in later for the few cases that will use it. Some reset/normalize 
+	  remove completely, but user normally expects lists to have bullet points. Especially inside of blog posts. 
+ */
+//ul, ol {
+	//margin: 0; /*1*/
+	//padding-left: 1.25em; /*2*/
+//}
+//** Where `margin-left` is concerned we want to try and indent certain elements by a consistent amount. Define that amount once, here. */
+ul,ol {
+	padding: 0;
+    margin-left:px($base-font-size, $line-height-ratio);
+    margin-left:$line-height-ratio * 1rem;
+	margin-top: 0;
+	margin-bottom: 0;
+	list-style-position:inside;
+	li {
+		list-style-position:outside;
+		
+	}
+}
+
+//* Remove vertical spacing from nested lists. */
+li{
+    > ul,
+    > ol{
+         margin-bottom:0;
+     }
+}

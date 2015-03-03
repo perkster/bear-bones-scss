@@ -1,0 +1,71 @@
+/********************  Bear Bones / Objects / VERTICAL ALIGN ******************/
+
+/* Vertical align within div: http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/ */
+
+/* Use
+.parent {
+	@extend %bb-vertical-align-parent;
+}
+.parent p, .element {
+  @extend %bb-vertical-align-element;
+}
+*/
+
+%bb-vertical-align-parent {
+	-webkit-transform-style: preserve-3d;
+	   -moz-transform-style: preserve-3d;
+			transform-style: preserve-3d;
+}
+%bb-vertical-align-item {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+/* * Using Flex: http://css-tricks.com/boxes-fill-height-dont-squish/ */
+/* For syntax issues: http://the-echoplex.net/flexyboxes/ */
+@mixin bb-vertical-flex__container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -moz-box-orient: vertical;
+  -moz-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+%bb-flex-vertical-fill__container {
+	@include bb-vertical-flex__container;
+} 
+
+@mixin bb-vertical-flex__item {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -moz-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+%bb-flex-vertical-fill__item {
+	@include bb-vertical-flex__item;    
+}

@@ -1,0 +1,32 @@
+/************ Theme / HTML / FORMS ***********/
+//Many of these are used in other add-ons/plugins such as sumoselect
+$form-input-border-color: $ui-grey; 
+$form-input-border: thin solid $form-input-border-color;
+$form-input-border-text: white;
+$form-input-bgc: white;
+$form-input-color: $font-color;
+$form-placeholder : lighten( $font-color, 20%);
+$form-round: 3px;
+$form-ui-color: #ccc;
+
+input, textarea, select {
+	border: $form-input-border;
+	max-width: 100%;
+}
+input[type="submit"] {
+	background-color: $btn_bg_color;
+	color: white;
+	border: thin solid $btn_bg_color;
+	padding: 0.25em;
+	&:hover {
+		background-color: $btn_bg_color--hover;
+		border: thin solid $btn_bg_color--hover;
+		color: white;
+	}
+}
+input[type="text"], input[type="email"], input[type="password"] {
+	padding: 0.25em;
+	max-width: 100%;
+	width: 100%;
+}
+

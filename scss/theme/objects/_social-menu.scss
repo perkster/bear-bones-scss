@@ -1,0 +1,26 @@
+/***************** SOCIAL ***************/
+
+.menu-social-menu, .menu-social-test {
+	width: 80%;
+	margin: 0 auto;
+	max-width: 30em;
+	padding: 1em;
+	text-align: center;
+}
+.social-menu__item, .social-test__item {
+	color: $spanish-white;
+	padding: 0 1em;
+	&:hover {
+		color: $bianca;
+	}
+}
+.social-menu__link, .social-test__link  {
+	//@extend .accessibility;
+	margin-left: -1em;
+	display: inline-block;
+	width: 1.25em;
+	height: 1em;
+	span {
+		@extend .accessibility;
+	}
+}

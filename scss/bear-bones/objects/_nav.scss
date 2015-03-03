@@ -1,0 +1,71 @@
+/********************  Bear Bones / Objects / NAV ******************/
+@mixin bb-dropdown {
+		.sub-menu {
+			display: none;
+			float: left;
+			position: absolute;
+			z-index: 99999;	
+			//@extend %ul--none;
+			list-style-type: none;
+			margin-left: 0;
+			padding-left: 0;
+		}
+		li:hover > .sub-menu {
+			display: block;
+		}
+}
+%dropdown  {
+	@include bb-dropdown();
+}
+
+
+@mixin bb-navbar($alignment: center) {
+	display: table;
+	table-layout: auto;
+	width: 100%;
+	> ul {
+		display: table;
+		table-layout: fixed;
+		width: 100%;
+		padding-left: 0;
+		margin-left: 0;
+		> li {
+			display: table-cell;
+			text-align: $alignment;
+			> a {
+				width: 100%;
+				display: block;
+			}
+		}
+	}
+}
+
+%navbar {
+	@include bb-navbar();
+}
+
+
+//navbar---justified taken totally from http://codepen.io/geoffyuen/pen/Awudj
+//http://tympanus.net/codrops/2013/07/14/justified-and-vertically-centered-header-elements/'
+
+@mixin bb-navbar--justified() {
+	margin: 0;
+	> ul {
+		text-align: justify;
+		overflow: hidden;
+		padding: 0;
+		&:after {
+			// justify inline-block method:
+			// http://tympanus.net/codrops/2013/07/14/justified-and-vertically-centered-header-elements/
+			content: '';
+			display: inline-block;
+			width: 100%;
+		}
+		> li {
+			display: inline-block;
+		}
+	}
+}
+%navbar--justified {
+	@include bb-navbar--justified();
+}

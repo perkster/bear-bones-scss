@@ -1,0 +1,33 @@
+@if $use-columns == true{
+	/********************  Bear Bones / Objects / COLUMNS ******************/
+	//** Taken from inuit.css but added in a start point at lap-start: Here we can set elements in columns of text using CSS3, e.g.:
+	//* Demo: jsfiddle.net/inuitcss/E26Yd */
+	
+	
+	.text_cols--2, .text_cols--3, .text_cols--4, .text_cols--5     { 
+		@media only screen and (min-width: $lap-start) {
+			@include vendor(column-gap, $base-spacing-unit--em);
+		}
+	}
+	.text_cols--2 {
+		@media only screen and (min-width: $lap-start) {
+			@include vendor(column-count, 2); 
+		}
+	}
+	.text_cols--3 {
+		@media only screen and (min-width: $lap-start) {
+			@include vendor(column-count, 3); 
+		}
+	}
+	.text_cols--4 {
+		@media only screen and (min-width: $desk-start) {
+			@include vendor(column-count, 4); 
+		}
+	}
+	.text_cols--5 {
+		@media only screen and (min-width: $desk-start) {
+			@include vendor(column-count, 5); 
+		}
+	}
+
+}//*endif*/

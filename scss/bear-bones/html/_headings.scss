@@ -1,0 +1,60 @@
+/********************  Bear Bones / Html / HEADINGS ******************/
+//** As per: csswizardry.com/2012/02/pragmatic-practical-font-sizing-in-css*/
+ 
+
+@mixin headings($from: 1, $to: 6, $classonly : false){
+    %base-heading {
+        @content
+    }
+
+    @if $from >= 1 and $to <= 6{
+        @for $i from $from through $to{
+			@if ($classonly == true) {
+				.h#{$i} {
+					@extend %base-heading;
+				}
+			} @elseif ($classonly == header) {
+				h#{$i}{
+					@extend %base-heading;
+				}
+			} @elseif ($classonly == both) {
+				h#{i}, .h#{$i}{
+					@extend %base-heading;
+				}
+			}
+        }
+    }
+}
+ 
+h1,.h1,.alpha, h2,.h2,.beta, h3,.h3,.gamma, h4,.h4,.delta, h5,.h5,.epsilon, h6,.h6,.zeta{
+	font-weight: $heading-font-weight;
+	font-family: $heading-font-family;
+	font-style: $heading-font-style;
+	//color: 	$heading-color;
+	line-height: $heading-line-height-ratio * 1em;
+}
+
+/** Heading groups and generic any-heading class.
+//* To target any heading of any level simply apply a class of `.hN`, e.g.:
+//* <hgroup>
+//*		<h1 class=hN>inuit.css</h1>
+//*		<h2 class=hN>Best. Framework. Ever!</h2>
+//*	</hgroup> */
+
+.hN{
+}
+hgroup .hN{
+    margin-bottom:0;
+}
+
+
+/** A series of classes for setting massive type; for use in heroes, mastheads, promos, etc. */
+.giga{
+    @include font-size($giga-default, 1em);
+}
+.mega{
+    @include font-size($mega-default, 1em);
+}
+.kilo, .huge{
+    @include font-size($kilo-default, 1em);
+}

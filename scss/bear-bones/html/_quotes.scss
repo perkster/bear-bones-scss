@@ -1,0 +1,132 @@
+/********************  Bear Bones / Html / QUOTES ******************/
+
+//** If English quotes are set in `_vars.scss`, define them here. */
+
+    $open-quote:    \201C;
+    $close-quote:   \201D;
+
+
+
+
+
+/** Inline quotes. */
+q{
+    quotes:"\2018" "\2019" "#{$open-quote}" "#{$close-quote}";
+
+    &:before{
+        content:"\2018";
+        content:open-quote;
+    }
+    &:after{
+        content:"\2019";
+        content:close-quote;
+    }
+
+    q:before{
+        content:"\201C";
+        content:open-quote;
+    }
+    q:after{
+        content:"\201D";
+        content:close-quote;
+    }
+}
+%blockquote-border {
+	border-style: solid;
+	border-left-width: 0.5em;
+	border-top-width: thin;
+	border-right-width: thin;
+	border-bottom-width: thin;
+}
+
+//** Big up @boblet: html5doctor.com/blockquote-q-cite */
+.quote {
+	margin-left: 2em;
+	margin-right: 2em;
+	padding: .75em .5em .75em 1em;
+	//background: #fff;
+	//border-left: 0.5em solid #DDD;	
+	//border-top: thin solid #ddd;
+	//border-right: thin solid #ddd;
+	//border-bottom: thin solid #ddd;
+	
+	font-size: 1em;
+	line-height: 1.5;
+	&:before {
+		display: block;
+		height: 0;
+		content: "“";
+		margin-left: -.95em;
+		font: italic 400%/1 Cochin,Georgia,"Times New Roman", serif;
+		color: #999;
+	}
+}
+
+
+blockquote{
+	p, code, cite, .source {
+		display: block;
+    }
+	&> :nth-child(n){
+		@extend %vr--half;
+	}
+	&> :last-child{
+        margin-bottom:0;
+    }
+}
+
+blockquote p, cite, .source {
+	display: block;
+	@extend %vr--half;
+
+}
+
+.source {
+	text-indent:0;
+	
+	&:before{
+        content:"\2014 ";
+    }
+}
+
+%blockquote--accent_color {
+	background-color: $accent_color;
+	color: $accent_color--font;
+	padding: $half-spacing-unit * 1em;
+	a {
+		color: $accent_color--link;
+	}
+}
+
+%blockquote--accent_color2 {
+	background-color: $accent_color2;
+	color: $accent_color2--font;
+	padding: $half-spacing-unit * 1em;
+	a {
+		color: $accent_color2--link;
+	}
+}
+%blockquote--accent_color3 {
+	background-color: $accent_color3;
+	color: $accent_color3--font;
+	padding: $half-spacing-unit * 1em;
+	a {
+		color: $accent_color3--link;
+	}
+}
+%blockquote--quotation_mark {
+	quotes: "“" "/201C";
+	margin-left: 2.95em;
+	@include box-shadow(0 0 6px darken($base-ui-color, 20));
+	padding: .75em .5em .75em 1em;
+	background: #fff;
+	border-left: 0.5em solid $base-ui-color;
+	&:before {
+		display: block;
+		height: 0;
+		content: "“";
+		margin-left: -.95em;
+		font: italic 400%/1 Cochin,Georgia,"Times New Roman", serif;
+		color: darken($base-ui-color, 10);
+	}
+}

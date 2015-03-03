@@ -1,0 +1,115 @@
+//*-------    _COLORS.SCSS ----------*/
+
+//********* COLORS ************/
+//* defaults for various functions */
+
+$off-wht: rgba(white,.4)!default;
+
+
+/* @TODO: Change color scheme to be consistent throughout theme, for example:
+ * $error--box 		:	rgb(218,79,73);
+ * $error--box-font :	darken ($error--box, 50%);
+ * $error--btn		:	rgb(255,0,0);
+ * $error--btn-font	:	rgb(255,255,255);
+ */
+
+//* Helper colors */
+$alert_color 				: 	rgb(252,248,227)!default;				//light yellow
+$error_color 				: 	rgb(255,0,0)!default;					//red
+$error_light_color 			: 	lighten($error_color, 40%)!default;		//light red
+$info_color 				: 	rgb(217,237,247)!default;				//light blue
+$info_dark_color			: 	#0165fc!default; 						//bright blue
+$inverse_color 				: 	rgb(65,65,65)!default;					//grey inverse
+$success_color 				: 	rgb(91,183,91)!default;					//green
+$success_light_color 		: 	lighten($success_color, 35%)!default;		//light green
+$warning_color			 	: 	rgb(250,167,50)!default;					//dark yellow
+
+$alert_color_font 			:	darken($alert_color, 60%)!default;
+$error_color_font			:	white!default;
+$error_light_color_font		:	darken($error_color, 20%)!default;
+$info_color_font			:	darken($info_color, 50%)!default;
+$info_dark_color_font		:	white!default;
+$inverse_color_font			:	white!default;
+$success_color_font			:	white!default;
+$success_light_color_font	:	darken($success_color, 30%)!default;
+$warning_color_font			:	white!default;
+ 
+
+//* Neutral colors */
+$neutralcolor 				:	 rgb(71,63,63);
+$midneutralcolor 			: 	darken($neutralcolor,25%);
+$darkneutralcolor 			: 	darken($neutralcolor,50%);
+$lightneutralcolor 			:	 lighten($neutralcolor,25%);
+$lighterneutralcolor 		:	 lighten($neutralcolor,50%);
+$lightestneutralcolor 		:	 lighten($neutralcolor,70%);
+$color--gray-light					:	 #999!default;
+$color--lightergrey				:	 #888!default;
+
+//* social colors */
+$twitterblue				:	rgb(64,153,255)!default; // #4099FF
+$facebookblue					:	rgb(48,72,144)!default;	// #304890
+$linkedinblue					:	rgb(39,104,168)!default; // #2768A8
+$gplusred						:	rgb(219,74,55)!default;  // #DB4A37
+
+
+//* Default values for colors */
+$background-color				:	white!default;
+$font-color					:	#222!default;
+
+//* Accent colors */
+$accent-color				:	 #336699!default;
+$accent-color--font			:	 #fff!default;
+$accent-color--link			:	 lighten($accent-color, 40)!default;
+$accent-color2				:	 #00B2CA!default;
+$accent-color2--font		:	 #fff!default;
+$accent-color2--link		:	 darken($accent-color2, 40)!default;
+$accent-color3				:	rgb(96, 142, 192)!default; 	//moderate blue
+$accent-color3--font		:	 #fff!default;
+$accent-color3--link		:	 lighten($accent-color3, 40)!default;
+
+//* Links */
+$link-color					:	 $accent-color!default;
+$link-hover-color			: 	$accent-color2!default;
+
+//* Headings */
+$heading-color				: $accent-color2!default;
+
+//*Base color used for borders and stuff */
+$base-ui-color				: 	#444!default;
+$border-color    			: 	lighten($base-ui-color, 60%)!default;
+
+//* Nav */
+$main-nav__color			: 	white!default;
+$main-nav__color--hover		: 	white!default;
+$main-nav__font				: 	$font-color!default;
+$main-nav__font--hover		: 	$accent-color!default;
+
+$main-nav__submenu__color			: white!default;
+$main-nav__submenu__color--hover	: white!default;
+$main-nav__submenu__font			: $font-color!default;
+$main-nav__submenu__font--hover		: $accent-color!default;
+
+$main-nav-color2--font		:	 #fff!default;
+
+
+
+//COLORS renamed using http://www.color-blindness.com/color-name-hue/
+//Light alert RED
+$misty-rose					: #ffe2e2; //light-red
+$mona-lisa					: #ff8a8a; //border/hover
+$orange-red					: #ec3c06; //font-color
+
+//Light alert peach
+$papaya-whip				: #FFF2E2; //light-peach
+$macaroni-and-cheese		: #ffbc8a; //border/hover
+$tree-poppy					: #e17731; //font-color
+
+//Light alert green
+$honeydew					: #e8ffe2; //light-green
+$pastel-green				: #6fdf51; //border - bright, not pastel 
+$forest-green				: #1ea524; //font-color
+
+//Alert yellow
+$early-dawn					: #fcf8e3; //light-yellow
+$buff						: #f2e187; //border/hover
+$golden-brown				: #9c8611; //font-color

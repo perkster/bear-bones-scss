@@ -1,0 +1,29 @@
+/********************  Theme / Pages / BLOG  ******************/
+.archive-title {
+	margin-top: 0;
+}
+
+.archive-list {
+
+}
+.archive-list__item {
+	@extend %media;
+	margin-bottom: 1em;
+}
+.archive-list__image {
+	@extend %media__img;
+}
+.archive-list__text {
+	@extend %media__body;
+}
+.archive-list__link {	
+	color: $font-color;
+	.archive-list__title {
+		color: $pavlova;
+		@extend %h3-size;
+	}	
+}
+
+.post-featured-image__image  {
+	width: 100%;
+}

@@ -1,0 +1,146 @@
+// /********************  Bear Bones / Html / LISTS ******************/
+
+//* used through out different objects such as nav, breadcrumb, etc*/
+@mixin inline-list($marginLeft : 0, $cf : true) {
+	list-style:none;
+    margin-left:$marginLeft;
+    @if($cf == true) { 
+		//@extend %bb-cf; 
+		@include bb-cf();
+	}
+
+    > li, li a{
+
+            display:inline-block;
+           *display:inline;
+            zoom:1;
+
+    }
+}
+
+%inline-list, %ul--inline {
+	@include inline-list( 0, true );
+}
+
+
+
+%ul--fit, %ul-fit--justify {
+	
+	/*display: table;
+	width: 100%;
+	> li {
+		display: table-cell;
+	}*/
+	
+	
+	text-align: justify;
+	&:after {
+		content: '';
+		display: inline-block;
+		width: 100%;
+	}
+	> li {
+		display: inline-block;
+	}
+}
+%ul-fit--table {
+	display: table-row;
+	width: 100%;
+	border-collapse: collapse;
+	> li {
+		display: table-cell;
+		margin: 0;
+	}
+}
+
+%ul--none {
+	list-style-type: none;
+	margin-left: 0;
+}
+%ul--flush {
+	margin-left: 0;
+}
+%ul--circle {
+	list-style-type: circle;
+}
+%ul--disc {
+	list-style-type: disc;
+}
+%ul--numbered{
+    list-style-type:decimal;
+}
+%ul--square {
+	list-style-type: square;
+}
+%ul--upper_roman {
+	list-style-type: upper-roman;
+}
+%ul--lower_roman {
+	list-style-type: lower-roman;
+}
+%ul--leading_zero {
+	list-style-type: decimal-leading-zero;
+}
+
+%ul--custom > li + li[data-breadcrumb]:before{
+    content:attr(data-breadcrumb) "\00A0";
+}
+
+
+
+/*
+@TODO:  Set up Definition List part
+dl {
+	margin: $base-spacing-unit--em;
+}
+dt, %dl__heading  {
+	@include font-size(1.05, 1.1);
+	font-weight: 600;
+	font-family: $heading-font-family;
+	clear: left;
+}
+
+/*
+%dl__heading, dd, dt {
+	//@include set_margin_bottom($half-spacing-unit--em);
+	@include set-vr(quarter);
+}*/
+
+
+/*
+%dl--horizontal {
+	dt {
+		float: left;
+		@extend %bb-cf;
+		width: 30%;
+		@media screen and (max-width: $lap-start) {
+			width: 100%;
+			float: none;
+		}
+		
+	}
+	dd {
+		margin-left: 33%;
+		min-height: 1em;
+		@media screen and (max-width: $lap-start) {
+			margin-left: 0;
+		}
+	}
+	
+}
+
+%dl--block_list {
+	dd {
+		//@include set_margin_bottom($base_spacing_unit--em);
+		//extend .vr--half;
+		@include set-vr(half);
+		@include set_border( $base-ui-color, bottom) ;
+	}	
+}
+%dl--block_list--accent_color {
+	dd {
+		//@include set_margin_bottom($base_spacing_unit--em);
+		@extend %vr;
+		@include set_border( $accent_color, bottom) ;
+	}
+}*/

@@ -1,0 +1,71 @@
+@if $use-rules == true{
+
+/********************  Bear Bones / Objects / RULES ******************/
+//** Taken from inuit.css: Horizontal rules, extend `hr`. Demo: jsfiddle.net/inuitcss/L6GuZ */
+%rule {
+	border:none;
+    border-bottom-width:1px;
+    border-bottom-style:solid;
+    margin-bottom:$base-spacing-unit--px - 1px;
+    margin-bottom:(($base-spacing-unit--px - 1px) / $base-font-size)*1rem;
+}
+.rule{
+    color:$base-ui-color;
+}
+
+.rule, .rule--accent_color, .rule--accent_color2 {
+	@extend %rule;
+}
+
+
+/**
+ * Dotted rules
+ */
+.rule--dotted{
+    border-bottom-style:dotted;
+}
+
+.rule--widedots {
+	height:14px; /* specify a height for this hr */
+	overflow:hidden;
+	&:after {
+		content:".......................................................................";
+		letter-spacing: 4px; /* Use letter-spacing to increase space between dots*/
+	}
+}
+/**
+ * Dashed rules
+ */
+.rule--dashed{
+    border-bottom-style:dashed;
+}
+
+
+/**
+ * Ornamental rules. Places a § over the rule.
+ */
+.rule--ornament{
+    position:relative;
+
+    &:after{
+        content:"\00A7";
+        position:absolute;
+        top:   0;
+        right: 0;
+        left:  0;
+        line-height:0;
+        text-align:center;
+    }
+
+    /**
+    * Pass in an arbitrary ornament though a data attribute, e.g.:
+    *
+      <hr class="rule  rule--ornament" data-ornament="!">
+    *
+    */
+    &[data-ornament]:after{
+        content:attr(data-ornament);
+    }
+}
+
+}//endif

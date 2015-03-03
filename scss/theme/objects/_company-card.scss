@@ -1,0 +1,18 @@
+/*-------------- COMPANY CARD --------------*/
+.vcard {
+	.street-address, .extended-address,  .locality, .region, .postal-code {
+		display: block;
+		float: left;
+	}
+	.locality, .tel {
+		clear: both;
+	}
+	.extended-address:before, .region:before {
+		content: ", ";
+	}
+
+	.postal-code:before {
+		content: "\00a0 ";
+		}
+	
+}

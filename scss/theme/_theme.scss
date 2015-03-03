@@ -1,0 +1,60 @@
+/*-----------------  Theme / THEME -------------------*/
+
+//* Import whatever extra modules/objects are needed */
+@import "scss/bear-bones/objects/vertical-align";
+
+//* Theme objects/modules styles */
+@import "scss/theme/objects/bear-bones-classes";
+
+@import "layout";
+
+
+//* Style
+@import "scss/theme/style/_html-elements";
+//@import "scss/theme/style/_lists";
+
+@import "scss/theme/html/forms";
+@import "scss/theme/html/blockquote";
+
+
+//* Objects
+@import "scss/theme/objects/topbar";
+@import "scss/theme/objects/header";
+@import "scss/theme/objects/main-menu";
+@import "scss/theme/objects/social-menu";
+@import "scss/theme/objects/home-hover-box";
+@import "scss/theme/objects/newsletter";
+@import "scss/theme/objects/footer";
+@import "scss/theme/objects/breadcrumb-links";
+@import "scss/theme/objects/sidebar";
+
+//* Pages
+@import "scss/theme/pages/home";
+@import "scss/theme/pages/pages";
+@import "scss/theme/pages/blog";
+@import "scss/theme/pages/contact-us";
+
+//* Plugins
+@import "scss/theme/plugins/fancybox";
+@import "scss/theme/plugins/contact-form-7";
+@import "scss/theme/plugins/yoast-breadcrumbs";
+@import "scss/theme/plugins/revolution-slider";
+@import "scss/theme/plugins/social-share";
+
+
+//JS/jQuery
+@import "scss/theme/js/sumoselect";
+@import "scss/theme/js/infield-label-js";
+@import "scss/theme/js/responsive-side-menu";
+
+//WooCommerce
+@import "scss/theme/woocommerce/woocommerce";
+@import "scss/theme/woocommerce/product";
+@import "scss/theme/woocommerce/product-category";
+
+
+
+
+
+
+

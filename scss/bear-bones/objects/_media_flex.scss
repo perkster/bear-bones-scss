@@ -1,0 +1,45 @@
+@if $use-media == true{
+
+/********************  Bear Bones / Objects / MEDIA FLEX ******************/
+//** Place any image- and text-like content side-by-side, as per: stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code */
+ 
+	.media{
+		display:block;
+		@extend .cf;
+	}
+	
+    .media__img, .media__object{
+        float:left;
+        margin-right:$base-spacing-unit--em;
+    }
+    //** Reversed image location (right instead of left).  */
+    .media__img--rev, .media__object--rev{
+        float:right;
+        margin-left:$base-spacing-unit--em;
+    }
+
+        .media__img img,
+        .media__img--rev img,
+		.media__object img,
+		.media__object--rev img{
+            display:block;
+        }
+
+    .media__body{
+        overflow:hidden;
+    }
+        .media__body,
+        .media__body > :last-child{
+            margin-bottom:0;
+        }
+
+
+    //** `.img`s in `.islet`s need an appropriately sized margin.  */
+    .islet .media__img{
+        margin-right:$half-spacing-unit--em;
+    }
+    .islet .media__img--rev{
+        margin-left:$half-spacing-unit--em;
+    }
+
+}//*endif */

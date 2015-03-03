@@ -1,0 +1,39 @@
+@if $use-island == true{
+
+/********************  Bear Bones / Objects / ISLAND ******************/
+//** Simple, boxed off content, as per: csswizardry.com/2011/10/the-island-object
+//* Demo: jsfiddle.net/inuitcss/u8pV3 */
+ 
+//.island, .well, .islet, .alert{
+%island_base {
+    display:block;
+	@extend %vr;
+    //@extend .cf;
+	@if $use-rounded-corners == true{	
+		@extend %brand-round;
+	}
+	code {
+		display: inline;
+	}
+	&> :nth-child(n){
+		@extend %vr--half;
+	}
+	&> :last-child{
+        margin-bottom:0;
+    }
+}
+
+%island, %well {
+	@extend %island_base;
+	padding:$paragraph-spacing--em;
+}
+   
+
+/** Just like `.island`, only smaller. */
+%islet, %alert{
+	@extend %island_base;
+	padding:$half-spacing-unit--em;
+}
+
+
+}//endif

@@ -1,0 +1,54 @@
+/************ Theme / Objects / REVOLUTION SLIDER ***********/
+
+/*
+.tp-leftarrow.custom {/* custom styles *}
+.tp-rightarrow.custom {/* custom styles *}
+.tp-bullets.custom .bullet {
+	/* custom styles *
+	background-color: white;
+	display: inline-block;
+	margin-right: 7px;
+	width: 1em;
+	height: 1em;
+	&:hover {
+		background-color: $light-green;
+	}
+	&.selected {
+		background-color: $accent-color;
+	}
+}
+*
+.rev_slider {
+	div {
+		text-shadow: -1px -1px 2px rgba(0, 0, 0, 0.9);
+	}
+	.btn--call-to-action {
+		color: white;
+		display: block;
+		height: 100%;
+		width: 100%;
+		padding: 1em 1.5em!important;
+		text-shadow: -1px -1px 2px rgba(0, 0, 0, 0.9);
+		&:hover {
+			background-color: $accent-color;
+			color: white;
+			text-shadow: none;
+		}
+	}
+	
+}*/
+
+.tp-caption {
+		a {
+			color: black;
+			&:hover {
+				color: $pavlova;
+			}
+		}
+	}
+	
+.rev_slider {
+	.pavlova-big, .black-italic, .black {
+		//text-shadow: -1px -1px 2px $nobel;
+	}
+}

@@ -1,0 +1,25 @@
+/************ Theme / Objects / SEARCH *************/
+.search-box {
+	border: thin solid $dark-grey;
+	max-width: 30em;
+	.searchform__input {
+		width: 95%;
+		padding: 0.25em;
+		margin: 0;	
+		max-width: 100%;
+	}
+}
+
+.error .search-box {
+	border: 0;
+	i {
+		margin-left: -1.5em;
+	}
+}
+
+.search-again {
+	clear: both;
+	.search-box {
+		border: 0;
+	}
+}

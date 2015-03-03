@@ -1,0 +1,39 @@
+//*-------------- COLORS --------------*/
+@mixin bgc_color_transparent ( $color : 'dark-green', $transparency : 0.9 ) {
+	@if ( $color == 'dark-green' ) {
+		background-color: rgba(148,165,69, $transparency);
+	} 
+}
+
+//****************** MAIN COLORS ****************//
+
+$pavlova : #C2B38D; //darker tan
+$bianca : #F9F6EF; //light tan
+$spanish-white : #DED4B9; //tan  button hover
+
+$nobel : #999999; //grey
+$gainsboro : #E6E6E6; //lightergrey
+
+//Standard colors 
+$dark-blue		: rgb(21,60,125);
+$grey			: rgb(125,125,125);
+
+$dark-grey		: $nobel;
+$light-grey		: rgb(204,204,204);	
+$ui-grey		: $gainsboro;
+
+
+//Assign colors to be used throughout website
+
+$accent-color : $pavlova;
+$accent-color2 : $bianca;
+$accent-color3 : $spanish-white;
+
+$font-color : black;
+$heading-color : $pavlova;
+$link-color : $nobel;
+$link-hover-color : $pavlova;
+
+$menu-color : black;
+$menu-hover : $pavlova;
+

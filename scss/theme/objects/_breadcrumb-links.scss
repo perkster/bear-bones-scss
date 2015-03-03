@@ -1,0 +1,16 @@
+/************ Theme / Objects / BREADCRUMB-LINKS *************/
+.breadcrumb-links {
+	margin-bottom: 2em;
+	padding-bottom: 0.5em;
+	border-bottom: thin solid $gainsboro;
+}
+.yoast-breadcrumbs, .product-links {
+	display: inline-block;
+}
+
+.product-links {
+	float: right;
+	.product-link {
+		margin-left: 1em;
+	}
+}

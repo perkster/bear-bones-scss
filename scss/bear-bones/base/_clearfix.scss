@@ -1,0 +1,19 @@
+//********************  Bear Bones / Base / Clearfix ******************/
+//* Clear fix: http://www.css-101.org/articles/clearfix/latest-new-clearfix-so-far.php */
+
+@mixin bb-cf() {
+	&:after {
+	   content:"";
+       display:table;
+       clear:both;
+	}
+}
+
+/*%bb-cf:after{
+        content:"";
+        display:table;
+        clear:both;
+}*/
+%bb-cf { 
+	@include bb-cf();
+}

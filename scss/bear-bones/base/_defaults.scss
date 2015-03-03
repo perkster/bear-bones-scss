@@ -1,0 +1,169 @@
+//********************  Bear Bones / Base / Defaults ******************/
+
+@function px($fontSize, $lineHeightNumber: $line-height-ratio) {
+   @if $fontSize == 0 { @return 0 }
+   $pxValue : $lineHeightNumber * $fontSize;   
+   @return $pxValue;
+}
+
+//*Do you want all elements to adopt box-sizing:border-box; as per * paulirish.com/2012/box-sizing-border-box-ftw ?*/ $global-border-box: true!default; 
+ 
+$content-width: 90%!default; 
+ 
+//******* FONT *********/
+$base-font-size:    16px!default;
+$base-font-family:  Sans-serif!default;
+$brand-font-family: $base-font-family!default;
+
+$heading-font-family: $base-font-family!default;
+$heading-font-weight:	bold!default;
+$type-scale			:	"Minor Second"!default;
+
+//******** FONT SIZES ********/
+
+$h1-default	:	2.25!default;
+$h2-default	:	2!default;
+$h3-default	:	1.5!default;
+$h4-default	: 	1.25!default;
+$h5-default :	1!default;
+$h6-default :	.875!default;
+$giga-default:         6!default;
+$mega-default:         5!default;
+$kilo-default:         4!default;
+$milli-default:        .75!default;
+$micro-default:        .625!default;
+
+//* Vertical Rythm ******************/
+//* For more information check out http://csswizardry.com/2012/06/single-direction-margin-declarations/ */
+$line-height-ratio: 1.25!default;
+$paragraph-spacing: $line-height-ratio!default;
+$paragraph-spacing--px	: $paragraph-spacing  + 0px!default;
+$paragraph-spacing--em: $line-height-ratio*1em!default;
+$base-line-height : px($base-font-size, $line-height-ratio)!default;
+
+$base-spacing-unit: $line-height-ratio!default;
+$base-spacing-unit--em: $line-height-ratio + 0em!default;
+$base-spacing-unit--px: $base-line-height!default;
+$half-spacing-unit: $base-spacing-unit / 2!default;
+$half-spacing-unit--px: $base-spacing-unit--px / 2!default;
+$half-spacing-unit--em: $base-spacing-unit--em / 2!default;
+
+//******** BREAK POINTS ***********/
+$lap-start:         481px!default;
+$desk-start:        1024px!default;
+$desk-wide-start:   1200px!default;
+
+
+//********** QUOTES *************/
+$english-quotes:    false!default;
+//* If you want English quotes then please do not edit these; they’re only here because Sass needs them. */
+$open-quote:    null;
+$close-quote:   null;
+
+
+//*********** BRAND *****************/
+$brand-color:       #4a8ec2!default;
+$brand-face:        "Helvetica Neue", sans-serif!default;
+//* How big would you like round corners to be by default? */
+$brand-round:        6px!default;
+$use-rounded-corners:	false!default;  //@TODO: when setting up brand for theme */
+
+//*Brand round style options are: all, top, bottom, left, right or specific instructions for the Compass Border Radius http://compass-style.org/reference/compass/css3/border_radius/ */
+$brand-round-style: all!default;
+//* .brand-round class will be created. Class can be extended. */
+
+
+//********** MODULES / OBJECTS ***********/
+$use-arrows			:	false!default;
+$use-buttons		:	false!default;
+$use-block-list		:	false!default;
+$use-breadcrumb		:	false!default;
+$use-columns		:	false!default;
+$use-flexbox		:	false!default;
+$use-grids			:	false!default;
+$use-island			:	false!default;
+$use-marginalia		:	false!default;
+$use-meanmenu		:	false!default;
+$use-media			:	false!default;
+$use-nav			:	false!default;
+$use-pagination		:	false!default;
+$use-rules			:	false!default;
+$use-flyout			:	false!default;
+$use-sprite			:	false!default;
+$use-icon-text		:	false!default;
+
+
+//* Background image size for full width background */
+$bg_image_width : 1024px!default;
+
+//*   $BORDER-BOX */
+//* Do you want all elements to adopt `box-sizing:border-box;` as per Paulirish.com/2012/box-sizing-border-box-ftw ? */
+$global-border-box: true!default;
+
+//******  RESPONSIVE DESIGN ********/
+$responsive			:  true!default;
+$lap-start			:  481px!default;
+$desk-start			:  1024px!default;
+$desk-wide-start	:  1200px!default;
+
+//* Responsiveness for widescreen/high resolution desktop monitors and beyond? Note: `$responsive` variable above must be set to true before enabling this. */ 
+$responsive-extra:  false!default;
+
+//********* PUSH & PULL ***************/
+
+//* PUSH - Responsive push and pull produce a LOT of code, only turn them on if you definitely need them. */
+ $push:              false!default;
+
+//*Note: `$push` variable above must be set to true before enabling these. */
+$palm-push:         false!default;
+$lap-push:          false!default;
+$lap-and-up-push:   false!default;
+$portable-push:     false!default;
+$desk-push:         false!default;
+
+
+//* PULL */
+$pull:              false!default;
+
+//Note: `$pull` variable above must be set to true before enabling these.
+$palm-pull:         false!default;
+$lap-pull:          false!default;
+$lap-and-up-pull:   false!default;
+$portable-pull:     false!default;
+$desk-pull:         false!default;
+
+//* Button variables */
+$btn_bg_color			: 	$accent-color!default;
+$btn_bg_color--hover	: darken($btn_bg_color, 6%);
+$btn_font_color			: 	$accent-color--font!default;
+$btn_border_color		:	darken($accent_color, 20%)!default;
+$btn2_bg_color			: 	$accent-color2!default;
+$btn2_font_color		: 	$accent-color2--font!default;
+$btn2_border_color		:	darken($accent_color2, 20%)!default;
+
+$btn--use-round: true !default;
+$btn--use-border: true !default;
+$btn--use-push: true!default;
+$btn--use-trans: true!default;
+$btn--text-capitalize: false!default;
+$btn--text-shadow: false!default;
+$btn-font-size: 1.1em!default;
+$btn-padding-ends: 0.5em!default;
+$btn-padding-sides: 0.5em!default;
+$btn-line-height: 2em!default;
+$use-btn-line-height: false!default;
+
+//* Form variables */
+$form-font-family		:	$base-font-family!default;
+$form-font-color				: #666!default;
+$form-input-padding			: $half-spacing-unit--em!default;
+$form-input-background-color	:	white!default;
+$form-input-border-color		:	$lightneutralcolor!default;
+$form-input-border-width		:	1px!default;
+$form-input-border-style		:	solid!default;
+$form-input-border-color-hover 		: darken($form-input-border-color, 10%)!default;
+$form-input-border-color-focus 		: darken($form-input-border-color, 25%)!default;
+$form-placeholder-color 			: $lightneutralcolor!default;
+
+//* Meanumenu */
+$meanmenu_bg_color			:	$accent-color!default;

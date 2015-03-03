@@ -1,0 +1,51 @@
+/********************  Theme / LAYOUT  ******************/
+
+%bb-full-width-inner {
+	@include media-query(desk-wide) {
+		@include full-width-inner;
+	}
+}
+
+.content-wrapper, .container-wrapper {
+	@extend %full-width-wrapper;
+}
+.content-inner {
+	//@extend %lfia-full-width-inner;
+	@extend %full-width-inner;
+}
+
+$container-max-width : 1280px;
+
+.sidebar-wrapper {
+	@extend %grid-item;
+	//width: percentage(1/4);
+	@media ( $mq-tablet-and-up ) {
+			width: 25%;
+	}
+	@media ( $mq-smartphone ) {
+		width: 98%;
+		margin: 0 auto;
+	}
+	@media ( $mq-mobile ) {
+		width: 90%;
+		margin: 0 auto;
+	}
+
+}
+
+.main-content--blog, .main-content--post {
+	@extend %grid-item;
+	//width: percentage(3/4);	
+	@media ( $mq-tablet-and-up ) {
+		width: 73%;
+		margin-right: 2%;
+	}
+	@media ( $mq-smartphone ) {
+		width: 98%;
+		margin: 0 auto;
+	}
+	@media ( $mq-mobile ) {
+		width: 90%;
+		margin: 0 auto;
+	}
+}

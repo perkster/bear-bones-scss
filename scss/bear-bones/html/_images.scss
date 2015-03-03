@@ -1,0 +1,16 @@
+/********************  Bear Bones / Html / IMAGES ******************/
+.img--rounded { @extend .brand_round;}
+.img--circle { @include border-radius(500px);}
+.img--polaroid {
+	padding: $base-spacing-unit--em;
+	background-color: white;
+	border: thin solid $base-ui-color;
+}
+figcaption {
+	display: block;
+	font-style: italic;
+}
+img {
+	max-width: 100%;
+	height: auto;	
+}

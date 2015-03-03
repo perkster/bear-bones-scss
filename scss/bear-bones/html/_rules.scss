@@ -1,0 +1,55 @@
+@if $use-rules == true{
+
+/********************  Bear Bones / Html / RULES ******************/
+//** Taken from inuit.css: Horizontal rules, extend `hr`. Demo: jsfiddle.net/inuitcss/L6GuZ */
+%rule {
+	border:none;
+    border-bottom-width:1px;
+    border-bottom-style:solid;
+    margin-bottom:$base-spacing-unit--px - 1px;
+    margin-bottom:(($base-spacing-unit--px - 1px) / $base-font-size)*1rem;
+}
+
+.rule, .rule--accent_color, .rule--accent_color2 {
+	@extend %rule;
+}
+
+//* Colors */
+.rule{
+    color:$base-ui-color;
+}
+.rule--accent_color {
+	color: $accent_color;
+}
+.rule--accent_color2 {
+	color: $accent_color2;
+}
+
+//** styles */
+.rule--dotted{
+    border-bottom-style:dotted;
+}
+
+.rule--dashed{
+    border-bottom-style:dashed;
+}
+.rule--ornament{
+    position:relative;
+
+    &:after{
+        content:"\00A7";
+        position:absolute;
+        top:   0;
+        right: 0;
+        left:  0;
+        line-height:0;
+        text-align:center;
+    }
+
+    //** Pass in an arbitrary ornament though a data attribute, e.g.: <hr class="rule  rule--ornament" data-ornament="!">  */
+    &[data-ornament]:after{
+        content:attr(data-ornament);
+    }
+}
+
+}//* endif */

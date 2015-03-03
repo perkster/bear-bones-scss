@@ -1,0 +1,22 @@
+/************ Theme / WooCommerce / PRODUCT CATEGORY ***********/
+
+.woocommerce {
+	.page-title {
+		img {
+			width: 100%;
+		}
+	}
+	
+	.products-item__title {
+		text-transform: none;
+	}
+	.products-item__text {
+		text-transform: uppercase;
+		font-style: italic;
+		color: $font-color;
+		padding: 0 1em;
+		
+	}
+	
+	
+}

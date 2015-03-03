@@ -1,0 +1,26 @@
+/************ Theme / Objects / TOPBAR *************/
+.topbar-wrapper {
+	background-color: black;
+	@extend %full-width-wrapper;
+}
+.topbar {
+	@extend %full-width-inner;
+	.search-box {
+		width: 15em;
+		float: right;
+		margin: 8px 0;
+		&:after {
+			content: "\f002";
+			font-family: FontAwesome;
+			display: block;
+			margin-top: -1.5em;	
+			margin-left: 13.5em;
+			color: $pavlova;
+		}
+		.searchform__input {
+			background-color: $bianca;
+			
+		}
+		
+	}
+}
