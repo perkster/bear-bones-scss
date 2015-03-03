@@ -2,7 +2,7 @@
 
 This is a repository of the Sass files that accompany the bear bones WordPress theme (https://github.com/perkster/perkster-bear-bones). The theme is based on BEM methodology and does not use (much) semantic classes. Instead, utilizing the BEM (block, element, modifier) model, it is easy to switch up designs by just switching out one stylesheet. 
 
-Over the years, I've come across some amazing frameworks, in particluar inuit.css by Harry Roberts. These files are based HEAVILY on his work but also on 320 and up by Andy Clark. I found myself constantly trying to get the two to play nicely and incorporate some of the great classes of each theme/framework, so I came up with my one and thus bear bones was born. Additionally, I have come across many other good frameworks like susy and purecss. So this framework will play nicely with other so you can pick and choose what you want to work with.
+Over the years, I've come across some amazing frameworks, in particluar inuit.css by Harry Roberts (https://github.com/inuitcss). These files are based HEAVILY on his work but also on 320 and up by Andy Clark (http://stuffandnonsense.co.uk/projects/320andup/). I found myself constantly trying to get the two to play nicely and incorporate some of the great classes of each theme/framework, so I came up with my one and thus bear bones was born. Additionally, I have come across many other good frameworks like susy (http://susy.oddbird.net/) and purecss (http://purecss.io/). So this framework will play nicely with other so you can pick and choose what you want to work with.
 
 This css "framework" does not try to implement a bunch of styling objectives, instead it gives you the framework to put together a design of your own. 
 
@@ -15,10 +15,10 @@ Obviously, its meant to work with the Bear Bones theme and thus has things named
 * scss/plugins/
 * scss/templates/
 * scss/theme/
-* scss/_bb-setup
-* scss/_layout
-* scss/_theme-style
-* scss/_theme
+* scss/theme/_bb-setup
+* scss/theme/_layout
+* scss/theme/_theme-style
+* scss/theme/_theme
 * style.scss
 
 ### Bear Bones folder ###
@@ -55,4 +55,4 @@ This is the folder that holds all the files that have the design elements.
 * layout - Where the site layout structure is set.
 * theme-style - loads up all of the style files rather than having to include them all on the main style.scss file
 * theme - this is where you can include any css plugins, js plugins, templates and other theme specific style files.
-* style - Files are loaded in this order: bb-setup, theme-style, bear-bones/bear-bones, plugins (include-media), theme
+* style - Files are loaded in this order: theme/bb-setup, theme/theme-style, bear-bones/bear-bones, theme/plugins (include-media), theme/theme
