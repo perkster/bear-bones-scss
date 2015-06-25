@@ -1,7 +1,7 @@
-// /********************  Bear Bones / Html / LISTS ******************/
+/********************  Bear Bones / Html / LISTS ******************/
 
 //* used through out different objects such as nav, breadcrumb, etc*/
-@mixin inline-list($marginLeft : 0, $cf : true) {
+@mixin bb_inlineList($marginLeft : 0, $cf : true) {
 	list-style:none;
     margin-left:$marginLeft;
     @if($cf == true) { 
@@ -18,129 +18,186 @@
     }
 }
 
-%inline-list, %ul--inline {
-	@include inline-list( 0, true );
-}
-
-
-
-%ul--fit, %ul-fit--justify {
-	
-	/*display: table;
-	width: 100%;
-	> li {
-		display: table-cell;
-	}*/
-	
-	
-	text-align: justify;
-	&:after {
-		content: '';
-		display: inline-block;
-		width: 100%;
-	}
-	> li {
-		display: inline-block;
-	}
-}
-%ul-fit--table {
-	display: table-row;
-	width: 100%;
-	border-collapse: collapse;
-	> li {
-		display: table-cell;
-		margin: 0;
-	}
-}
-
-%ul--none {
-	list-style-type: none;
-	margin-left: 0;
-}
-%ul--flush {
-	margin-left: 0;
-}
-%ul--circle {
-	list-style-type: circle;
-}
-%ul--disc {
-	list-style-type: disc;
-}
-%ul--numbered{
-    list-style-type:decimal;
-}
-%ul--square {
-	list-style-type: square;
-}
-%ul--upper_roman {
-	list-style-type: upper-roman;
-}
-%ul--lower_roman {
-	list-style-type: lower-roman;
-}
-%ul--leading_zero {
-	list-style-type: decimal-leading-zero;
-}
-
-%ul--custom > li + li[data-breadcrumb]:before{
-    content:attr(data-breadcrumb) "\00A0";
-}
-
-
-
-/*
-@TODO:  Set up Definition List part
-dl {
-	margin: $base-spacing-unit--em;
-}
-dt, %dl__heading  {
-	@include font-size(1.05, 1.1);
-	font-weight: 600;
-	font-family: $heading-font-family;
-	clear: left;
-}
-
-/*
-%dl__heading, dd, dt {
-	//@include set_margin_bottom($half-spacing-unit--em);
-	@include set-vr(quarter);
-}*/
-
-
-/*
-%dl--horizontal {
-	dt {
-		float: left;
-		@extend %bb-cf;
-		width: 30%;
-		@media screen and (max-width: $lap-start) {
-			width: 100%;
-			float: none;
-		}
+@mixin bb_listColor (
+	$map-name : 'menu', 
+	$bgc : null,
+	$list--bgc : null,
+	$list--border-color : null,
+	$list--color : null,
+	$item--bgc : null,
+	$item--border-color : null,
+	$item--color : null,
+	$link--bgc : null,
+	$link--border-color : null,
+	$link--color : null,
+	$link-hover--bgc : null,
+	$link-hover--border-color : null,
+	$link-hover--color : null
+	) {
 		
-	}
-	dd {
-		margin-left: 33%;
-		min-height: 1em;
-		@media screen and (max-width: $lap-start) {
-			margin-left: 0;
+	@if ($map-name) {
+		@if(not($bgc)) {
+			$bgc: map-deep-get($bb-colors, #{$map-name}, 'bgc');
 		}
+		@if(not($list--bgc)) {
+			$list--bgc: map-deep-get($bb-colors, #{$map-name}, 'list', 'bgc');
+		}
+		@if(not($list--border-color)) {
+			$list--border-color: map-deep-get($bb-colors, #{$map-name}, 'list', 'border-color');
+		}
+		@if(not($list--color)) {
+			$list--color: map-deep-get($bb-colors, #{$map-name}, 'list', 'color');
+		}
+		@if(not($item--bgc)) {
+			$item--bgc: map-deep-get($bb-colors, #{$map-name}, 'item', 'bgc');
+		}
+		@if(not($item--border-color)) {
+			$item--border-color: map-deep-get($bb-colors, #{$map-name}, 'item', 'border-color');
+		}
+		@if(not($item--color)) {
+			$item--color: map-deep-get($bb-colors, #{$map-name}, 'item', 'color');
+		}
+		@if(not($link--bgc)) {
+			$link--bgc: map-deep-get($bb-colors, #{$map-name}, 'link', 'bgc');
+		}
+		@if(not($link--border-color)) {
+			$link--border-color: map-deep-get($bb-colors, #{$map-name}, 'link', 'border-color');
+		}
+		@if(not($link--color)) {
+			$link--color: map-deep-get($bb-colors, #{$map-name}, 'link', 'color');
+		}
+		@if(not($link-hover--bgc)) {
+			$link-hover--bgc: map-deep-get($bb-colors, #{$map-name}, 'link-hover', 'bgc');
+		}
+		@if(not($link-hover--border-color)) {
+			$link-hover--border-color: map-deep-get($bb-colors, #{$map-name}, 'link-hover', 'border-color');
+		}
+		@if(not($link-hover--color)) {
+			$link-hover--color: map-deep-get($bb-colors, #{$map-name}, 'link-hover', 'color');
+		}
+
 	}
 	
+	background-color: $bgc;
+	ul {
+		background-color: $list--bgc;
+		border-color: $list--border-color;
+		color: $list--color;
+		li {
+			background-color: $item--bgc;
+			border-color: $item--border-color;
+			color: $item--color;
+			a{
+				background-color: $link--bgc;
+				border-color: $link--border-color;
+				color: $link--color;
+				&:hover {
+					background-color: $link-hover--bgc;
+					border-color: $link-hover--border-color;
+					color: $link-hover--color;
+				}
+			}
+		}
+	}
 }
 
-%dl--block_list {
-	dd {
-		//@include set_margin_bottom($base_spacing_unit--em);
-		//extend .vr--half;
-		@include set-vr(half);
-		@include set_border( $base-ui-color, bottom) ;
-	}	
-}
-%dl--block_list--accent_color {
-	dd {
-		//@include set_margin_bottom($base_spacing_unit--em);
-		@extend %vr;
-		@include set_border( $accent_color, bottom) ;
+$bb-html-lists: false!default;
+@if ($bb-html-lists == true) {
+
+	/**
+	 * Lists 
+	 * 1. Remove padding
+	 * 2. Set default margin-left so it lines up with paragraph. Default is 40px which is too much; easier to add in later for the few cases that will use it. Some reset/normalize remove completely, but user normally expects lists to have bullet points. Especially inside of blog posts. 
+	 * 3. Remove vertical spacing from nested lists.
+	 */
+
+	//** Where `margin-left` is concerned we want to try and indent certain elements by a consistent amount. Define that amount once, here. */
+	ul,ol {
+		padding: 0;
+		margin-left:$bb-base-spacing-unit--px;
+		margin-left:$bb-base-spacing-unit;
+		margin-top: 0;
+		margin-bottom: 0;
+		list-style-position:inside;
+		li {
+			list-style-position:outside;
+			
+		}
 	}
-}*/
+	li{
+		> ul,
+		> ol{
+			 margin-bottom:0;
+		 }
+	}
+
+	%#{$namespace}-inline-list, %#{$namespace}-ul--inline {
+		@include bb_inlineList( 0, true );
+	}
+
+
+
+	%#{$namespace}-ul--fit, %#{$namespace}-ul-fit--justify {
+		
+		/*display: table;
+		width: 100%;
+		> li {
+			display: table-cell;
+		}*/
+		
+		
+		text-align: justify;
+		&:after {
+			content: '';
+			display: inline-block;
+			width: 100%;
+		}
+		> li {
+			display: inline-block;
+		}
+	}
+	%#{$namespace}-ul-fit--table {
+		display: table-row;
+		width: 100%;
+		border-collapse: collapse;
+		> li {
+			display: table-cell;
+			margin: 0;
+		}
+	}
+
+	%#{$namespace}-ul--none {
+		list-style-type: none;
+		margin-left: 0;
+	}
+	%#{$namespace}-ul--flush {
+		margin-left: 0;
+	}
+	%#{$namespace}-ul--circle {
+		list-style-type: circle;
+	}
+	%#{$namespace}-ul--disc {
+		list-style-type: disc;
+	}
+	%#{$namespace}-ul--numbered{
+		list-style-type:decimal;
+	}
+	%#{$namespace}-ul--square {
+		list-style-type: square;
+	}
+	%#{$namespace}-ul--upper_roman {
+		list-style-type: upper-roman;
+	}
+	%#{$namespace}-ul--lower_roman {
+		list-style-type: lower-roman;
+	}
+	%#{$namespace}-ul--leading_zero {
+		list-style-type: decimal-leading-zero;
+	}
+
+	%#{$namespace}-ul--custom > li + li[data-breadcrumb]:before{
+		content:attr(data-breadcrumb) "\00A0";
+	}
+
+}
+//@TODO:  Set up Definition List part

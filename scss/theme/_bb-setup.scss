@@ -1,115 +1,119 @@
-/*----------------- Theme / Bear Bones Setup --------------------*/
+//*----------------- Theme / Bear Bones Setup --------------------*/
 
-@import "scss/bear-bones/variables/colors";
-@import "scss/bear-bones/variables/defaults";
+$bb-test-nav: true;
+$bb-test-quotes: true;
+$bb-test-rules: true;
+$bb-test-island: true;
+$bb-test-nav: true;
+$bb-test-headers: true;
 
-
-//************* RESPONSIVE DESIGN **************/
-$responsive : true;
-$lap-start:         760px;
-$desk-start:        1100px;
-$desk-wide-start:   1366px;
-
-$bp-mobile: 424px;
-$bp-smartphone-start : 425px;
-$bp-smartphone-end : 767px;
-$bp-tablet-start: 768px;
-$bp-tablet-end: 1023px;
-$bp-lap-start: 1024px;
-$bp-lap-end: 1223px;
-$bp-desk-start: 1224px;
-$bp-desk-wide-start:   1366px;
-
-
-$bp-1 : 1025px;
-$bp-1-below: 1025px;
-
-
-//For instructions on using: http://include-media.com/documentation/
-$breakpoints: (
-	'phone': 320px, 
-	'smartphone':425px,
-	'tablet': 768px,
-	'lap': 1024px,
-	'desk': 1224px,
-	'desk-wide': 1366px,
-	'menu-bp' : 600px,
-	'menu-mobile' : 425px
+// CSS Maps
+$bb-layout-custom: (
+	'full-width-max': 1100px,
+	'full-width-percentage': 80%,
+	'use' : true,
+	'components' : (
+		'content' : 'wrapper'
+	)
 );
 
+$bb-brand-custom: (
+	'round' : 6px,
+	'use' : true,
+	'style': all,
+);
 
-//********** MODULES / OBJECTS ***********/
-$use-arrows:        false;
-$use-block-list:    true;
-$use-breadcrumb:    false;
-$use-columns:       true;
-$use-flexbox:       false;
-$use-inuit-grids:         true;
-$use-island:        true;
-$use-marginalia:    true;
-$bb-use-media-stubornella:   true;
-$bb-use-simple-grids: true;
-$bb-use-jquery-tabs: true;
+//* Button defaults */
+$bb-buttons-custom: (
+	'primary' : (
+		'bgc' : $mayaBlue, //background-color
+		'border-color' : null,
+		'color' : white,		
+		//'line-height' : map-get($bb-font, 'line-height-ratio'),
+		//'padding-vertical' : 0.25em,
+		//'padding-horizontal' : 0.5em,
+		'push' : null,
+		//'radius' : map-get($bb-brand, 'round'),
+		'radius' : null,
+		//'size' : 1em,
+		'trans' : 0.2s ease-in-out,
+		//'trans' : null,
+		'hover' : (
+			'bgc' : $columbiaBlue,
+			'border-color' : null,
+			'color' : null,
+		)
+	),
+	'secondary' : (
+		'bgc' : $carrotOrange, //background-color
+		'border-color' : null,
+		'color' : white,		
+		//'line-height' : map-get($bb-font, 'line-height-ratio'),
+		//'padding-vertical' : 0.5em,
+		//'padding-horizontal' : 0.5em,
+		'push' : null,
+		//'radius' : map-get($bb-brand, 'round'),
+		'radius' : null,
+		//'size' : 1em,
+		'trans' : 0.2s ease-in-out,
+		//'trans' : null,
+		'hover' : (
+			'bgc' : lighten($carrotOrange, 20%),
+			'border-color' : null,
+			'color' : null,
+		)
+	),
+);
 
+$bb-social-custom: (
+	//'bgc': map-deep-get($bb-colors, 'accent-color', 'bgc'),
+	'bgc' : null,
+	'bgc--hover': null,
+	'color' : white,
+	'color--hover': $columbiaBlue,
+	'size' : 1em,
+	'radius' : null
+);
 
-//************* LAYOUT **************/
-$full-width-percentage: 90%;
-$full-width-max: 1200px;
+$bb-topbar-custom: (
+	'topbar': (
+		'height': 2em,
+		'padding': (0.25em 0),
+	),
+	'second':(
+		'height': 2em,
+		'link--hover' : $columbiaBlue,
+		'padding': (0.25em 0),
+	)
+);
 
-//********** MODULES / OBJECTS ***********/
-$use-arrows:        false;
-$use-buttons:         true;
-$output-all-buttons:  false;
-$use-block-list:    true;
-$use-breadcrumb:    false;
-$use-columns:       true;
-$use-flexbox:       false;
-$use-inuit-grids:         true;
-$use-island:        true;
-$use-marginalia:    true;
-$use-media:         true;
-$use-nav:           true;
-$use-pagination:    true;
-$use-pricing-table:	false;
-$use-rules:         true;
+$bb-forms-custom: (
+	'placeholder-focus-bgc' : $mayaBlue
+);
 
-//* Push: pushes in the margin. Certain defaults are included because they are used for other modules. */
-$use-push:		false;
-//* If using push: */
-	$palm-push: false;
-	$lap-push: false;
-	$lap-and-up-push: false;
-	$portable-push: false;
-	$desk-push: false; 
+$bb-revslider-custom: (
+	'bullet': (
+		'margin' : 0.25em,
+	)
+);
 
+$bb-headers-custom: (
+	'icon':(
+		'test':(
+			'icon-size' : 3em,
+			'heading-size': 1.75em,
+			'vertical-align' : middle
+		),
+		'center':(
+			'icon-size': 2.5em,
+		)
+	),
+	'image':(
+		'test':(
+			'width' : 5em,
+			'heading-size': 1.75em,
+			'vertical-align' : middle
+		),
 
-$use-pull:		false;
-//* If using pull: */
-	$palm-pull: false;
-	$lap-pull: false;
-	$lap-and-up-pull: false;
-	$portable-pull: false;
-	$desk-pull: false; 
-
-$use-nav:           true;
-$use-pagination:    true;
-$use-pricing-table:	false;
-$use-rules:         true;
-
-//* Push: pushes in the margin. Certain defaults are included because they are used for other modules. */
-$use-push:		false;
-//* If using push: */
-	$palm-push: false;
-	$lap-push: false;
-	$lap-and-up-push: false;
-	$portable-push: false;
-	$desk-push: false; 
-
-
-$use-pull:		false;
-//* If using pull: */
-	$palm-pull: false;
-	$lap-pull: false;
-	$lap-and-up-pull: false;
-	$portable-pull: false;
-	$desk-pull: false; 
+	)
+)

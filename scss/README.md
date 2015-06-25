@@ -2,11 +2,11 @@
 
 This is a repository of the Sass files that accompany the bear bones WordPress theme (https://github.com/perkster/perkster-bear-bones). The theme is based on BEM methodology and does not use (much) semantic classes. Instead, utilizing the BEM (block, element, modifier) model, it is easy to switch up designs by just switching out one stylesheet. 
 
-Over the years, I've come across some amazing frameworks, in particluar inuit.css by Harry Roberts (https://github.com/inuitcss). These files are based HEAVILY on his work but also on 320 and up by Andy Clark (http://stuffandnonsense.co.uk/projects/320andup/). I found myself constantly trying to get the two to play nicely and incorporate some of the great classes of each theme/framework, so I came up with my one and thus bear bones was born. Additionally, I have come across many other good frameworks like susy (http://susy.oddbird.net/) and purecss (http://purecss.io/). So this framework will play nicely with other so you can pick and choose what you want to work with.
+Over the years, I've come across some amazing frameworks, in particluar inuit.css by Harry Roberts (https://github.com/inuitcss). These files are based HEAVILY on his work but also on 320 and up by Andy Clark (http://stuffandnonsense.co.uk/projects/320andup/). I found myself constantly trying to get the two to play nicely and incorporate some of the great classes of each theme/framework, so I came up with my one and thus bear bones was born. Additionally, I have come across many other good frameworks like susy (http://susy.oddbird.net/), purecss (http://purecss.io/), and bourbon (http://neat.bourbon.io/). So this framework will play nicely with other so you can pick and choose what you want to work with.
 
 This css "framework" does not try to implement a bunch of styling objectives, instead it gives you the framework to put together a design of your own. 
 
-Obviously, its meant to work with the Bear Bones theme and thus has things named in accordance with it. But since they are block based, you can apply many of the 
+Obviously, its meant to work with the Bear Bones theme and thus has some things named in accordance with it but most of those are in the theme folder. However since they are block based, there's no reason why you can't use this in any other kind of project. 
 
 
 ## File Structure ##
@@ -23,15 +23,15 @@ Obviously, its meant to work with the Bear Bones theme and thus has things named
 
 ### Bear Bones folder ###
 
-This folder contains the "framework" and the vast majority of classes are placeholder classes. The "bb" prefix is used so it should play nice with other sass plugins. 
+This folder contains the "framework" and the vast majority of classes are placeholder classes. The namespace "bb" is the default but can be overridden so it should play nice with other sass plugins. 
 
-There is a bb_setup.scss file in the theme folder that has flags that you can turn on and off to make using bear bones easier. Of course, you're more than welcome to just add in whichever files you want into your project, too. 
+There is a bb_setup.scss file in the theme folder that has flags that you can turn on and off to make using bear bones easier. Of course, you're more than welcome to just add in whichever files you want into your project, too. Although, some files may try to use some of the base functions and mixins but most files contain the functions needed within that file.
 
 Most of the files are pretty well documented including links to urls which the code comes from.
 
 ### Plugins ###
 
-This folder holds scss plugins like include-media, inuit, susy, purecss, although the only plugins included in this are include-media as it is what is used for responsive design.
+This folder holds scss plugins like include-media (http://include-media.com/), modular-scale (http://www.modularscale.com/), inuit, susy, purecss, although the only plugins included in this are include-media as it is what is used for responsive design.
 
 ### Templates ###
 

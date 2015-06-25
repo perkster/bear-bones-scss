@@ -41,8 +41,9 @@ a img.aligncenter {
 /* Caption */
 .wp-caption {
 	//@extend %figcaption
-    background: #fff;
-    border: 1px solid #f0f0f0;
+    //background: #fff;
+    //border: 1px solid #f0f0f0;
+	//@TODO: Set wp-caption defaults
     max-width: 96%; /* Image does not overflow the content area */
     padding: 5px 3px 10px;
     text-align: center;
@@ -59,7 +60,7 @@ a img.aligncenter {
 }
 
 .wp-caption p.wp-caption-text {
-	@extend %smallprint;
+	@extend %#{$namespace}-smallprint;
 }
 .wp-caption-text {}
 .gallery-caption {}
@@ -70,5 +71,5 @@ a img.aligncenter {
 }
 
 .assistive-text {
-	@extend %accessibility;
+	@extend %#{$namespace}-accessibility;
 }

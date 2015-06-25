@@ -14,10 +14,6 @@
 			display: block;
 		}
 }
-%dropdown  {
-	@include bb-dropdown();
-}
-
 
 @mixin bb-navbar($alignment: center) {
 	display: table;
@@ -40,19 +36,15 @@
 	}
 }
 
-%navbar {
-	@include bb-navbar();
-}
-
-
 //navbar---justified taken totally from http://codepen.io/geoffyuen/pen/Awudj
 //http://tympanus.net/codrops/2013/07/14/justified-and-vertically-centered-header-elements/'
 
 @mixin bb-navbar--justified() {
-	margin: 0;
+	margin: 0 auto;
 	> ul {
 		text-align: justify;
 		overflow: hidden;
+		//margin: 0;
 		padding: 0;
 		&:after {
 			// justify inline-block method:
@@ -66,6 +58,28 @@
 		}
 	}
 }
-%navbar--justified {
-	@include bb-navbar--justified();
+
+@if ($bb-objects-nav == true) {
+	%#{$namespace}-dropdown, %#{$namespace}-submenu  {
+		@include bb-dropdown();
+	}
+	%#{$namespace}-navbar {
+		@include bb-navbar();
+	}
+	%#{$namespace}-navbar--justified {
+		@include bb-navbar--justified();
+	}
+}
+
+$bb-test-nav: false!default;
+@if ($bb-test-nav == true) {
+	.test-nav {
+		@extend %bb-navbar;
+	}
+	.test-nav--justified {
+		//@extend %navbar;
+		@extend %#{$namespace}-navbar--justified;
+		//If having issues with extra whitespace, then add:
+		margin-bottom: -$bb-base-line-height;
+	}
 }

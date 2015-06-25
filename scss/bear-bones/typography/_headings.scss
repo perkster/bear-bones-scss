@@ -1,0 +1,96 @@
+/********************  Bear Bones / Typography / HEADINGS ******************/
+
+//Use this mixin to set consecutive heading styles
+// Taken a lot from csswizardry.com/2012/02/pragmatic-practical-font-sizing-in-css*/
+// See tests at bottom of page for examples
+
+@mixin bb_setHeadingStyle($from: 1, $to: 6, $classtype : false){
+	%headings-content {
+        @content
+    }
+    @if $from >= 1 and $to <= 6{
+        @for $i from $from through $to{
+			@if ($classtype == class) {
+				.h#{$i} {
+					//#{$attr}: $value;
+					@extend %headings-content;
+				}
+			} @elseif ($classtype == placeholder) {
+				%h#{$i}{
+					//#{$attr}: $value;
+					@extend %headings-content;
+				}
+			} @elseif ($classtype == header) {
+				h#{$i}{
+					//#{$attr}: $value;
+					@extend %headings-content;
+				}
+			} @elseif ($classtype == all) {
+				h#{$i}, .h#{$i}, %h#{$i}{
+					//#{$attr}: $value;
+					@extend %headings-content;
+				}
+			}
+			
+        }
+    }
+}
+
+@mixin bb_setHeadings($header: 1 ) {
+	@if (map-has-keys($bb-headings, $header, color)) {
+		@include bb_setHeadingStyle($header, $header, 'color', map-deep-get($bb-headings, $header, color ));
+	}
+}
+
+//Check to see if $bb-headings map has universal styling for headings
+@if (map-has-keys($bb-headings, 'all')) {
+	h1,.h1,%h1,h2,.h2,%h2,h3,.h3,%h3,h4,.h4,%h4,h5,.h5,%h5,h6,.h6,%h6{
+		//@TODO: Update to use for/each items instead of explicitly 
+		@if (map-has-nested-keys($bb-headings, 'all', 'family')) {
+			font-family: map-deep-get($bb-headings, 'all', 'family');
+		} 
+		@if (map-has-nested-keys($bb-headings, 'all', 'color')) {
+			color: map-deep-get($bb-headings, 'all', 'color');
+		} 
+		@if (map-has-nested-keys($bb-headings, 'all', 'weight')) {
+			font-weight: map-deep-get($bb-headings, 'all', 'weight');
+		} 
+		@if (map-has-nested-keys($bb-headings, 'all', 'style')) {
+			font-style: map-deep-get($bb-headings, 'all', 'style');
+		}
+	}
+	
+}
+
+
+
+%#{$namespace}-subheading {
+	/* %bb-subheading should reside within a heading tag ie: <h2>Some Heading<p class="subheading">Sub heading</p></h2> */
+	margin: 0;
+	//font-size: map-get($bb-font, subheading);
+	@include bb_fontSize(map-get($bb-font, subheading));
+	
+}
+
+$bb-test-headings: false!default;
+
+@if ($bb-test-headings == true) {
+	.test-headings {
+		border-bottom: thin solid $accent-color;
+		@extend %h2;
+	}
+	
+	//.test-headings-padding {
+		@include bb_setHeadingStyle(1, 6, all) {
+			margin-top : ( 2 - ((1.25 - 1) / 2)) + 0em ;
+			&:first-child {
+				 margin-top: 0;
+			}
+		};
+		@include bb_setHeadingStyle(2, 2, all) {
+			margin-bottom: 0.5em;
+		}
+	//}
+	
+	
+}

@@ -1,39 +1,48 @@
-@if $use-island == true{
+@if ($bb-objects-island == true) {
 
-/********************  Bear Bones / Objects / ISLAND ******************/
-//** Simple, boxed off content, as per: csswizardry.com/2011/10/the-island-object
-//* Demo: jsfiddle.net/inuitcss/u8pV3 */
- 
-//.island, .well, .islet, .alert{
-%island_base {
-    display:block;
-	@extend %vr;
-    //@extend .cf;
-	@if $use-rounded-corners == true{	
-		@extend %brand-round;
+	/********************  Bear Bones / Objects / ISLAND ******************/
+	//** Simple, boxed off content, as per: csswizardry.com/2011/10/the-island-object
+	//* Demo: jsfiddle.net/inuitcss/u8pV3 */
+	 
+	//.island, .well, .islet, .alert{
+	%#{$namespace}-island_base {
+		display:block;
+		@extend %#{$namespace}-vr;
+		//@extend .cf;
+		@if  (map-get($bb-brand, 'use') == true){	
+			@extend %#{$namespace}-brand-round;
+		}
+		code {
+			display: inline;
+		}
+		&> :nth-child(n){
+			@extend %#{$namespace}-vr--half;
+		}
+		&> :last-child{
+			margin-bottom:0;
+		}
 	}
-	code {
-		display: inline;
-	}
-	&> :nth-child(n){
-		@extend %vr--half;
-	}
-	&> :last-child{
-        margin-bottom:0;
-    }
-}
 
-%island, %well {
-	@extend %island_base;
-	padding:$paragraph-spacing--em;
-}
-   
+	%#{$namespace}-island, %#{$namespace}-well {
+		@extend %#{$namespace}-island_base;
+		padding: $bb-base-spacing-unit;
+	}
+	   
 
-/** Just like `.island`, only smaller. */
-%islet, %alert{
-	@extend %island_base;
-	padding:$half-spacing-unit--em;
-}
+	//** Just like `.island`, only smaller. */
+	%#{$namespace}-islet, %#{$namespace}-alert{
+		@extend %#{$namespace}-island_base;
+		padding:$bb-base-spacing-unit--islet;
+	}
 
 
 }//endif
+
+@if ($bb-test-island == true) {
+	.island {
+		@extend %#{$namespace}-island;
+	}
+	.islet {
+		@extend %#{$namespace}-islet;
+	}
+}

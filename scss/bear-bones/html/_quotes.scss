@@ -2,131 +2,147 @@
 
 //** If English quotes are set in `_vars.scss`, define them here. */
 
-    $open-quote:    \201C;
-    $close-quote:   \201D;
-
-
-
-
-
-/** Inline quotes. */
-q{
-    quotes:"\2018" "\2019" "#{$open-quote}" "#{$close-quote}";
-
-    &:before{
-        content:"\2018";
-        content:open-quote;
-    }
-    &:after{
-        content:"\2019";
-        content:close-quote;
-    }
-
-    q:before{
-        content:"\201C";
-        content:open-quote;
-    }
-    q:after{
-        content:"\201D";
-        content:close-quote;
-    }
-}
-%blockquote-border {
-	border-style: solid;
-	border-left-width: 0.5em;
-	border-top-width: thin;
-	border-right-width: thin;
-	border-bottom-width: thin;
-}
-
-//** Big up @boblet: html5doctor.com/blockquote-q-cite */
-.quote {
-	margin-left: 2em;
-	margin-right: 2em;
-	padding: .75em .5em .75em 1em;
-	//background: #fff;
-	//border-left: 0.5em solid #DDD;	
-	//border-top: thin solid #ddd;
-	//border-right: thin solid #ddd;
-	//border-bottom: thin solid #ddd;
+$bb-html-quotes: false!default;
+@if ($bb-html-quotes == true) {
 	
-	font-size: 1em;
-	line-height: 1.5;
-	&:before {
-		display: block;
-		height: 0;
-		content: "“";
-		margin-left: -.95em;
-		font: italic 400%/1 Cochin,Georgia,"Times New Roman", serif;
-		color: #999;
+	$open-quote:    map-get($bb-quotes, 'open');
+    $close-quote:   map-get($bb-quotes, 'close');
+	$inside-open-quote:    map-get($bb-quotes, 'inside-open');
+    $inside-close-quote:   map-get($bb-quotes, 'inside-close');
+
+	/** Inline quotes. */
+	q{
+		quotes: "#{$open-quote}" "#{$close-quote}" "#{$inside-open-quote}" "#{$inside-close-quote}" ;
+		hanging-punctuation: first;
+
+		&:before{
+			content: "#{$open-quote}";
+			content:open-quote;
+		}
+		&:after{
+			content:"#{$close-quote}";
+			content:close-quote;
+		}
+
+		q:before{
+			content:"#{$inside-open-quote}";
+			content:open-quote;
+		}
+		q:after{
+			content:"#{$inside-close-quote}";
+			content:close-quote;
+		}
 	}
-}
-
-
-blockquote{
-	p, code, cite, .source {
-		display: block;
-    }
-	&> :nth-child(n){
-		@extend %vr--half;
-	}
-	&> :last-child{
-        margin-bottom:0;
-    }
-}
-
-blockquote p, cite, .source {
-	display: block;
-	@extend %vr--half;
-
-}
-
-.source {
-	text-indent:0;
 	
-	&:before{
-        content:"\2014 ";
-    }
-}
+	
 
-%blockquote--accent_color {
-	background-color: $accent_color;
-	color: $accent_color--font;
-	padding: $half-spacing-unit * 1em;
-	a {
-		color: $accent_color--link;
+	blockquote{
+		background-color: map-get($bb-quotes, 'bgc');
+		border: map-get($bb-quotes, 'border');
+		margin: map-get($bb-quotes, 'margin');
+		padding: map-get($bb-quotes, 'padding');
+		@if(map-get($bb-quotes, 'round') == true){
+			@extend %#{$namespace}-brand-round;
+		}
+		p, code, cite, .source {
+			display: block;
+		}
+		&> :nth-child(n){
+			//@extend %vr--half;
+		}
+		&> :last-child{
+			margin-bottom:0;
+		}
 	}
-}
 
-%blockquote--accent_color2 {
-	background-color: $accent_color2;
-	color: $accent_color2--font;
-	padding: $half-spacing-unit * 1em;
-	a {
-		color: $accent_color2--link;
-	}
-}
-%blockquote--accent_color3 {
-	background-color: $accent_color3;
-	color: $accent_color3--font;
-	padding: $half-spacing-unit * 1em;
-	a {
-		color: $accent_color3--link;
-	}
-}
-%blockquote--quotation_mark {
-	quotes: "“" "/201C";
-	margin-left: 2.95em;
-	@include box-shadow(0 0 6px darken($base-ui-color, 20));
-	padding: .75em .5em .75em 1em;
-	background: #fff;
-	border-left: 0.5em solid $base-ui-color;
-	&:before {
+	blockquote p, cite, .source {
 		display: block;
-		height: 0;
-		content: "“";
-		margin-left: -.95em;
-		font: italic 400%/1 Cochin,Georgia,"Times New Roman", serif;
-		color: darken($base-ui-color, 10);
+		//@extend %vr--half;
+	}
+
+	%#{$namespace}-source {
+		text-indent:0;
+		
+		&:before{
+			content:"\2014 ";
+		}
+	}
+	%#{$namespace}-blockquote-left {
+		border-left: 3px solid map-deep-get($bb-quotes, 'left', 'border-color');
+		background-color: map-deep-get($bb-quotes, 'left', 'bgc');
+	}
+	
+	%#{$namespace}-blockquote-left--thick {
+		background-color: map-deep-get($bb-quotes, 'left--thick', 'bgc');
+		border-style: solid;
+		border-left-width: 0.5em;
+		border-top-width: thin;
+		border-right-width: thin;
+		border-bottom-width: thin;
+		border-color: map-deep-get($bb-quotes, 'left--thick', 'border-color');
+		@extend %#{$namespace}-#{map-deep-get($bb-quotes, 'left--thick', 'spacing')};
+		p {
+			display: inline-block;
+		}
+	}
+
+	//** Big up @boblet: html5doctor.com/blockquote-q-cite */
+	%#{$namespace}-open-quote--outside {
+		@extend blockquote;
+		//quotes: "“" "/201C";
+		//margin-left: 2.95em;
+		margin-left: map-deep-get($bb-quotes, 'outside-quote', 'box-margin-left');
+		margin-right: map-deep-get($bb-quotes, 'outside-quote', 'box-margin-right');		
+		&:before {
+			display: block;
+			height: map-deep-get($bb-quotes, 'outside-quote', 'height');
+			//content: "“";
+			content: map-get($bb-quotes, 'open');
+			font-family: map-deep-get($bb-quotes, 'outside-quote', 'family');
+			font-size: map-deep-get($bb-quotes, 'outside-quote', 'size');
+			font-style: map-deep-get($bb-quotes, 'outside-quote', 'style');
+			margin-top: map-deep-get($bb-quotes, 'outside-quote', 'mt');
+			margin-right: map-deep-get($bb-quotes, 'outside-quote', 'mr');
+			margin-left: map-deep-get($bb-quotes, 'outside-quote', 'ml');
+			color: map-deep-get($bb-quotes, 'outside-quote', 'color');
+		}
+	}
+	
+	//https://css-tricks.com/snippets/css/simple-and-nice-blockquote-styling/
+	%#{$namespace}-open-quote--inside {
+		@extend blockquote;
+		margin-left: map-deep-get($bb-quotes, 'inside-quote', 'box-margin-left');
+		margin-right: map-deep-get($bb-quotes, 'inside-quote', 'box-margin-right');	
+		p {
+			display: inline;			
+		}
+		&:before {
+			content: map-get($bb-quotes, 'open');
+			font-family: map-deep-get($bb-quotes, 'inside-quote', 'family');
+			font-size: map-deep-get($bb-quotes, 'inside-quote', 'size');
+			font-style: map-deep-get($bb-quotes, 'inside-quote', 'style');
+			margin-top: map-deep-get($bb-quotes, 'inside-quote', 'mt');
+			margin-right: map-deep-get($bb-quotes, 'inside-quote', 'mr');
+			margin-left: map-deep-get($bb-quotes, 'inside-quote', 'ml');
+			color: map-deep-get($bb-quotes, 'inside-quote', 'color');
+			line-height: 0.1em;
+			vertical-align: -0.4em;			
+		}
+	}
+}
+
+$bb-test-quotes: false!default;
+@if ($bb-test-quotes == true) {
+	/*Quote Test*/
+	.quote--inside {
+		@extend %bb-blockquote-left--thick;
+		@extend %bb-open-quote--inside;
+		@extend %bb-brand-round;
+	}
+	.quote--outside {
+		@extend %bb-blockquote-left;
+		@extend %bb-open-quote--outside;
+		//background-color: #f9f9f9;
+		//border-color: #ccc;
 	}
 }

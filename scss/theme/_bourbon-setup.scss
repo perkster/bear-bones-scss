@@ -1,0 +1,10 @@
+//*----------------- Theme / Bourbon Setup --------------------*/
+$bourbon-tests: false!default;
+@if ($bourbon-tests == true) {
+	/*.bourbon-tests */
+	.linear {
+		@include background-image(linear-gradient(hsla(0, 100%, 100%, 0.25) 0%, hsla(0, 100%, 100%, 0.08) 50%, transparent 50%),
+							   linear-gradient(#4e7ba3, darken(#4e7ba4, 10%)));
+	}
+	
+}

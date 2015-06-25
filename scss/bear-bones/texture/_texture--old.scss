@@ -1,0 +1,172 @@
+//**** Old texture ***/
+@mixin set_color(
+	$bg-color : $accent-color, 
+	$color : $accent-color--font, 
+	$link-color : $accent_color--link, 
+	$link-color-hover : $accent-color--font,
+	$link-background: $accent-color2 ) {
+		background-color: $bg-color;
+		color: $color;
+	
+	}
+
+	/*
+%accent_color {
+	background-color: $accent-color;
+	color: $accent-color--font;
+	a {
+		color: $accent-color--link;
+		&:hover {
+			color: lighten($accent-color, 40%);
+			background-color: darken($accent-color, 30%);
+		}
+	}
+}
+%accent_color2 {
+	background-color: $accent_color2;
+	color: $accent_color2--font;
+	a {
+		color: $accent_color2--link;
+		&:hover {
+			color: lighten($accent-color2, 40%);
+			background-color: darken($accent-color2, 30%);
+		}
+	}
+}
+%accent_color3 {
+	background-color: $accent_color3;
+	color: $accent_color3--font;
+	a {
+		color: $accent_color3--link;
+		&:hover {
+			color: lighten($accent-color3, 40%);
+			background-color: darken($accent-color3, 30%);
+		}
+	}
+} 
+%link-color {
+	color: $link-color!important;
+}
+%font-color {
+	color: $font-color!important;
+}
+
+%color--info {
+	background-color: $info_color;
+	color: $info_color_font;
+	a {
+		color: $info_color_font;
+	}
+}
+%color--alert {
+	background-color: $alert_color;
+	color: $alert_color_font;
+	a {
+		color: $alert_color_font;
+	}
+}
+%color--error {
+	background-color: $error_color;
+	color: $error_color_font;
+	a {
+		color: $error_color_font;
+	}
+}
+%color--error_light {
+	background-color: $error_light_color;
+	color: $error_light_color_font;
+	a {
+		color: $error_light_color_font;
+	}
+}
+%color--info_dark {
+	background-color: $info_dark_color;
+	color: $info_dark_color_font;
+	a {
+		color: $info_dark_color_font;
+	}
+}
+%color--inverse {
+	background-color: $inverse_color;
+	color: $inverse_color_font;
+	a {
+		color: $inverse_color_font;
+	}
+}
+%color--success {
+	background-color: $success_color;
+	color: $success_color_font;
+	a {
+		color: $success_color_font;
+	}
+}
+%color--success_light {
+	background-color: $success_light_color;
+	color: $success_light_color_font;
+	a {
+		color: $success_light_color_font;
+	}
+}
+%color--warning {
+	background-color: $warning_color;
+	color: $warning_color_font;
+	a {
+		color: $warning_color_font;
+	}
+}
+*/
+
+
+/*
+%border--block_list {
+	border-top: thin solid $base-ui-color;
+	&> li{
+		@include set_border( $base-ui-color, bottom, true );
+	}
+}
+%border--block_list--accent_color {
+	border-top: thin solid $accent_color;
+	&> li {
+		@include set_border( $accent_color, bottom, true );
+	}
+}
+%border--block_list--accent_color2  {
+	border-top: thin solid $accent_color2;
+	&> li{
+		@include set_border( $accent_color2, bottom, true );
+	}
+}*/
+$color-text : (
+	'warning' : $amber,
+	'error': $redLastfm,
+	'info': $blueFrench,
+	'success': $greenDull,
+
+) !default;
+
+%text--warning   { 
+	@include text-class( map-get($color-text, 'warning'), true );
+}
+%text--error   { 
+	@include text-class( map-get($color-text, 'error'), true );
+}
+
+%text--info   { 
+	@include text-class( map-get($color-text, 'info'), true );
+}
+
+%text--success   { 
+	@include text-class( map-get($color-text, 'success'), true );
+}
+
+%text--accent-color   { 
+	@include text-class( $accent-color, true );
+}
+
+%text--accent-color2   { 
+	@include text-class( $accent-color2, true );
+}
+
+%text--accent-color3   { 
+	@include text-class( $accent-color3, true );
+}

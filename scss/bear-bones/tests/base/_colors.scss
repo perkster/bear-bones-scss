@@ -1,0 +1,25 @@
+/************ COLOR TESTS *************/
+
+//Tests of colors
+.alert-box-green {
+	@include bb_colorMapBlock( 'light-green' );
+}
+.alert-box-red {
+	@include bb_colorMapBlock( 'light-red', $bb_colors, true );
+}
+
+$bb_accent_colors: ( 
+	'accent-color': ( 
+		'background': blue, 
+		'border': darken(blue,20), 
+		'font': #fff, 
+		'link': lighten(blue,40), 
+		'link-hover': lighten(blue,30) 
+	) 
+) ;
+.alert-accent-color {
+		@include bb_colorMapBlock( 'accent-color', $bb_accent_colors, true );
+}
+.alert-ac2 {
+	@include bb_colorBlock( lighten(blue, 40), darken(blue, 30), blue, true, darken(blue,20), darken(blue, 30) );
+}

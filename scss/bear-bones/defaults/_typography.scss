@@ -1,0 +1,108 @@
+//*-------     Defaults / TYPOGRAPHY ---------*/
+
+$bb-test-typography : false!default;
+$bb-font-default: (
+	'size': 17px,
+	'size--phone': 14px,
+	'size--tablet': 15px,
+	'family': Sans-serif,
+	'line-height-ratio': 1.25,
+	'type-scale': 'default',
+	'default-type-scale': (
+		h1:	2.25,
+		h2:	2,
+		h3:	1.5,
+		h4:	1.25,
+		h5:	0.9,
+		h6:	0.875,
+	),
+	'giga': 5,
+	'mega': 4,
+	'kilo': 3,
+	'lead': 1.125em,
+	'small': 0.75em,
+	'micro': 0.625em,
+	'subheading': 0.85em,
+	'subsup': 75%
+)!default;
+$bb-font-custom: ()!default;
+$bb-font: map-extend($bb-font-default, $bb-font-custom, true);
+$bb-base-line-height : px(map-get($bb-font, size), map-get($bb-font, line-height-ratio));
+
+// --- Shadows --- //
+$text-shadow--average : 2px 4px 3px rgba(0,0,0,0.3);
+$text-shadow--multiple : 0px 15px 5px rgba(0,0,0,0.1),
+                 10px 20px 5px rgba(0,0,0,0.05),
+                 -10px 20px 5px rgba(0,0,0,0.05);
+
+
+		 
+				 
+// -------------- TYPE SCALE -------------- //
+$bb-use-type-scale : true!default;
+$bb-test-type-scale : false!default;
+
+
+// -------------- VERTICAL RHYTHM -------------- //
+$bb-typography-vertical-rhythm: true!default;
+$bb-spacing: (
+	'micro' : .2,
+	'small' : .333,
+	'half' : .5,
+	'two-thirds' : .667,
+	'default' : 1,	
+	'medium' : 1.5,
+	'golden' : 1.61803398875,
+	'large' : 2,
+	'x-large' : 2.5
+)!default;
+//Spacing units used throught for other things such as media, islands, islet, etc.
+$bb-base-spacing-unit: map-get($bb-font, line-height-ratio) * 1em!default;
+$bb-base-spacing-unit--px: px(map-get($bb-font, line-height-ratio))!default;
+$bb-base-spacing-unit--islet: map-get($bb-spacing, 'half') * 1em!default;
+$bb-test-vr: false!default;
+
+// -------------- CODE -------------- //
+$bb-typography-code: true!default;
+$bb-code-default: (
+	'line-height-ratio': map-get($bb-font, line-height-ratio),
+	'family': (Menlo,Monaco,Consolas,"Courier New",monospace),
+	'code':(
+		'padding': (2px 4px),
+		'size': 90%,
+		'bgc' : map-deep-get($bb-colors, 'light-red', 'bgc'),
+		'color' : map-deep-get($bb-colors, 'light-red', 'font'),
+		'radius': 3px
+	),
+	'pre':(
+		'bgc' : map-deep-get($bb-colors, 'light-blue', 'bgc'),
+		'border-color' : map-deep-get($bb-colors, 'light-blue', 'border'),
+		'color' : map-get($bb-colors, 'ui--dark'),
+		'line-height' :  0.5em,
+		'padding' : 1em,
+		'radius' : null,
+		'size': 90%,
+		'spacing': 'small'
+	),
+	'kbd':(
+		'size': 90%,
+		'bgc' : map-get($bb-colors, 'ui--dark'),
+		'color' : white,
+		'padding' : (2px 4px),
+		'radius' : 3px,
+		'shadow' : (inset 0 -1px 0 rgba(0,0,0,.25))		
+	)
+)!default;
+$bb-code-custom: ()!default;
+$bb-code: map-extend($bb-code-default, $bb-code-custom, true);
+
+
+// -------------- HEADINGS -------------- //
+$bb-typography-headings: true!default;
+$bb-headings-default: (
+	line-height-ratio: map-get($bb-font, line-height-ratio),
+)!default;
+$bb-headings-custom: ()!default;
+$bb-headings: map-extend($bb-headings-default, $bb-headings-custom, true);
+
+

@@ -1,0 +1,62 @@
+//*-------     Defaults / BASE ---------*/
+
+$namespace: "bb";
+$namespace-: "bb-";
+
+// ************************ PLUGINS IN USE ****************************//
+$bb-use-include-media : true!default;
+
+
+// ************************** BASE  **************************** //
+
+// ------------- ACCESSIBILITY ------------- //
+$bb-base-accessibility : true!default;
+
+// ------------- CLEARFIX ------------- //
+$bb-base-clearfix : true!default;
+
+// ------------- FOUNDATION ------------- //
+$bb-base-foundation : true!default;
+$bb-foundation: (
+	box-sizing: true,
+	transition: .3s,
+	//small: 80%,
+	//subsup: 75%
+)!default;
+
+// ------------- FUNCTIONS ------------- //
+
+// ------------- LAYOUT ------------- //
+$bb-base-layout : true!default;
+$bb-test-layout : false!default;
+$bb-layout-default: (
+	'full-width-max': 1200px,
+	'full-width-percentage': 80%,
+	'use' : true,
+	'components' : (
+		'topbar' : 'wrapper',
+		'second-topbar' : 'wrapper',
+		'footer' : 'wrapper'
+	)
+)!default;
+$bb-layout-custom: ()!default;
+$bb-layout: map-extend($bb-layout-default, $bb-layout-custom, true);
+// ------------- MIXINS ------------- //
+
+// ------------- WORDPRESS REQUIRED ------------- //
+$bb-base-wordpress-required : true!default;
+
+
+// -------------- BRAND/ROUND -------------- //
+//* How big would you like round corners to be by default? */
+$bb-brand-default: (
+	'round' : 6px,
+	'use' : false,
+	'style': all,
+)!default;
+$bb-brand-custom: ()!default;
+$bb-brand: map-extend($bb-brand-default, $bb-brand-custom, true);
+//*Brand round style options are: all, top, bottom, left, right or specific instructions for the Compass Border Radius http://compass-style.org/reference/compass/css3/border_radius/ */
+//* %#{namespace}-brand-round class will be created. Class can be extended. */
+$bb-test-texture: false!default;
+

@@ -94,15 +94,10 @@ $main-nav-color2--font		:	 #fff!default;
 
 
 //COLORS renamed using http://www.color-blindness.com/color-name-hue/
-//Light alert RED
-$misty-rose					: #ffe2e2; //light-red
-$mona-lisa					: #ff8a8a; //border/hover
-$orange-red					: #ec3c06; //font-color
-
 //Light alert peach
-$papaya-whip				: #FFF2E2; //light-peach
-$macaroni-and-cheese		: #ffbc8a; //border/hover
-$tree-poppy					: #e17731; //font-color
+$papaya-whip				: #FFF2E2; //light-peach : papaya-whip
+$macaroni-and-cheese		: #ffbc8a; //border/hover : macaroni-and-cheese
+$tree-poppy					: #e17731; //font-color : tree-poppy
 
 //Light alert green
 $honeydew					: #e8ffe2; //light-green
@@ -113,3 +108,39 @@ $forest-green				: #1ea524; //font-color
 $early-dawn					: #fcf8e3; //light-yellow
 $buff						: #f2e187; //border/hover
 $golden-brown				: #9c8611; //font-color
+
+
+
+//Light alert RED
+$color-red__bg--light			: #ffe2e2!default; //light-red : misty-rose
+$color-red__border--light		: #ff8a8a!default; //border/hover : mona-lisa
+$color-red__font--light			: #ec3c06!default; //font-color : orange-red
+
+//Bright alert RED
+$color-red__bg--bright			: #ffe2e2!default; //light-red : misty-rose
+$color-red__border--bright		: #ff8a8a!default; //border/hover : mona-lisa
+$color-red__font--bright			: #ec3c06!default; //font-color : orange-red
+
+
+//Light alert GREEN
+$color-green__bg--light			: #e8ffe2!default; //light-green : honeydew
+$color-green__border--light		: #6fdf51!default; //border/hover : pastel-green
+$color-green__font--light			: #1ea524!default; //font-color : forest-green
+
+//Bright alert GREEN
+$color-green__bg--bright			: #ffe2e2!default; //bright-green : misty-rose
+$color-green__border--bright		: #ff8a8a!default; //border/hover : mona-lisa
+$color-green__font--bright			: #ec3c06!default; //font-color : orange-red
+
+
+//Light alert YELLOW
+$alert-yellow__bg--light			: #ffe2e2!default; //light-yellow : misty-rose
+$alert-yellow__border--light		: #ff8a8a!default; //border/hover : mona-lisa
+$alert-yellow__font--light			: #ec3c06!default; //font-color : orange-red
+
+//Bright alert YELLOW
+$alert-yellow__bg--bright			: #ffe2e2!default; //bright-yellow : misty-rose
+$alert-yellow__border--bright		: #ff8a8a!default; //border/hover : mona-lisa
+$alert-yellow__font--bright			: #ec3c06!default; //font-color : orange-red
+
+

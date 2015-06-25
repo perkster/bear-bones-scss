@@ -1,0 +1,102 @@
+$bb-vr: $bb-spacing!default;
+
+@mixin bb_VR($mb : null, $mt : null) {
+	@if ( $mb ) {
+		margin-bottom: $bb-base-line-height * map-get($bb-vr, #{$mb});
+		margin-bottom: map-get($bb-font, line-height-ratio) * map-get($bb-vr, #{$mb}) * 1rem;
+	}
+	@if ( $mt ) {
+		margin-bottom: $bb-base-line-height * map-get($bb-vr, #{$mt});
+		margin-bottom: map-get($bb-font, line-height-ratio) * map-get($bb-vr, #{$mt}) * 1rem;
+	}
+}
+
+@if ($bb-typography-vertical-rhythm == true ) {
+
+/********************  Bear Bones / Typography / VERTICAL RHYTHM ******************/
+
+// Vertical rhythm placeholders default to margin bottom only per csswizardry.com/2012/06/single-direction-margin-declarations 
+// However if a top margin is required, just pass through a $mt variable when you call bb_VR mixin.
+
+
+	
+	%#{$namespace}-vr {
+		/* %bb-vr */
+		@include bb_VR('default');
+	}
+
+	%#{$namespace}-vr--half {
+		/* %bb-vr--half */
+		@include bb_VR('half');
+	}
+	
+	%#{$namespace}-vr--micro {
+		/* %bb-vr--micro */
+		@include bb_VR('micro');
+	}
+	
+	%#{$namespace}-vr--small {
+		/* %bb-vr--small */
+		@include bb_VR('small');
+	}
+
+	%#{$namespace}-vr--golden {
+		/* %bb-vr--golden */
+		@include bb_VR('golden');
+	}
+
+	%#{$namespace}-vr--medium {
+		/* %bb-vr--medium */
+		@include bb_VR('medium');
+	}
+
+	%#{$namespace}-vr--large, %#{$namespace}-landmark {
+		/* %bb-vr--large, %bb-landmark */
+		@include bb_VR('large');	
+	}
+
+	%#{$namespace}-vr--x-large,  {
+		/* %bb-vr--x-large */
+		@include bb_VR('x-large');
+	}
+
+	hgroup,
+	ul,ol,dl,
+	blockquote,p,address,
+	table,figure,
+	pre,
+	//*Objects and abstractions */ 
+	%sass-margin-bottom,
+	.media {
+		@extend %#{$namespace}-vr;
+	}
+
+}
+
+@if ($bb-test-vr == true) {
+	/* Vertical Rhythm Tests */
+	.#{$namespace}-vr {
+		@extend %#{$namespace}-vr;
+	}
+	.#{$namespace}-vr--half {
+		@extend %#{$namespace}-vr--half;
+	}
+	.#{$namespace}-vr--micro {
+		@extend %#{$namespace}-vr--micro;
+	}
+	.#{$namespace}-vr--small {
+		@extend %#{$namespace}-vr--small;
+	}
+	.#{$namespace}-vr--medium {
+		@extend %#{$namespace}-vr--medium;
+	}
+	.#{$namespace}-vr--golden {
+		@extend %#{$namespace}-vr--golden;
+	}
+	.#{$namespace}-vr--large {
+		@extend %#{$namespace}-vr--large;
+	}
+	.#{$namespace}-vr--x-large {
+		@extend %#{$namespace}-vr--x-large;
+	}
+}

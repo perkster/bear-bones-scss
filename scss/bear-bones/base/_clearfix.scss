@@ -4,16 +4,15 @@
 @mixin bb-cf() {
 	&:after {
 	   content:"";
-       display:table;
-       clear:both;
+	   display:table;
+	   clear:both;
 	}
 }
 
-/*%bb-cf:after{
-        content:"";
-        display:table;
-        clear:both;
-}*/
-%bb-cf { 
-	@include bb-cf();
+@if ($bb-base-clearfix == true) {
+
+	%#{$namespace}-cf { 
+		@include bb-cf();
+	}
+
 }

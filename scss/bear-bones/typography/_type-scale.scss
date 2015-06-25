@@ -1,0 +1,190 @@
+/********************  Bear Bones / Typography / TYPE SCALE ******************/
+
+//* Type Scale is based off of the wonderful tool http://type-scale.com/  NOTE: Use Chrome, doesn't always work right in FireFox*/
+$bb-type-scale-map: ( 
+	'Augmented Fourth': (
+		'h1': 3.998, 
+		'h2': 2.827, 
+		'h3': 1.999, 
+		'h4': 1.414, 
+		'h5': 0.707, 
+		'h6': 0.5 
+	),
+	'Golden Ratio': (
+		h1: 6.854, 
+		h2: 4.236, 
+		h3: 2.618, 
+		h4: 1.618, 
+		h5: 0.618, 
+		h6: 0.382 
+	),
+	'Major Second': (
+		h1: 1.602, 
+		h2: 1.424, 
+		h3: 1.266, 
+		h4: 1.125, 
+		h5: 0.889, 
+		h6: 0.79 
+	),
+	'Major Third': (
+		h1: 2.441,
+		h2: 1.953, 
+		h3: 1.563, 
+		h4: 1.25, 
+		h5: 0.8, 
+		h6: 0.64 
+	),
+	'Major Sixth': (
+		h1: 7.722,
+		h2: 4.632, 
+		h3: 2.779, 
+		h4: 1.667, 
+		h5: 0.6, 
+		h6: 0.36 
+	),
+	'Major Seventh': (
+		h1: 12.36, 
+		h2: 6.592, 
+		h3: 3.516, 
+		h4: 1.875, 
+		h5: 0.533, 
+		h6: 0.284 
+	),
+	'Major Tenth': (
+		h1: 39.063, 
+		h2: 15.625, 
+		h3: 6.25, 
+		h4: 2.5, 
+		h5: 0.4, 
+		h6: 0.16 
+	),
+	'Minor Second': (
+		h1: 1.296, 
+		h2: 1.215, 
+		h3: 1.138, 
+		h4: 1.067, 
+		h5: 0.937, 
+		h6: 0.878
+	),
+	'Minor Third': (
+		h1: 2.074, 
+		h2: 1.728,
+		h3: 1.44, 
+		h4: 1.2, 
+		h5: 0.833, 
+		h6: 0.694 
+	),
+	'Minor Sixth': (
+		h1: 6.554,
+		h2: 4.096,
+		h3: 2.56,
+		h4: 1.6,
+		h5: 0.625,
+		h6: 0.391
+	),
+	'Minor Seventh': (
+		h1: 9.994,
+		h2: 5.621,
+		h3: 3.161,
+		h4: 1.778,
+		h5: 0.562,
+		h6: 0.316
+	),
+	'Octabe': (
+		h1: 16,
+		h2: 8,
+		h3: 4,
+		h4: 2,
+		h5: 0.5,
+		h6: 0.25
+	),
+	'Perfect Fourth': (
+		h1: 3.157,
+		h2: 2.369,
+		h3: 1.777,
+		h4: 1.333,
+		h5: 0.75,
+		h6: 0.563
+	),
+	'Perfect Fifth': (
+		h1: 5.063,
+		h2: 3.375,
+		h3: 2.25,
+		h4: 1.5,
+		h5: 0.667,
+		h6: 0.444
+	),
+	'default': (
+		h1: map-get($bb-font, h1),
+		h2: map-get($bb-font, h2),
+		h3: map-get($bb-font, h3),
+		h4: map-get($bb-font, h4),
+		h5: map-get($bb-font, h5),
+		h6: map-get($bb-font, h6)
+	),
+	'custom': (
+		h1: map-get($bb-font, h1),
+		h2: map-get($bb-font, h2),
+		h3: map-get($bb-font, h3),
+		h4: map-get($bb-font, h4),
+		h5: map-get($bb-font, h5),
+		h6: map-get($bb-font, h6)
+	),
+);
+
+@mixin bb_typeScale($from: 1, $to: 6, $type-scale : map-get($bb-font, type-scale), $unit : rem, $classtype : false){
+
+    @if $from >= 1 and $to <= 6{
+        @for $i from $from through $to{
+			
+			$size : null;
+			@if (map-has-keys($bb-font, 'custom-type-scale') and (map-get($bb-font, type-scale) == 'custom')) {
+				$size : map-deep-get($bb-font, 'custom-type-scale', h#{$i} )+$unit;
+			} @elseif (map-has-keys($bb-font, 'default-type-scale') and (map-get($bb-font, type-scale) == 'default')) {
+				$size : map-deep-get($bb-font, 'default-type-scale', h#{$i} )+$unit;
+			} @else {
+				$size : map-deep-get($bb-type-scale-map, $type-scale, h#{$i} )+$unit;
+			}
+			
+			@if ($classtype == class) {
+				.h#{$i} {
+					font-size: $size;
+				}
+			} @elseif ($classtype == placeholder) {
+				%h#{$i}{
+					font-size: $size;
+				}
+			} @elseif ($classtype == placeholder-size) {
+				%h#{$i}-size{
+					font-size: $size;
+				}
+			} @elseif ($classtype == header) {
+				h#{$i}{
+					font-size: $size;
+				}
+			} @elseif ($classtype == all) {
+				h#{$i}, .h#{$i}, %h#{$i}, %h#{$i}-size{
+					font-size: $size;
+				}
+			}
+			
+        }
+    }
+}
+
+
+
+@if ($bb-use-type-scale == true) {
+	//@include bb_typeScale(1, 6, map-get($bb-font, type-scale), rem, header);
+	//@include bb_typeScale(1, 6, map-get($bb-font, type-scale), em, class);
+	
+	@include bb_typeScale(1, 6, map-get($bb-font, type-scale), rem, all);
+	//@include bb_typeScale(1, 6, map-get($bb-font, type-scale), rem, header);
+	//@include bb_typeScale(1, 6, map-get($bb-font, type-scale), rem, placeholder);
+}
+
+@if ($bb-test-type-scale == true) {
+	.test-type-scale--extend {
+		@extend %h1-size;
+	}
+}

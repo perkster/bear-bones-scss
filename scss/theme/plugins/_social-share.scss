@@ -8,7 +8,7 @@
 .social-share__item {
 	display: inline-block;
 	span {
-		@extend %accessibility;
+		@extend %#{$namespace}-accessibility;
 	}
 }
 .social-share__link {

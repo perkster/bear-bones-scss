@@ -1,4 +1,5 @@
 /************ Theme / Objects / SEARCH *************/
+/*
 .search-box {
 	border: thin solid $dark-grey;
 	max-width: 30em;
@@ -21,5 +22,14 @@
 	clear: both;
 	.search-box {
 		border: 0;
+	}
+}
+*/
+
+.searchform-input-wrapper {
+	@extend %#{$namespace}-fa-search-after;
+	color: $nobel;
+	&:after {
+		
 	}
 }

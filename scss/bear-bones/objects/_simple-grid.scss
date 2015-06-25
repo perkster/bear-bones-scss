@@ -7,19 +7,20 @@
  * Dead Simple Grid (c) 2012 Vladimir Agafonkin 
  */
 
-	$bb-simple-gutter: $bb-grid-gutter;
 	@mixin bb_simple_grid_gutter( $gutter : $bb-simple-gutter) {
 		padding-right: $gutter;	
 	}
 
-	%bb-simple-grid {
+
+ @if $bb-objects-simple-grid == true{
+	
+	%#{$namespace}--simple-grid {
 		margin: 0 ;	
 		width: 100%;
 		@extend %bb-cf;
 	}
 
-
-	%bb-simple-grid-item {
+	%#{$namespace}--simple-grid-item {
 		//padding-right: $bb-simple-gutter;
 		float: left;
 		//width: 100%;
@@ -28,23 +29,21 @@
 		}
 	}
 
-	%one-half {
+	%#{$namespace}-one-half {
 		width: 50%;
 	}
-	%one-third {
+	%#{$namespace}-one-third {
 		width: percentage(1/3); //33.33%;
 	}
-	%one-quarter {
+	%#{$namespace}-one-quarter {
 		width: 25%;
 	}
-
- @if $bb-use-simple-grid == true{
 	
-	%grid {
-		@extend %bb-simple-grid;
+	%#{$namespace}-grid {
+		@extend %#{$namespace}--simple-grid;
 	}
 
-	%grid-item, %grid__item {
-		@extend %bb-simple-grid-item;
+	%#{$namespace}-grid-item, %#{$namespace}-grid__item {
+		@extend %#{$namespace}--simple-grid-item;
 	}
 }

@@ -1,0 +1,84 @@
+/************ Bear Bones / Components / REVOLUTION SLIDER ***********/
+ @if ($bb-components-revslider == true) {
+	
+	%#{$namespace}-revslider-bullets--square {
+		
+	}
+	%#{$namespace}-revslider-bullets--round {
+		border-radius: map-deep-get($bb-revslider, 'bullet', 'width') * 2;
+	}
+	
+	
+	.tp-bullets.custom {
+		.bullet {
+			cursor: pointer;
+			display: inline-block;
+			background-color: map-deep-get($bb-revslider, 'bullet', 'bgc');
+			height: map-deep-get($bb-revslider, 'bullet', 'height');
+			width: map-deep-get($bb-revslider, 'bullet', 'width');
+			border: map-deep-get($bb-revslider, 'bullet', 'border');
+			border-radius: map-deep-get($bb-revslider, 'bullet', 'radius');
+			padding: map-deep-get($bb-revslider, 'bullet', 'padding');
+			margin: map-deep-get($bb-revslider, 'bullet', 'margin');
+			&.selected {
+				background-color: map-deep-get($bb-revslider, 'bullet', 'bgc--selected');
+			}
+			@if(map-deep-get($bb-revslider, 'style')) {
+				@extend %#{$namespace}-revslider-bullets--#{map-deep-get($bb-revslider, 'style')};
+			}
+		}
+	}
+	
+}
+/*
+.tp-leftarrow.custom {/* custom styles *}
+.tp-rightarrow.custom {/* custom styles *}
+.tp-bullets.custom .bullet {
+	/* custom styles *
+	background-color: white;
+	display: inline-block;
+	margin-right: 7px;
+	width: 1em;
+	height: 1em;
+	&:hover {
+		background-color: $light-green;
+	}
+	&.selected {
+		background-color: $accent-color;
+	}
+}
+*
+.rev_slider {
+	div {
+		text-shadow: -1px -1px 2px rgba(0, 0, 0, 0.9);
+	}
+	.btn--call-to-action {
+		color: white;
+		display: block;
+		height: 100%;
+		width: 100%;
+		padding: 1em 1.5em!important;
+		text-shadow: -1px -1px 2px rgba(0, 0, 0, 0.9);
+		&:hover {
+			background-color: $accent-color;
+			color: white;
+			text-shadow: none;
+		}
+	}
+	
+}*/
+
+.tp-caption {
+		a {
+			color: black;
+			&:hover {
+				color: $pavlova;
+			}
+		}
+	}
+	
+.rev_slider {
+	.pavlova-big, .black-italic, .black {
+		//text-shadow: -1px -1px 2px $nobel;
+	}
+}

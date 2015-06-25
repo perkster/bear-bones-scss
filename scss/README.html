@@ -1,26 +1,26 @@
 <h1 id="bear-bones-scss">BEAR-BONES.scss</h1>
 <p>This is a repository of the Sass files that accompany the bear bones WordPress theme (<a href="https://github.com/perkster/perkster-bear-bones">https://github.com/perkster/perkster-bear-bones</a>). The theme is based on BEM methodology and does not use (much) semantic classes. Instead, utilizing the BEM (block, element, modifier) model, it is easy to switch up designs by just switching out one stylesheet. </p>
-<p>Over the years, I&#39;ve come across some amazing frameworks, in particluar inuit.css by Harry Roberts. These files are based HEAVILY on his work but also on 320 and up by Andy Clark. I found myself constantly trying to get the two to play nicely and incorporate some of the great classes of each theme/framework, so I came up with my one and thus bear bones was born. Additionally, I have come across many other good frameworks like susy and purecss. So this framework will play nicely with other so you can pick and choose what you want to work with.</p>
+<p>Over the years, I&#39;ve come across some amazing frameworks, in particluar inuit.css by Harry Roberts (<a href="https://github.com/inuitcss">https://github.com/inuitcss</a>). These files are based HEAVILY on his work but also on 320 and up by Andy Clark (<a href="http://stuffandnonsense.co.uk/projects/320andup/">http://stuffandnonsense.co.uk/projects/320andup/</a>). I found myself constantly trying to get the two to play nicely and incorporate some of the great classes of each theme/framework, so I came up with my one and thus bear bones was born. Additionally, I have come across many other good frameworks like susy (<a href="http://susy.oddbird.net/">http://susy.oddbird.net/</a>), purecss (<a href="http://purecss.io/">http://purecss.io/</a>), and bourbon (<a href="http://neat.bourbon.io/">http://neat.bourbon.io/</a>). So this framework will play nicely with other so you can pick and choose what you want to work with.</p>
 <p>This css &quot;framework&quot; does not try to implement a bunch of styling objectives, instead it gives you the framework to put together a design of your own. </p>
-<p>Obviously, its meant to work with the Bear Bones theme and thus has things named in accordance with it. But since they are block based, you can apply many of the </p>
+<p>Obviously, its meant to work with the Bear Bones theme and thus has some things named in accordance with it but most of those are in the theme folder. However since they are block based, there&#39;s no reason why you can&#39;t use this in any other kind of project. </p>
 <h2 id="file-structure">File Structure</h2>
 <ul>
 <li>scss/bear-bones/ </li>
 <li>scss/plugins/</li>
 <li>scss/templates/</li>
 <li>scss/theme/</li>
-<li>scss/_bb-setup</li>
-<li>scss/_layout</li>
-<li>scss/_theme-style</li>
-<li>scss/_theme</li>
+<li>scss/theme/_bb-setup</li>
+<li>scss/theme/_layout</li>
+<li>scss/theme/_theme-style</li>
+<li>scss/theme/_theme</li>
 <li>style.scss</li>
 </ul>
 <h3 id="bear-bones-folder">Bear Bones folder</h3>
-<p>This folder contains the &quot;framework&quot; and the vast majority of classes are placeholder classes. The &quot;bb&quot; prefix is used so it should play nice with other sass plugins. </p>
-<p>There is a bb_setup.scss file in the theme folder that has flags that you can turn on and off to make using bear bones easier. Of course, you&#39;re more than welcome to just add in whichever files you want into your project, too. </p>
+<p>This folder contains the &quot;framework&quot; and the vast majority of classes are placeholder classes. The namespace &quot;bb&quot; is the default but can be overridden so it should play nice with other sass plugins. </p>
+<p>There is a bb_setup.scss file in the theme folder that has flags that you can turn on and off to make using bear bones easier. Of course, you&#39;re more than welcome to just add in whichever files you want into your project, too. Although, some files may try to use some of the base functions and mixins but most files contain the functions needed within that file.</p>
 <p>Most of the files are pretty well documented including links to urls which the code comes from.</p>
 <h3 id="plugins">Plugins</h3>
-<p>This folder holds scss plugins like include-media, inuit, susy, purecss, although the only plugins included in this are include-media as it is what is used for responsive design.</p>
+<p>This folder holds scss plugins like include-media (<a href="http://include-media.com/">http://include-media.com/</a>), modular-scale (<a href="http://www.modularscale.com/">http://www.modularscale.com/</a>), inuit, susy, purecss, although the only plugins included in this are include-media as it is what is used for responsive design.</p>
 <h3 id="templates">Templates</h3>
 <p>This folder holds the blocks used for easy styling. Most files have a few variables at the top to assign things like colors, font variables, padding, margins, etc. </p>
 <h3 id="theme">Theme</h3>
@@ -40,5 +40,5 @@
 <li>layout - Where the site layout structure is set.</li>
 <li>theme-style - loads up all of the style files rather than having to include them all on the main style.scss file</li>
 <li>theme - this is where you can include any css plugins, js plugins, templates and other theme specific style files.</li>
-<li>style - Files are loaded in this order: bb-setup, theme-style, bear-bones/bear-bones, plugins (include-media), theme</li>
+<li>style - Files are loaded in this order: theme/bb-setup, theme/theme-style, bear-bones/bear-bones, theme/plugins (include-media), theme/theme</li>
 </ul>

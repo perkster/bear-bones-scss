@@ -1,30 +1,64 @@
-/*-------------------- Bear Bones / Bear Bones --------------------*/
+/*-------------------- Bear Bones / BEAR BONES --------------------*/
+// The base files & default files are in a particular order as they build upon each other
 
-@import "scss/bear-bones/variables/colors";
-@import "scss/bear-bones/variables/defaults";
 
 //**************** BASE ******************/
-@import "scss/bear-bones/base/mixins";
-@import "scss/bear-bones/base/foundation";
-@import "scss/bear-bones/base/typography";
-@import "scss/bear-bones/base/clearfix";
-@import "scss/bear-bones/base/texture";
-@import "scss/bear-bones/base/accessibility";
-@import "scss/bear-bones/base/wordpress-required";
-@import "scss/bear-bones/base/layout";  
+@import "bear-bones/base/mixins";
+@import "bear-bones/base/functions";
+
+
+// **** DEFAULTS **** //
+@import "bear-bones/base/colors";
+@import "bear-bones/defaults/base";
+@import "bear-bones/defaults/typography";
+@import "bear-bones/defaults/html";
+@import "bear-bones/defaults/objects";
+@import "bear-bones/defaults/components";
+@import "bear-bones/defaults/layouts";
+
+// Continue loading base
+@import "bear-bones/base/foundation";
+@import "bear-bones/base/clearfix";
+@import "bear-bones/base/accessibility";
+@import "bear-bones/base/layout"; 
+@import "bear-bones/base/texture";
+@import "bear-bones/base/wordpress-required";
+
+
+//**************** TYPOGRAPHY ******************/
+@import "bear-bones/typography/typography";
+@import "bear-bones/typography/vertical-rhythm";
+@import "bear-bones/typography/type-scale";
+@import "bear-bones/typography/headings";
+@import "bear-bones/typography/text-classes";
+@import "bear-bones/typography/code";
 
 
 //**************** HTML ******************/
-@import "scss/bear-bones/html/headings";
-@import "scss/bear-bones/html/lists"; 
-@import "scss/bear-bones/html/quotes";
+@import "bear-bones/html/forms"; 
+@import "bear-bones/html/images"; 
+@import "bear-bones/html/lists"; 
+@import "bear-bones/html/quotes";
+@import "bear-bones/html/rules";
 
 
 //**************** OBJECTS ******************/
-@import "scss/bear-bones/objects/nav"; 
-@import "scss/bear-bones/objects/media_stubornella";
-@import "scss/bear-bones/objects/simple-grid";
-@import "scss/bear-bones/objects/bb-jquery-tabs";
-@import "scss/bear-bones/objects/arrows";
-@import "scss/bear-bones/objects/buttons";
-@import "scss/bear-bones/objects/island";
+@import "bear-bones/objects/buttons";
+@import "bear-bones/objects/island";
+//@import "bear-bones/objects/marginalia"; 
+@import "bear-bones/objects/media_stubornella";
+@import "bear-bones/objects/nav"; 
+@import "bear-bones/objects/simple-grid";
+@import "bear-bones/objects/bb-jquery-tabs";
+
+
+
+//**************** COMPONENTS ******************/
+@import "bear-bones/components/headers"; 
+@import "bear-bones/components/revslider"; 
+@import "bear-bones/components/search"; 
+@import "bear-bones/components/social"; 
+
+
+//**************** LAYOUTS ******************/
+@import "bear-bones/layouts/topbar"; 

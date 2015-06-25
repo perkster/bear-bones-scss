@@ -1,0 +1,203 @@
+/********************  Bear Bones / Components / HEADERS ******************/
+@mixin bb_HeaderSizes(
+	$header-type : 'icon',
+	$map-name : null,
+	$header-group : false,
+	$icon-size : null,
+	$heading-size : null,
+	$subheading-size : null,
+	$p-size : null
+	){
+	@if ($map-name) {
+		@if(not($icon-size)) {
+			$icon-size: map-deep-get($bb-headers, #{$header-type}, #{$map-name}, 'icon-size');
+		}
+		@if(not($heading-size)) {
+			$heading-size: map-deep-get($bb-headers, #{$header-type}, #{$map-name}, 'heading-size');
+		}
+		@if(not($subheading-size)) {
+			$subheading-size: map-deep-get($bb-headers, #{$header-type}, #{$map-name}, 'subheading-size');
+		}
+		@if(not($p-size)) {
+			$p-size: map-deep-get($bb-headers, #{$header-type}, #{$map-name}, 'p-size');
+		}
+
+	}
+	@if($header-type == 'icon') {
+		i {
+			font-size: $icon-size;
+		}
+	}
+	@if($header-type == 'image') {
+
+	}
+	@if($header-group == true) {
+		p {
+			font-size: $p-size;
+			margin-bottom: 0;
+		}
+		div {
+			> p:first-of-type {
+				font-size: $heading-size;
+			}
+			> p:nth-of-type(2) {
+				font-size: $subheading-size;
+			}
+		}
+	
+	} @else {	
+		
+		p {
+			font-size: $p-size;
+			margin-bottom: 0;
+		}
+		p:first-of-type {
+				font-size: $heading-size;
+			}
+		
+		p:nth-of-type(2) {
+			font-size: $subheading-size;
+		}
+	}
+
+}
+
+
+@if ($bb-components-headers == true) {
+	
+	// -------- ICON HEADERS ----------- //
+	%#{$namespace}-icon-header {
+		font-size: inherit;
+		text-rendering: auto;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		transform: translate(0, 0);
+	}
+
+	%#{$namespace}-fa-icon-header {
+		@extend %#{$namespace}-icon-header;
+		font-family: FontAwesome;	
+	}
+
+	/* 
+	%#{$namespace}- {
+		@extend %#{$namespace}-;
+	
+	}
+	*/
+	%#{$namespace}-icon-header--left {
+		i, div {
+			display: table-cell;
+			vertical-align: map-deep-get($bb-headers, 'icon', 'left', 'vertical-align');
+		}
+		i {
+			@extend %#{$namespace}-icon-header;			
+			font-size: map-deep-get($bb-headers, 'icon', 'left', 'size');
+		}
+		div {
+			padding-left: map-deep-get($bb-headers, 'icon', 'left', 'padding-left');
+		}
+		//@include bb_iconHeaderSize('left');
+		
+	}
+	%#{$namespace}-icon-header--center {
+		text-align: center;
+		margin: 2*$bb-base-spacing-unit 0 $bb-base-spacing-unit;
+		i {
+			@extend %#{$namespace}-icon-header;
+			//display: block;
+			float: none;
+			width: auto;
+			height: auto;
+			padding: 0;
+			margin: 0 auto .25*$bb-base-spacing-unit;
+		}
+		//@include bb_iconHeaderSize('center');
+	
+	}
+	
+	// -------- IMAGE HEADERS ----------- //
+	%#{$namespace}-image-header {
+		img {
+			display: inline-block;
+			height: auto;
+		}
+	}
+	%#{$namespace}-image-header--left {
+		@extend %#{$namespace}-icon-header;
+		img {			
+			margin-top: map-deep-get($bb-headers, 'image', 'left', 'margin-top');
+			width: map-deep-get($bb-headers, 'image', 'left', 'width');
+			vertical-align: map-deep-get($bb-headers, 'image', 'left', 'vertical-align');
+		}
+		//first p should be heading, first div should be a heading group
+		p:nth-of-type(1), div:first-of-type {
+			display: inline-block;
+		}
+
+	}
+	%#{$namespace}-image-header--center {
+		text-align: center;
+		margin: 2*$bb-base-spacing-unit 0 $bb-base-spacing-unit;
+	}
+	// -------- HEADING GROUP ----------- //
+	%#{$namespace}-heading-group {
+	/* In order to easily differentiate without having to keep assigning class names, use p+img for images, and div+i for icons */
+		p {
+			margin: 0;
+		}
+		img {
+			display: inline-block;
+			margin-right: map-get($bb-font, horizontal);
+			vertical-align: middle;
+		}
+		div, i {
+			display: table-cell;
+			vertical-align: middle;
+		}
+		i {
+			margin-right: map-get($bb-font, horizontal);
+		}
+		img + div {
+			display: inline-block;
+		}
+	}
+}
+
+@if ($bb-test-headers == true) {
+	.icon-header--center {
+		@extend %#{$namespace}-icon-header--center;
+		@include bb_HeaderSizes('icon', 'center');
+	}
+	.icon-header--left {
+		@extend %#{$namespace}-icon-header--left;
+		@include bb_HeaderSizes('icon', 'left');
+	}
+	.icon-header-group--left {
+		@extend %#{$namespace}-icon-header--left;
+		//@extend %#{$namespace}-heading-group;
+		@include bb_HeaderSizes('icon', 'left', $header-group : true);
+	}
+	.icon-header--test {
+		@extend %#{$namespace}-icon-header--left;
+		@include bb_HeaderSizes('icon', 'test');
+	}
+	
+	.image-header--center {
+		@extend %#{$namespace}-image-header--center;
+		@include bb_HeaderSizes('image', 'center');
+	}
+	.image-header--left {
+		@extend %#{$namespace}-image-header--left;
+		@include bb_HeaderSizes('image', 'left');
+	}
+	.image-header-group--left {
+		@extend %#{$namespace}-image-header--left;
+		//@extend %#{$namespace}-heading-group;
+		@include bb_HeaderSizes('image', 'left', $header-group : true);
+	}
+	.image-header--test {
+		@extend %#{$namespace}-image-header--left;
+		@include bb_HeaderSizes('image', 'test');
+	}
+}

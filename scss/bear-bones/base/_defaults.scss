@@ -1,169 +1,392 @@
-//********************  Bear Bones / Base / Defaults ******************/
+//*-------     _DEFAULTS.SCSS ---------*/
 
-@function px($fontSize, $lineHeightNumber: $line-height-ratio) {
-   @if $fontSize == 0 { @return 0 }
-   $pxValue : $lineHeightNumber * $fontSize;   
-   @return $pxValue;
-}
+$namespace: "bb";
+$namespace-: "bb-";
 
-//*Do you want all elements to adopt box-sizing:border-box; as per * paulirish.com/2012/box-sizing-border-box-ftw ?*/ $global-border-box: true!default; 
- 
-$content-width: 90%!default; 
- 
-//******* FONT *********/
-$base-font-size:    16px!default;
-$base-font-family:  Sans-serif!default;
-$brand-font-family: $base-font-family!default;
-
-$heading-font-family: $base-font-family!default;
-$heading-font-weight:	bold!default;
-$type-scale			:	"Minor Second"!default;
-
-//******** FONT SIZES ********/
-
-$h1-default	:	2.25!default;
-$h2-default	:	2!default;
-$h3-default	:	1.5!default;
-$h4-default	: 	1.25!default;
-$h5-default :	1!default;
-$h6-default :	.875!default;
-$giga-default:         6!default;
-$mega-default:         5!default;
-$kilo-default:         4!default;
-$milli-default:        .75!default;
-$micro-default:        .625!default;
-
-//* Vertical Rythm ******************/
-//* For more information check out http://csswizardry.com/2012/06/single-direction-margin-declarations/ */
-$line-height-ratio: 1.25!default;
-$paragraph-spacing: $line-height-ratio!default;
-$paragraph-spacing--px	: $paragraph-spacing  + 0px!default;
-$paragraph-spacing--em: $line-height-ratio*1em!default;
-$base-line-height : px($base-font-size, $line-height-ratio)!default;
-
-$base-spacing-unit: $line-height-ratio!default;
-$base-spacing-unit--em: $line-height-ratio + 0em!default;
-$base-spacing-unit--px: $base-line-height!default;
-$half-spacing-unit: $base-spacing-unit / 2!default;
-$half-spacing-unit--px: $base-spacing-unit--px / 2!default;
-$half-spacing-unit--em: $base-spacing-unit--em / 2!default;
-
-//******** BREAK POINTS ***********/
-$lap-start:         481px!default;
-$desk-start:        1024px!default;
-$desk-wide-start:   1200px!default;
+// ************************ PLUGINS IN USE ****************************//
+$bb-use-include-media : true!default;
 
 
-//********** QUOTES *************/
-$english-quotes:    false!default;
-//* If you want English quotes then please do not edit these; they’re only here because Sass needs them. */
-$open-quote:    null;
-$close-quote:   null;
+// ************************** BASE  **************************** //
+
+// ------------- ACCESSIBILITY ------------- //
+$bb-base-accessibility : true!default;
+
+// ------------- CLEARFIX ------------- //
+$bb-base-clearfix : true!default;
+
+// ------------- FOUNDATION ------------- //
+$bb-base-foundation : true!default;
+$bb-foundation: (
+	box-sizing: true,
+	transition: .3s,
+	//small: 80%,
+	//subsup: 75%
+)!default;
+
+// ------------- FUNCTIONS ------------- //
+
+// ------------- LAYOUT ------------- //
+$bb-base-layout : true!default;
+$bb-test-layout : false!default;
+$bb-layout-default: (
+	'full-width-max': 1200px,
+	'full-width-percentage': 80%,
+	'use' : true,
+	'components' : (
+		'topbar' : 'wrapper',
+		'second-topbar' : 'wrapper',
+		'footer' : 'wrapper'
+	)
+)!default;
+$bb-layout-custom: ()!default;
+$bb-layout: map-extend($bb-layout-default, $bb-layout-custom, true);
+// ------------- MIXINS ------------- //
+
+// ------------- WORDPRESS REQUIRED ------------- //
+$bb-base-wordpress-required : true!default;
 
 
-//*********** BRAND *****************/
-$brand-color:       #4a8ec2!default;
-$brand-face:        "Helvetica Neue", sans-serif!default;
+
+
+
+
+
+
+// ************************** TYPOGRAPHY **************************** //
+
+// -------------- TYPOGRAPHY -------------- //
+$bb-test-typography : false!default;
+$bb-font-default: (
+	'size': 17px,
+	'size--phone': 14px,
+	'size--tablet': 15px,
+	'family': Sans-serif,
+	'line-height-ratio': 1.25,
+	'type-scale': 'default',
+	'default-type-scale': (
+		h1:	2.25,
+		h2:	2,
+		h3:	1.5,
+		h4:	1.25,
+		h5:	0.9,
+		h6:	0.875,
+	),
+	'giga': 5,
+	'mega': 4,
+	'kilo': 3,
+	'lead': 1.125em,
+	'small': 0.75em,
+	'micro': 0.625em,
+	'subheading': 0.85em,
+	'subsup': 75%
+)!default;
+$bb-font-custom: ()!default;
+$bb-font: map-extend($bb-font-default, $bb-font-custom, true);
+$bb-base-line-height : px(map-get($bb-font, size), map-get($bb-font, line-height-ratio));
+
+// --- Shadows --- //
+$text-shadow--average : 2px 4px 3px rgba(0,0,0,0.3);
+$text-shadow--multiple : 0px 15px 5px rgba(0,0,0,0.1),
+                 10px 20px 5px rgba(0,0,0,0.05),
+                 -10px 20px 5px rgba(0,0,0,0.05);
+
+
+		 
+				 
+// -------------- TYPE SCALE -------------- //
+$bb-use-type-scale : true!default;
+$bb-test-type-scale : false!default;
+
+
+// -------------- VERTICAL RHYTHM -------------- //
+$bb-typography-vertical-rhythm: true!default;
+$bb-spacing: (
+	'micro' : .2,
+	'small' : .333,
+	'half' : .5,
+	'two-thirds' : .667,
+	'default' : 1,	
+	'medium' : 1.5,
+	'golden' : 1.61803398875,
+	'large' : 2,
+	'x-large' : 2.5
+)!default;
+//Spacing units used throught for other things such as media, islands, islet, etc.
+$bb-base-spacing-unit: map-get($bb-font, line-height-ratio) * 1em!default;
+$bb-base-spacing-unit--px: px(map-get($bb-font, line-height-ratio))!default;
+$bb-base-spacing-unit--islet: map-get($bb-spacing, 'half') * 1em!default;
+$bb-test-vr: false!default;
+
+// -------------- CODE -------------- //
+$bb-typography-code: true!default;
+$bb-code-default: (
+	'line-height-ratio': map-get($bb-font, line-height-ratio),
+	'family': (Menlo,Monaco,Consolas,"Courier New",monospace),
+	'code':(
+		'padding': (2px 4px),
+		'size': 90%,
+		'bgc' : map-deep-get($bb-colors, 'light-red', 'bgc'),
+		'color' : map-deep-get($bb-colors, 'light-red', 'font'),
+		'radius': 3px
+	),
+	'pre':(
+		'bgc' : map-deep-get($bb-colors, 'light-blue', 'bgc'),
+		'border-color' : map-deep-get($bb-colors, 'light-blue', 'border'),
+		'color' : map-get($bb-colors, 'ui--dark'),
+		'line-height' :  0.5em,
+		'padding' : 1em,
+		'radius' : null,
+		'size': 90%,
+		'spacing': 'small'
+	),
+	'kbd':(
+		'size': 90%,
+		'bgc' : map-get($bb-colors, 'ui--dark'),
+		'color' : white,
+		'padding' : (2px 4px),
+		'radius' : 3px,
+		'shadow' : (inset 0 -1px 0 rgba(0,0,0,.25))		
+	)
+)!default;
+$bb-code-custom: ()!default;
+$bb-code: map-extend($bb-code-default, $bb-code-custom, true);
+
+
+// -------------- HEADINGS -------------- //
+$bb-typography-headings: true!default;
+$bb-headings-default: (
+	line-height-ratio: map-get($bb-font, line-height-ratio),
+)!default;
+$bb-headings-custom: ()!default;
+$bb-headings: map-extend($bb-headings-default, $bb-headings-custom, true);
+
+
+
+// ************************** TEXTURE  ************************** //
+
+// -------------- BRAND/ROUND -------------- //
 //* How big would you like round corners to be by default? */
-$brand-round:        6px!default;
-$use-rounded-corners:	false!default;  //@TODO: when setting up brand for theme */
-
+$bb-brand-default: (
+	'round' : 6px,
+	'use' : false,
+	'style': all,
+)!default;
+$bb-brand-custom: ()!default;
+$bb-brand: map-extend($bb-brand-default, $bb-brand-custom, true);
 //*Brand round style options are: all, top, bottom, left, right or specific instructions for the Compass Border Radius http://compass-style.org/reference/compass/css3/border_radius/ */
-$brand-round-style: all!default;
-//* .brand-round class will be created. Class can be extended. */
+//* %#{namespace}-brand-round class will be created. Class can be extended. */
+$bb-test-texture: false!default;
 
 
-//********** MODULES / OBJECTS ***********/
-$use-arrows			:	false!default;
-$use-buttons		:	false!default;
-$use-block-list		:	false!default;
-$use-breadcrumb		:	false!default;
-$use-columns		:	false!default;
-$use-flexbox		:	false!default;
-$use-grids			:	false!default;
-$use-island			:	false!default;
-$use-marginalia		:	false!default;
-$use-meanmenu		:	false!default;
-$use-media			:	false!default;
-$use-nav			:	false!default;
-$use-pagination		:	false!default;
-$use-rules			:	false!default;
-$use-flyout			:	false!default;
-$use-sprite			:	false!default;
-$use-icon-text		:	false!default;
+
+// ************* HTML  ************* //
+
+// ------------- IMAGES ------------- //
+$bb-html-images: true!default;
+$bb-test-images: false!default;
+
+// ------------- IMAGES ------------- //
+$bb-html-lists: true!default;
+$bb-test-lists: false!default;
+
+// ------------- QUOTES ------------- //
+$bb-html-quotes: true!default;
+$bb-quotes: (
+	'open': '\201C',
+	'close': '\201D',
+	'inside-open' : '\2018',
+	'inside-close' : '\2019',
+	'margin' : $bb-base-spacing-unit,
+	'padding': $bb-base-spacing-unit--islet,
+	'output': true,
+	'bgc' : #f9f9f9,
+	'border': thin solid #ccc,
+	'round': map-get($bb-brand, 'use'),
+	'left': (
+		'bgc': null,
+		'border-color': map-get($bb-colors, 'font')
+	),
+	'left--thick': (
+		'bgc' : #f9f9f9,
+		'border-color': #ccc,
+		'spacing' : 'islet',
+		'round': map-get($bb-brand, 'use'),
+	),
+	'outside-quote': (
+		'color': #ccc,
+		'family': (Georgia,"Times New Roman", serif),
+		'size': 4em,
+		'mr': 0.25em,
+		'mt': -1rem,
+		'ml':-3.25rem,
+		'height' : 1rem,
+		'style': italic,
+		'box-margin-left' : 2.95em,
+		'box-margin-right' : 0
+	),
+	'inside-quote': (
+		'bgc' : '#f9f9f9',
+		'border-color': '#ccc',
+		'color': #999,
+		'family': (Georgia,"Times New Roman", serif),
+		'size': 3em,		
+		'ml': 0,
+		'mt': -1rem,
+		'mr': 0.75rem,
+		'height' : 1rem,
+		'style': italic,
+		'box-margin-left' : 1em,
+		'box-margin-right' : 1em
+
+	),
+	'big-color': '#ccc',
+	'big-font':(italic 400%/1 Cochin,Georgia,"Times New Roman", serif),
+	'big-family': (Georgia,"Times New Roman", serif),
+	'big-size': 4em,
+	'big-mr': 0.25em,
+	'big-style': italic
+)!default;
+$bb-test-quotes: false!default;
+
+// ------------- RULES ------------- //
+$bb-html-rules			:	true!default;
+$bb-test-rules : false!default;
 
 
-//* Background image size for full width background */
-$bg_image_width : 1024px!default;
-
-//*   $BORDER-BOX */
-//* Do you want all elements to adopt `box-sizing:border-box;` as per Paulirish.com/2012/box-sizing-border-box-ftw ? */
-$global-border-box: true!default;
-
-//******  RESPONSIVE DESIGN ********/
-$responsive			:  true!default;
-$lap-start			:  481px!default;
-$desk-start			:  1024px!default;
-$desk-wide-start	:  1200px!default;
-
-//* Responsiveness for widescreen/high resolution desktop monitors and beyond? Note: `$responsive` variable above must be set to true before enabling this. */ 
-$responsive-extra:  false!default;
-
-//********* PUSH & PULL ***************/
-
-//* PUSH - Responsive push and pull produce a LOT of code, only turn them on if you definitely need them. */
- $push:              false!default;
-
-//*Note: `$push` variable above must be set to true before enabling these. */
-$palm-push:         false!default;
-$lap-push:          false!default;
-$lap-and-up-push:   false!default;
-$portable-push:     false!default;
-$desk-push:         false!default;
+// ************* OBJECTS  ************* //
 
 
-//* PULL */
-$pull:              false!default;
+// ------------- BUTTONS ------------- //
+$bb-objects-buttons : true!default;
+$bb-buttons-default: (
+	'primary' : (
+		'bgc' : map-deep-get($bb-colors, 'accent-color', 'bgc'), //background-color
+		'border-color' : null,
+		'color' : white,		
+		//'line-height' : map-get($bb-font, 'line-height-ratio'),
+		'line-height' : $bb-base-spacing-unit,
+		'padding-vertical' : 0.25em,
+		'padding-horizontal' : 0.5em,
+		'push' : null,
+		'radius' : map-get($bb-brand, 'round'),
+		'size' : 1em,
+		//'trans' : 0.2s ease-in-out,
+		'trans' : null,
+		'hover' : (
+			'color' : null,
+			'bgc' : darken(map-deep-get($bb-colors, 'accent-color', 'bgc'), 20%),
+			'border-color' : null
+		)
+	),
+	'inline' : (
+		'padding-vertical': 0,
+		'padding-horizontal': 0.25em
+	)
+)!default;
+$bb-buttons-custom: ()!default;
+$bb-buttons: map-extend($bb-buttons-default, $bb-buttons-custom, true);
+$bb-test-buttons : false!default;
 
-//Note: `$pull` variable above must be set to true before enabling these.
-$palm-pull:         false!default;
-$lap-pull:          false!default;
-$lap-and-up-pull:   false!default;
-$portable-pull:     false!default;
-$desk-pull:         false!default;
+// ------------- ISLAND ------------- //
+$bb-objects-island			:	true!default;
+$bb-test-island : false!default;
 
-//* Button variables */
-$btn_bg_color			: 	$accent-color!default;
-$btn_bg_color--hover	: darken($btn_bg_color, 6%);
-$btn_font_color			: 	$accent-color--font!default;
-$btn_border_color		:	darken($accent_color, 20%)!default;
-$btn2_bg_color			: 	$accent-color2!default;
-$btn2_font_color		: 	$accent-color2--font!default;
-$btn2_border_color		:	darken($accent_color2, 20%)!default;
+// ------------- MARGINALIA ------------- //
+$bb-objects-marginalia			:	false!default; //need to set this up
 
-$btn--use-round: true !default;
-$btn--use-border: true !default;
-$btn--use-push: true!default;
-$btn--use-trans: true!default;
-$btn--text-capitalize: false!default;
-$btn--text-shadow: false!default;
-$btn-font-size: 1.1em!default;
-$btn-padding-ends: 0.5em!default;
-$btn-padding-sides: 0.5em!default;
-$btn-line-height: 2em!default;
-$use-btn-line-height: false!default;
+// ------------- MEDIA ------------- //
+$bb-objects-media-stubornella: true!default;
+$bb-test-media-sturbonella : false!default;
+
+// ------------- NAV ------------- //
+$bb-objects-nav			:	true!default;
+$bb-test-nav : false!default;
+
+// ------------- SIMPLE GRID ------------- //
+$bb-simple-gutter: 1.5em!default;
+$bb-objects-simple-grid: true!default;
+
+
+
+//********** TABS **************/
+$bb-objects-jquery-tabs : true!default;
+$bb-jquery-tabs-default: (
+	'right': (
+		'min-width': 10em
+	),
+	'top': (
+	
+	)
+)!default;
+$bb-jquery-tabs-custom: ()!default;
+$bb-jquery-tabs: map-extend($bb-jquery-tabs-default, $bb-jquery-tabs-custom, true);
+//$bb-ui-tabs-right-min-width :  10em!default;
+
+
+
+// ************* COMPONENTS  ************* //
+$bb-components-social : true!default;
+$bb-test-social : false!default;
+$bb-social-default: (
+	'bgc': map-deep-get($bb-colors, 'accent-color', 'bgc'),
+	'bgc--hover': 'social',
+	'color' : white,
+	'color--hover': white,
+	'fa-padding' : 0.28em,
+	'width' : 1.5em,
+	'radius' : null,
+	'size' : 1em,
+)!default;
+$bb-social-custom: ()!default;
+$bb-social: map-extend($bb-social-default, $bb-social-custom, true);
+
+
+// ************* LAYOUTS ************* //
+$bb-layouts-topbar : true!default;
+$bb-test-topbar : false!default;
+$bb-topbar-default: (
+	'topbar':(
+		'bgc' : map-deep-get($bb-colors, 'topbar', 'bgc'),
+		'color' : map-deep-get($bb-colors, 'topbar', 'color'),
+		'full' : true,
+		'height' : $bb-base-line-height,
+		'link' : map-deep-get($bb-colors, 'topbar', 'link'),
+		'link--hover' : map-deep-get($bb-colors, 'topbar', 'link--hover'),
+		'navbar' : 'justified', //options: navbar, justified
+		'padding': null,
+		'size' : 1rem,
+		'submenu' : true,
+		'whitespace' : true
+	),
+	'second' : (
+		'bgc' : map-deep-get($bb-colors, 'second-topbar', 'bgc'),
+		'color' :  map-deep-get($bb-colors, 'second-topbar', 'color'),
+		'full' : true,
+		'height' : $bb-base-line-height,
+		'link' : map-deep-get($bb-colors, 'second-topbar', 'link'),
+		'link--hover' : map-deep-get($bb-colors, 'second-topbar', 'link--hover'),
+		'navbar' : 'justified', //options: navbar, justified
+		'padding' : null,
+		'size' : 1rem,
+		'submenu' : true,
+		'whitespace' : true,
+	)
+)!default;
+$bb-topbar-custom: ()!default;
+$bb-topbar: map-extend($bb-topbar-default, $bb-topbar-custom, true);
 
 //* Form variables */
-$form-font-family		:	$base-font-family!default;
+$form-font-family		:	map-get($bb-font, family);
 $form-font-color				: #666!default;
-$form-input-padding			: $half-spacing-unit--em!default;
+$form-input-padding			:  0.5em!default;
 $form-input-background-color	:	white!default;
-$form-input-border-color		:	$lightneutralcolor!default;
+$form-input-border-color		:	$whiteIsabelline!default;
 $form-input-border-width		:	1px!default;
 $form-input-border-style		:	solid!default;
 $form-input-border-color-hover 		: darken($form-input-border-color, 10%)!default;
 $form-input-border-color-focus 		: darken($form-input-border-color, 25%)!default;
-$form-placeholder-color 			: $lightneutralcolor!default;
+$form-placeholder-color 			: $whiteEggshell!default;
 
 //* Meanumenu */
-$meanmenu_bg_color			:	$accent-color!default;
+$meanmenu_bg_color			:	map-deep-get($bb-colors, 'accent-color', 'bgc')!default;

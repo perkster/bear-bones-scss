@@ -1,0 +1,56 @@
+/********************* Bear Bones / Typography / CODE ********************/
+
+
+//* code classes */
+
+code, kbd, pre, samp {
+  font-family: map-get($bb-code, 'family');
+}
+code {	
+	background-color: map-deep-get($bb-code, 'code', 'bgc');
+	border-radius: map-deep-get($bb-code, 'code', 'radius');
+	color: map-deep-get($bb-code, 'code', 'color');
+	font-size: map-deep-get($bb-code, 'code', 'size');
+	padding: map-deep-get($bb-code, 'code', 'padding');
+}
+kbd {
+	background-color: map-deep-get($bb-code, 'kbd', 'bgc');
+	border-radius: map-deep-get($bb-code, 'kbd', 'radius');
+	box-shadow: map-deep-get($bb-code, 'kbd', 'shadow');
+	color: map-deep-get($bb-code, 'kbd', 'color');
+	font-size: map-deep-get($bb-code, 'kbd', 'size');
+	padding: map-deep-get($bb-code, 'kbd', 'padding');
+}
+pre {
+	display: block;
+	unicode-bidi: embed;
+	word-break: break-all;
+	word-wrap: break-word;
+  
+	font-size: map-deep-get($bb-code, 'pre', 'size');
+	color: map-deep-get($bb-code, 'pre', 'color');
+	background-color: map-deep-get($bb-code, 'pre', 'bgc');
+	border: thin solid map-deep-get($bb-code, 'pre', 'border-color');
+	line-height: map-deep-get($bb-code, 'pre', 'line-height');
+	margin: 1em;
+	padding: map-deep-get($bb-code, 'pre', 'padding');
+	border-radius: map-deep-get($bb-code, 'pre', 'radius');
+	box-shadow: map-deep-get($bb-code, 'pre', 'shadow');
+	@extend %#{$namespace}-vr--#{map-deep-get($bb-code, 'pre', 'spacing')};
+	> :nth-child(n) {
+		margin: 0;
+		padding: 0;
+	}
+  /*padding: 9.5px;
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;*/
+}
+var {
+	font-style: italic;
+}
+

@@ -73,10 +73,6 @@
 	}
 }
 
-%bb-jquery-tabs--top {
-	@include bb-jquery-tabs--top;
-}
-
 @mixin bb-jquery-tabs--right {
 //@extend %bb-cf;
 	&:after{
@@ -88,7 +84,8 @@
 	width: 100%;
 	ul {
 		float: right;
-		min-width: $bb-ui-tabs-right-min-width;
+		//min-width: $bb-ui-tabs-right-min-width;
+		min-width: map-deep-get($bb-jquery-tabs, 'right', 'min-width');
 		margin-left: 0;
 		li {
 			list-style-type: none;
@@ -110,6 +107,13 @@
 	}
 }
 
-%bb-jquery-tabs--right {
-	@include bb-jquery-tabs--right;
+@if ($bb-objects-jquery-tabs == true) {
+
+	%#{$namespace}--jquery-tabs--top {
+		@include bb-jquery-tabs--top;
+	}
+
+	%#{$namespace}--jquery-tabs--right {
+		@include bb-jquery-tabs--right;
+	}
 }

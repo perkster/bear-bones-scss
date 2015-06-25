@@ -1,0 +1,107 @@
+//*-------     Defaults / OBJECTS ---------*/
+
+// ************* HTML  ************* //
+
+// ------------- FORMS ------------- //
+$bb-html-forms: true!default;
+$bb-test-forms: false!default;
+$bb-forms-default: (
+	'placeholder-color' : $nobel,
+	'placeholder-margin' : (0 0.25em),
+	'placeholder-focus-bgc' : rgba(0, 0, 0, 0.85),
+	'placeholder-focus-color' : white,
+	'print':(
+		'top' : -2em,
+		'padding' : 0.25em,
+		'transition' : map-get($bb-foundation, transition)
+	),
+)!default;
+$bb-forms-custom: ()!default;
+$bb-forms: map-extend($bb-forms-default, $bb-forms-custom, true);
+
+/*
+$form-font-family		:	map-get($bb-font, family);
+$form-font-color				: #666!default;
+$form-input-padding			:  0.5em!default;
+$form-input-background-color	:	white!default;
+$form-input-border-color		:	$whiteIsabelline!default;
+$form-input-border-width		:	1px!default;
+$form-input-border-style		:	solid!default;
+$form-input-border-color-hover 		: darken($form-input-border-color, 10%)!default;
+$form-input-border-color-focus 		: darken($form-input-border-color, 25%)!default;
+$form-placeholder-color 			: $whiteEggshell!default;
+*/
+
+// ------------- IMAGES ------------- //
+$bb-html-images: true!default;
+$bb-test-images: false!default;
+
+// ------------- IMAGES ------------- //
+$bb-html-lists: true!default;
+$bb-test-lists: false!default;
+
+// ------------- QUOTES ------------- //
+$bb-html-quotes: true!default;
+$bb-test-quotes: false!default;
+$bb-quotes-default: (
+	'open': '\201C',
+	'close': '\201D',
+	'inside-open' : '\2018',
+	'inside-close' : '\2019',
+	'margin' : $bb-base-spacing-unit,
+	'padding': $bb-base-spacing-unit--islet,
+	'output': true,
+	'bgc' : #f9f9f9,
+	'border': thin solid #ccc,
+	'round': map-get($bb-brand, 'use'),
+	'left': (
+		'bgc': null,
+		'border-color': map-get($bb-colors, 'font')
+	),
+	'left--thick': (
+		'bgc' : #f9f9f9,
+		'border-color': #ccc,
+		'spacing' : 'islet',
+		'round': map-get($bb-brand, 'use'),
+	),
+	'outside-quote': (
+		'color': #ccc,
+		'family': (Georgia,"Times New Roman", serif),
+		'size': 4em,
+		'mr': 0.25em,
+		'mt': -1rem,
+		'ml':-3.25rem,
+		'height' : 1rem,
+		'style': italic,
+		'box-margin-left' : 2.95em,
+		'box-margin-right' : 0
+	),
+	'inside-quote': (
+		'bgc' : '#f9f9f9',
+		'border-color': '#ccc',
+		'color': #999,
+		'family': (Georgia,"Times New Roman", serif),
+		'size': 3em,		
+		'ml': 0,
+		'mt': -1rem,
+		'mr': 0.75rem,
+		'height' : 1rem,
+		'style': italic,
+		'box-margin-left' : 1em,
+		'box-margin-right' : 1em
+
+	),
+	'big-color': '#ccc',
+	'big-font':(italic 400%/1 Cochin,Georgia,"Times New Roman", serif),
+	'big-family': (Georgia,"Times New Roman", serif),
+	'big-size': 4em,
+	'big-mr': 0.25em,
+	'big-style': italic
+)!default;
+$bb-quotes-custom: ()!default;
+$bb-quotes: map-extend($bb-quotes-default, $bb-quotes-custom, true);
+
+// ------------- RULES ------------- //
+$bb-html-rules			:	true!default;
+$bb-test-rules : false!default;
+

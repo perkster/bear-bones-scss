@@ -1,0 +1,72 @@
+//*-------     Defaults / OBJECTS ---------*/
+
+
+// ************* OBJECTS  ************* //
+
+
+// ------------- BUTTONS ------------- //
+$bb-objects-buttons : true!default;
+$bb-buttons-default: (
+	'primary' : (
+		'bgc' : map-deep-get($bb-colors, 'accent-color', 'bgc'), //background-color
+		'border-color' : null,
+		'color' : white,		
+		//'line-height' : map-get($bb-font, 'line-height-ratio'),
+		'line-height' : $bb-base-spacing-unit,
+		'padding-vertical' : 0.25em,
+		'padding-horizontal' : 0.5em,
+		'push' : null,
+		'radius' : map-get($bb-brand, 'round'),
+		'size' : 1em,
+		//'trans' : 0.2s ease-in-out,
+		'trans' : null,
+		'hover' : (
+			'color' : null,
+			'bgc' : darken(map-deep-get($bb-colors, 'accent-color', 'bgc'), 20%),
+			'border-color' : null
+		)
+	),
+	'inline' : (
+		'padding-vertical': 0,
+		'padding-horizontal': 0.25em
+	)
+)!default;
+$bb-buttons-custom: ()!default;
+$bb-buttons: map-extend($bb-buttons-default, $bb-buttons-custom, true);
+$bb-test-buttons : false!default;
+
+// ------------- ISLAND ------------- //
+$bb-objects-island			:	true!default;
+$bb-test-island : false!default;
+
+// ------------- MARGINALIA ------------- //
+$bb-objects-marginalia			:	false!default; //need to set this up
+
+// ------------- MEDIA ------------- //
+$bb-objects-media-stubornella: true!default;
+$bb-test-media-sturbonella : false!default;
+
+// ------------- NAV ------------- //
+$bb-objects-nav			:	true!default;
+$bb-test-nav : false!default;
+
+// ------------- SIMPLE GRID ------------- //
+$bb-simple-gutter: 1.5em!default;
+$bb-objects-simple-grid: true!default;
+
+
+
+//********** TABS **************/
+$bb-objects-jquery-tabs : true!default;
+$bb-jquery-tabs-default: (
+	'right': (
+		'min-width': 10em
+	),
+	'top': (
+	
+	)
+)!default;
+$bb-jquery-tabs-custom: ()!default;
+$bb-jquery-tabs: map-extend($bb-jquery-tabs-default, $bb-jquery-tabs-custom, true);
+//$bb-ui-tabs-right-min-width :  10em!default;
+

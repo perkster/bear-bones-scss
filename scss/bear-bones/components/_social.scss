@@ -1,0 +1,88 @@
+/********************  Bear Bones / Components / SOCIAL ******************/
+@if ($bb-components-social == true) {
+	%#{$namespace}-fa-social-menu {
+		.fa:before {
+			//padding: 0.25em;
+			padding : map-get($bb-social, 'fa-padding');
+			
+		}
+		li {
+			border-radius: map-get($bb-social, 'radius');
+			font-size: map-get($bb-social, 'size');
+			width: 1em + (map-get($bb-social, 'fa-padding') *2);
+			a {
+				//margin-left: -#{map-get($bb-social, 'size')};
+				margin-left: -(1em + (map-get($bb-social, 'fa-padding') *2));
+				display: inline-block;
+				//width: map-get($bb-social, 'size');
+				width: 1em + (map-get($bb-social, 'fa-padding') *2);
+				height: 1em;
+				span {
+					@if ($bb-base-accessibility == true) {
+						@extend %#{$namespace}-accessibility;
+					}
+				}
+			}
+		}
+	
+		$bb-socialColor : map-get($bb-social, 'color');
+		@if (map-has-keys($bb-colors, $bb-socialColor)) {
+			@each $profile, $bgcolor in (map-get($bb-colors, $bb-socialColor)) {
+				.fa-#{$profile}{
+					color: $bgcolor;
+				}
+			}
+		} @else {
+			li {
+				color: $bb-socialColor;
+			}
+		}
+		$bb-socialColorHover : map-get($bb-social, 'color--hover');
+		@if (map-has-keys($bb-colors, $bb-socialColorHover)) {
+			@each $profile, $bgcolor in (map-get($bb-colors, $bb-socialColorHover)) {
+				.fa-#{$profile}:focus,
+				.fa-#{$profile}:hover {
+					color: $bgcolor;
+				}
+			}
+		} @else {
+			li:hover {
+				color: $bb-socialColorHover;
+			}
+		}
+		$bb-socialBgc : map-get($bb-social, 'bgc');
+		@if (map-has-keys($bb-colors, $bb-socialBgc)) {
+			@each $profile, $bgcolor in (map-get($bb-colors, $bb-socialBgc)) {
+				.fa-#{$profile}{
+					background-color:  $bgcolor;
+				}
+			}
+		} @else {
+			li {
+				background-color: $bb-socialBgc;
+			}
+		}
+
+		$bb-socialBgcHover : map-get($bb-social, 'bgc--hover');
+		@if (map-has-keys($bb-colors, $bb-socialBgcHover)) {
+			@each $profile, $bgcolor in (map-get($bb-colors, $bb-socialBgcHover)) {
+				.fa-#{$profile}:focus,
+				.fa-#{$profile}:hover {
+					background-color: $bgcolor;
+				}
+			}
+		} @else {
+			li:hover {
+				background-color: $bb-socialBgcHover;
+			}
+		}
+	}
+}
+
+
+$bb-test-social : true;
+@if ($bb-test-social == true) {
+	.menu-social-test {
+		@extend %bb-fa-social-menu;
+	}
+}

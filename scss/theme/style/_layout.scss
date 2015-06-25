@@ -1,0 +1,11 @@
+/********************  Theme / LAYOUT  ******************/
+
+.content-wrapper, .container-wrapper {
+	@extend %#{$namespace}-full-width-wrapper;
+}
+.content-inner {
+	//@extend %lfia-full-width-inner;
+	@extend %#{$namespace}-full-width-inner;
+}
+
+

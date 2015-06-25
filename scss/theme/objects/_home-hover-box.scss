@@ -1,5 +1,5 @@
 /************ Theme / Objects / HOME HOVER BOX ***********/
-
+/*
 .home-phb__title-text {
 	@extend .h1;
 	color: white;
@@ -49,7 +49,9 @@
 		width: 60%;
 	}
 }
+*/
 ///************** DEFAULTS ****************/
+/*
 .bb-phb {
 	overflow: hidden;
     position: relative;
@@ -106,7 +108,7 @@
 .bb-phb__title-text  {
 	/*height: 2em;
 	max-height: 2em;
-	padding: 0.25em*/
+	padding: 0.25em*//*
 }
 
 .bb-phb__content {
@@ -123,6 +125,7 @@
 
 
 /********* Transitions *************/
+/*
 .bb-phb__img {
 	//transform: scaleY(1);
     //transition: all 0.7s ease-in-out;
@@ -141,3 +144,4 @@
 .bb-phb:hover .bb-phb__content { 
     //opacity: 1;
 }          
+*/

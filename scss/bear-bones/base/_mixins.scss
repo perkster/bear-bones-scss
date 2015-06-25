@@ -4,14 +4,7 @@
 	@extend .#{$class-to-extend};
 }
 
-//* Create vendor-prefixed CSS in one go, e.g. `@include vendor(border-radius, 4px); */
-@mixin vendor($property, $value...){
-    -webkit-#{$property}:$value;
-       -moz-#{$property}:$value;
-        -ms-#{$property}:$value;
-         -o-#{$property}:$value;
-            #{$property}:$value;
-}
+
 
 //* Create CSS keyframe animations for all vendors in one go, e.g.:
 //* .foo{ @include vendor(animation, shrink 3s);  }
@@ -56,82 +49,11 @@
 }
 
 
-//* Media query mixin:  palm, lap, lap-and-up, portable, desk, desk-wide
-//* @include media-query(palm){ [styles here] }; */
-
-$palm-end:              $lap-start - 1px;
-$lap-end:               $desk-start - 1px;
-
-@mixin media-query($media-query){
-
-    @if $media-query == palm{
-
-        @media only screen and (max-width:$palm-end) { @content; }
-
-    } @elseif $media-query == lap{
-
-        @media only screen and (min-width:$lap-start) and (max-width:$lap-end) { @content; }
-
-    } @elseif $media-query == lap-and-up{
-
-        @media only screen and (min-width:$lap-start) { @content; }
-
-    } @elseif $media-query == portable{
-
-        @media only screen and (max-width:$lap-end) { @content; }
-
-    } @elseif $media-query == desk{
-
-        @media only screen and (min-width:$desk-start) { @content; }
-
-    } @elseif $media-query == desk-wide{
-
-        @media only screen and (min-width: $desk-wide-start) { @content; }
-
-    } @else {
-	
-		    @media only screen and ($media-query) { @content; }
-	}
-
-}
 
 
 
-//* This mixin is based off of the original headings() mixin from inuit.css
-//* I updated it so you can do any kind of consecutive numbered classes. Is there a need other than headings? Not sure but why limit it now? */
-//* Example: @include update_numbered_classes(1, 3, h){
- //*           color:$accent_color;
- //*       } */
- 
-@mixin update_numbered_classes($from: 1, $to: 6, $class : false){
-    %base-heading {
-        @content
-    }
-        @for $i from $from through $to{
-			@if ($class != false) {
-				.#{$class}#{$i} {
-					@extend %base-heading;
-				}
-			}
-        }    
-}
-
-//* used through out different objects such as nav, breadcrumb, etc*/
-@mixin inline-list($marginLeft : 0, $cf : true) {
-	list-style:none;
-    margin-left:$marginLeft;
-    @if($cf == true) { @extend .cf; }
-
-    > li, li a{
-
-            display:inline-block;
-           *display:inline;
-            zoom:1;
-
-    }
-}
-
-@mixin set_border($color : $accent_color, $side : false, $last : false, $useRound : $use-rounded-corners) {
+//@TODO: remove rounded-corners - should be separate.
+@mixin set_border($color : $accent_color, $side : false, $last : false, $useRound : map-get($bb-brand, 'use')) {
 	@if($side != false) {
 		border-#{$side}: thin solid $color;
 		@if($last == false) {
@@ -141,25 +63,16 @@ $lap-end:               $desk-start - 1px;
 		}
 	} @else {
 		border: thin solid $color;
-		@if( $useRound == true) { @extend %brand-round	};
+		@if( $useRound == true) { @extend %#{$namespace}-brand-round	};
 	}	
 }
 
-@mixin placeholder($color : $neutralcolor) {
 
-	&:-moz-placeholder {
-	@include font-size(.9);
-	color : $color; }
 
-	&::-moz-placeholder {
-	@include font-size(.9);
-	color : $color; }
-
-	&:-ms-input-placeholder {
-	@include font-size(.9);
-	color : $color; }
-
-	&::-webkit-input-placeholder {
-	@include font-size(.9);
-	color : $color; }
+@mixin bb_resizable($direction: both) {   
+	// Options: horizontal, vertical, both   
+	resize: $direction;   
+	// Safari fix   
+	overflow: auto; 
 }
+

@@ -1,16 +1,19 @@
+@if ($bb-html-images == true) {
 /********************  Bear Bones / Html / IMAGES ******************/
-.img--rounded { @extend .brand_round;}
-.img--circle { @include border-radius(500px);}
-.img--polaroid {
-	padding: $base-spacing-unit--em;
-	background-color: white;
-	border: thin solid $base-ui-color;
-}
-figcaption {
-	display: block;
-	font-style: italic;
-}
-img {
-	max-width: 100%;
-	height: auto;	
+
+	%#{$namespace}-img--rounded { border-radius: map-get($bb-brand, 'round'); }
+	%#{$namespace}-img--circle { border-radius: 500px;}
+	%#{$namespace}-img--polaroid {
+		padding: $bb-base-spacing-unit;
+		background-color: white;
+		border: thin solid map-get($bb-colors, 'ui');
+	}
+	figcaption {
+		display: block;
+		font-style: italic;
+	}
+	img {
+		max-width: 100%;
+		height: auto;	
+	}
 }

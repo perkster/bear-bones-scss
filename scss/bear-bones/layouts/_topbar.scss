@@ -1,0 +1,84 @@
+/********************  Bear Bones / Layouts / Topbar ******************/
+
+@if ($bb-layouts-topbar == true) {
+	
+	/*@if (map-deep-get($bb-topbar, 'topbar', 'full') ) {
+		.topbar-wrapper {
+			@extend %#{$namespace}-full-width-wrapper;
+			background-color: map-deep-get($bb-topbar, 'topbar', 'bgc');
+		}
+		.topbar {
+			@extend %#{$namespace}-full-width-inner;
+		}
+	} */
+	.topbar-wrapper {
+		height: map-deep-get($bb-topbar, 'topbar', 'height');
+		padding: map-deep-get($bb-topbar, 'topbar', 'padding');
+		background-color: map-deep-get($bb-topbar, 'topbar', 'bgc');
+	}
+	.topbar {
+		color: map-deep-get($bb-topbar, 'topbar', 'color');
+		background-color: map-deep-get($bb-topbar, 'topbar', 'bgc');
+		a {
+			color: map-deep-get($bb-topbar, 'topbar', 'link');
+			&:hover {
+				color: map-deep-get($bb-topbar, 'topbar', 'link--hover');
+			}
+		}
+		ul {
+			margin-bottom: 0;
+		}
+		@if ( map-deep-get($bb-topbar, 'topbar', 'submenu')) {
+			@extend %#{$namespace}-submenu;
+		}
+	}
+	
+	
+	/********* Second Topbar *********/
+	/*@if (map-deep-get($bb-topbar, 'second', 'full') ) {
+		.second-topbar-wrapper {
+			@extend %#{$namespace}-full-width-wrapper;
+			background-color: map-deep-get($bb-topbar, 'second', 'bgc');
+		}
+		.second-topbar {
+			@extend %#{$namespace}-full-width-inner;
+		}
+	}*/
+	
+	.second-topbar-wrapper {
+		//height: map-get($bb-font, 'line-height-ratio') + map-deep-get($bb-topbar, 'second', 'height');
+		height: map-deep-get($bb-topbar, 'second', 'height');
+		padding: map-deep-get($bb-topbar, 'second', 'padding');
+		background-color: map-deep-get($bb-topbar, 'second', 'bgc');
+	}
+	.second-topbar {
+		color: map-deep-get($bb-topbar, 'second', 'color');
+		background-color: map-deep-get($bb-topbar, 'second', 'bgc');
+		a {
+			color: map-deep-get($bb-topbar, 'second','link');
+			&:hover {
+				color: map-deep-get($bb-topbar, 'second', 'link--hover');
+			}
+		}
+		ul {
+			//margin-bottom: 0;
+			font-size: 0;
+			@if ( map-deep-get($bb-topbar, 'second', 'whitespace')) {
+				margin-bottom: -$bb-base-line-height;
+			}
+			li {
+				font-size: map-deep-get($bb-topbar, 'second', 'size');;
+			}
+		}
+
+		@if ( map-deep-get($bb-topbar, 'second', 'submenu')) {
+			@extend %#{$namespace}-submenu;
+		}
+		
+	}
+	
+}
+
+@if ($bb-test-topbar == true) {
+
+}

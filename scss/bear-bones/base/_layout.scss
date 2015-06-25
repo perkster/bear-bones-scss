@@ -1,39 +1,49 @@
 /********************  Bear Bones / Objects / LAYOUT ******************/
-@mixin full-width-inner ( $percentage : $full-width-percentage,  $max-width : $full-width-max ) {
+
+//@mixin bb-full-width-inner ( $percentage : $full-width-percentage,  $max-width : $full-width-max ) {
+@mixin bb-full-width-inner ( $percentage : map-get($bb-layout, full-width-percentage),  $max-width : map-get($bb-layout, full-width-max)) {
 	margin: 0 auto;
-	width: $percentage;
-	max-width: $max-width;
+	@include media(">#{$max-width}"){
+		width: $percentage;
+		max-width: $max-width;
+	}
 }
 
-%full-width-wrapper,  %full-width--wrapper {
-	width: 100%;
-	@extend %bb-cf;
-}
-%full-width-inner,  %full-width--inner {
+@mixin bb_fullWidthComponents ($components : null ) {
 	
-	//width: $full-width-percentage;
-	//max-width: $full-width-max;
-	@include full-width-inner();
 }
 
-$mq-mobile : 'max-width: #{$bp-mobile}';
-$mq-mobile-only : 'max-width: #{$bp-mobile}';
-$mq-smartphone : 'max-width: #{$bp-smartphone-end}';
-$mq-smartphone-and-up : 'min-width: #{$bp-smartphone-start}';
-$mq-tablet-and-up : 'min-width: #{$bp-tablet-start}';
-$mq-tablet : 'min-width: #{$bp-tablet-start}) and (max-width: #{$bp-tablet-end}';
-$mq-tablet-only : 'min-width: #{$bp-tablet-start}) and (max-width: #{$bp-tablet-end}';
-$mq-handheld : 'max-width: #{$bp-tablet-end}';
-$mq-tablet-landscape-and-up : 'min-width: #{$bp-tablet-start}) and (orientation : landscape';
-$mq-tablet-and-lap : 'min-width: #{$bp-tablet-start}) and (max-width: #{$bp-lap-end}';
-$mq-lap-and-up : 'min-width: #{$bp-lap-start}';
-$mq-lap : 'min-width: #{$bp-lap-start}) and (max-width: #{$bp-lap-end}';
-$mq-lap-only : 'min-width: #{$bp-lap-start}) and (max-width: #{$bp-lap-end}';
-$mq-desk : 'min-width: #{$bp-desk-start}';
-$mq-desk-and-up : 'min-width: #{$bp-desk-start}';
-$mq-desk-only : 'min-width: #{$bp-desk-start}';
-$mq-desk-wide : 'min-width: #{$bp-desk-wide-start}';
+@if ($bb-base-layout == true) {
 
-$mq-bp-1-and-up : 'min-width: #{$bp-1}';
-$mq-bp-1 : 'min-width: #{$bp-1}';
-$mq-bp-1-below : 'max-width: #{$bp-1-below}';
+	%#{$namespace}-full-width-wrapper,  %#{$namespace}-full-width--wrapper {
+		width: 100%;
+		@if ($bb-base-clearfix == true) {
+			@extend %bb-cf;
+		}
+	}
+	%#{$namespace}-full-width-inner,  %#{$namespace}-full-width--inner {
+		
+		@include bb-full-width-inner();
+	}
+
+	@if (map-get($bb-layout, 'use')) {
+		@each $class, $wrapper in map-get($bb-layout, 'components') {
+			.#{$class}-#{$wrapper} {
+				@extend %#{$namespace}-full-width-wrapper;
+			}
+			.#{$class} {
+				@extend %#{$namespace}-full-width-inner;
+			}
+		}
+	}
+
+}
+
+@if ($bb-test-layout == true) {
+	.layout-test-wrapper {
+		@extend %bb-full-width-wrapper;
+	}
+	.layout-test-inner {
+		@extend %bb-full-width-inner;
+	}
+}

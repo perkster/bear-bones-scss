@@ -1,0 +1,114 @@
+/********************* Bear Bones / Typography / TEXT CLASSES ********************/
+
+
+//* typography classes */
+%#{$namespace}-no-hyphens {
+	-webkit-hyphens: none;
+	-epub-hyphens:   none;
+	-moz-hyphens:    none;
+  hyphens:         none;
+}
+
+%#{$namespace}-hyphenate {
+	-webkit-hyphens: auto;
+	-epub-hyphens:   auto;
+	-moz-hyphens:    auto;
+  hyphens:         auto;
+}
+
+
+%#{$namespace}-amp {
+	/* use the best ampersand http://simplebits.com/notebook/2008/08/14/ampersands-2/ */
+  font-family: Baskerville,'Goudy Old Style',Palatino,'Book Antiqua',serif;
+  font-style: italic;
+}
+
+
+%#{$namespace}-text-overflow {
+	overflow : hidden;
+	text-overflow : ellipsis; // values are: clip, ellipsis, or a string
+	white-space : nowrap; 
+}
+
+//* text classes */
+// taken from Twitter Bootstrap - getbootstrap.com
+/* Utility classes */
+%#{$namespace}-text--muted               {  
+	opacity: 0.6; /* CSS3 */
+	&:hover, &:focus {
+		opacity: 0.9;
+	}
+}
+
+%#{$namespace}-initialism {
+  font-size: 90%;
+  text-transform: uppercase;
+}
+
+%#{$namespace}-smallcaps {
+	/* %smallcaps */
+	font-variant:small-caps!important;
+}
+
+%#{$namespace}-lede,
+%#{$namespace}-lead{
+	/* %lede, %lead */
+    //font-size: $bb-lead-font-size;
+	@include bb_fontSize(map-get($bb-font, lead));
+}
+
+%#{$namespace}-secondary {
+	/* %secondary */
+	@include bb_fontSize(1, 1.1em);
+}
+
+%#{$namespace}-smallprint,
+%#{$namespace}-milli{
+	/* %smallprint  */
+    @include bb_fontSize(map-get($bb-font, small));
+}
+
+%#{$namespace}-micro{
+	/* %micro  */
+    @include bb_fontSize(map-get($bb-font, micro));
+}
+
+//** A series of classes for setting massive type; for use in heroes, mastheads, promos, etc. */
+%#{$namespace}-giga{
+    @include bb_fontSize(map-get($bb-font, giga), 1em);
+}
+%#{$namespace}-mega{
+    @include bb_fontSize(map-get($bb-font, mega), 1em);
+}
+%#{$namespace}-kilo, %#{$namespace}-huge{
+    @include bb_fontSize(map-get($bb-font, kilo), 1em);
+}
+
+// Add an arrow after text
+// http://codepen.io/ethanmuller/pen/lDbgm
+%#{$namespace}-arrow-down:after {
+    content: "\25BC";
+}
+%#{$namespace}-arrow-up:after {
+	content: "\25B2";
+}
+%#{$namespace}-arrow-left:after {
+    content: "\25C0";
+}
+%#{$namespace}-arrow-right:after {
+	content: "\25B6";
+}
+
+%#{$namespace}-arrow-down--small:after {
+    content: "\25BE";
+}
+%#{$namespace}-arrow-up--small:after {
+	content: "\25B4";
+}
+%#{$namespace}-arrow-left--small:after {
+    content: "\25C2";
+}
+%#{$namespace}-arrow-right--small:after {
+	content: "\25B8";
+}
+

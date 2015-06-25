@@ -1,5 +1,5 @@
-@if $use-marginalia == true{
-
+@if $bb-objects-marginalia == true{
+//@TODO: Marginalia
 /********************  Bear Bones / Objects / MARGINALIA ******************/
 
 //** Taken straight from inuit.css: Marginalia are, per definition, notes in the margin of a document. 
@@ -19,7 +19,7 @@
 		margin: 0;
 		padding: 0;
         position:relative;
-		@include font-size($milli-default);
+		@include bb_fontSize(map-get($bb-font, small));
     }
 
     .marginalia__object,

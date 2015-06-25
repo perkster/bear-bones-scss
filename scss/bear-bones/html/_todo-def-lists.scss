@@ -1,0 +1,54 @@
+dl {
+	margin: $base-spacing-unit--em;
+}
+dt, %dl__heading  {
+	@include font-size(1.05, 1.1);
+	font-weight: 600;
+	font-family: $heading-font-family;
+	clear: left;
+}
+
+/*
+%dl__heading, dd, dt {
+	//@include set_margin_bottom($half-spacing-unit--em);
+	@include set-vr(quarter);
+}*/
+
+
+/*
+%dl--horizontal {
+	dt {
+		float: left;
+		@extend %bb-cf;
+		width: 30%;
+		@media screen and (max-width: $lap-start) {
+			width: 100%;
+			float: none;
+		}
+		
+	}
+	dd {
+		margin-left: 33%;
+		min-height: 1em;
+		@media screen and (max-width: $lap-start) {
+			margin-left: 0;
+		}
+	}
+	
+}
+
+%dl--block_list {
+	dd {
+		//@include set_margin_bottom($base_spacing_unit--em);
+		//extend .vr--half;
+		@include set-vr(half);
+		@include set_border( $base-ui-color, bottom) ;
+	}	
+}
+%dl--block_list--accent_color {
+	dd {
+		//@include set_margin_bottom($base_spacing_unit--em);
+		@extend %vr;
+		@include set_border( $accent_color, bottom) ;
+	}
+}*/

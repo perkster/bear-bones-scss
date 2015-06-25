@@ -7,33 +7,103 @@
 
 //****************** MAIN COLORS ****************//
 
+$carrotOrange : #F6921E; //orange
+$mayaBlue : #7BA1FF; //blue
+$gainsboro : #E6E6E6; //lightergrey
+$columbiaBlue : #AED1FF; 
+
 $pavlova : #C2B38D; //darker tan
 $bianca : #F9F6EF; //light tan
 $spanish-white : #DED4B9; //tan  button hover
+$spanishWhite : $spanish-white;
 
 $nobel : #999999; //grey
-$gainsboro : #E6E6E6; //lightergrey
-
-//Standard colors 
-$dark-blue		: rgb(21,60,125);
-$grey			: rgb(125,125,125);
-
-$dark-grey		: $nobel;
-$light-grey		: rgb(204,204,204);	
-$ui-grey		: $gainsboro;
 
 
 //Assign colors to be used throughout website
+$bb-colors-custom: (
+	'font': black,
+	'link' : $nobel,
+	'link-hover': $pavlova,
+	'hr' : $pavlova,
+	'accent-color': ( 
+		'bgc': $pavlova, 
+		'border': darken($pavlova,20), 
+		'font': #fff, 
+		'link': lighten($pavlova, 40), 
+		'link-hover': lighten(lighten($pavlova, 40),30) 
+	),
+	'accent-color2': ( 
+		'bgc': $bianca, 
+		'border': darken($bianca,20), 
+		'font': #fff, 
+		'link': lighten($bianca, 40), 
+		'link-hover': lighten(lighten($bianca, 40),30) 
+	),
+	'accent-color3': ( 
+		'bgc': $spanish-white, 
+		'border': darken($spanish-white,20), 
+		'font': #999, 
+		'link': lighten(#999, 40), 
+		'link-hover': lighten(lighten(#999, 40),30) 
+	),
+	'menu':(
+		'bgc': null,
+		'list':(
+			'bgc': null,
+			'border-color' : null,
+			'color': null,
+		),
+		'item':(
+			'bgc': null,
+			'border-color' : null,
+			'color': white,
+		),
+		'link': (
+			'bgc': null,
+			'border-color': null,
+			'color': white,
+		),
+		'link-hover': (
+			'bgc': null,
+			'border-color': null,
+			'color': $columbiaBlue,
+		),
+	),
+	'submenu':(
+		'bgc' : null,
+		'list':(
+			'bgc': $gainsboro,
+			'border-color' : null,
+			'color': black,
+		),
+		'item':(
+			'bgc': null,
+			'border-color' : null,
+			'color': black,
+		),
+		'link': (
+			'bgc': null,
+			'border-color': null,
+			'color': $aluminum,
+		),
+		'link-hover': (
+			'bgc': null,
+			'border-color': null,
+			'color': $mayaBlue,
+		),
+	),
+	
+	
+);
+//$accent-color : $pavlova;
+//$accent-color2 : $bianca;
+//$accent-color3 : $spanish-white;
 
-$accent-color : $pavlova;
-$accent-color2 : $bianca;
-$accent-color3 : $spanish-white;
-
-$font-color : black;
-$heading-color : $pavlova;
-$link-color : $nobel;
-$link-hover-color : $pavlova;
-
-$menu-color : black;
-$menu-hover : $pavlova;
+//$font-color : black;
+//$heading-color : $pavlova;
+//$link-color : $nobel;
+//$link-hover-color : $pavlova;*/
+//$menu-color : black;
+//$menu-hover : $pavlova;
 

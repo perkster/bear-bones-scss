@@ -1,0 +1,166 @@
+/********************  Bear Bones / Typography / VERTICAL RHYTHM ******************/
+
+//* csswizardry.com/2012/06/single-direction-margin-declarations */
+
+
+$bb-vr: (
+	'default': (
+		'mbpx': $bb-base-line-height,
+		'mb': map-get($bb-font, line-height-ratio) * 1em,		
+	),
+	'half': (
+		'mbpx': $bb-base-line-height / 2,
+		'mb': map-get($bb-font, line-height-ratio) / 2 * 1em,
+	),
+	'small': (
+		'mbpx': $bb-base-line-height / 3,
+		'mb': map-get($bb-font, line-height-ratio) / 3 * 1em,
+	),
+	'medium': (
+		'mbpx': $bb-base-line-height * 1.5,
+		'mb': map-get($bb-font, line-height-ratio) * 1.5em,
+	),
+	'large': (
+		'mbpx': $bb-base-line-height * 2,
+		'mb': map-get($bb-font, line-height-ratio) * 2em,
+	),
+	'x-large': (
+		'mbpx': $bb-base-line-height * 2.5,
+		'mb': map-get($bb-font, line-height-ratio) * 2.5em,
+	),
+	
+) !default; 
+
+$bb-vr: (
+	'default' : 1,
+	'half' : .5,
+	'small' : .3,
+	'medium' : 1.5,
+	'large' : 2,
+	'x-large' : 2.5
+)!default;
+
+@mixin bb_VR($mb : null, $mt : null) {
+	@if ( $mb ) {
+		margin-bottom: $bb-base-line-height * map-get($bb-vr, #{$mb});
+		margin-bottom: map-get($bb-font, line-height-ratio) * map-get($bb-vr, #{$mb});
+	}
+	@if ( $mt ) {
+		margin-bottom: $bb-base-line-height * map-get($bb-vr, #{$mt});
+		margin-bottom: map-get($bb-font, line-height-ratio) * map-get($bb-vr, #{$mt});
+	}
+}
+
+
+
+%#{$namespace}-vr {
+	/* %bb-vr */
+	margin-bottom: map-deep-get($bb-vr, 'default', 'mbpx'  );
+	margin-bottom: map-deep-get($bb-vr, 'default', 'mb'  );
+}
+%#{$namespace}-vr--half {
+	/* %bb-vr--half */
+	margin-bottom: map-deep-get($bb-vr, 'half', 'mbpx'  );
+	margin-bottom: map-deep-get($bb-vr, 'half', 'mb'  );
+}
+%#{$namespace}-vr--small {
+	/* %bb-vr--small */
+	margin-bottom: map-deep-get($bb-vr, 'small', 'mbpx'  );
+	margin-bottom: map-deep-get($bb-vr, 'small', 'mb'  );
+}
+%#{$namespace}-vr--medium {
+	/* %bb-vr--medium */
+	margin-bottom: map-deep-get($bb-vr, 'medium', 'mbpx'  );
+	margin-bottom: map-deep-get($bb-vr, 'medium', 'mb'  );
+}
+%#{$namespace}-vr--large, %#{$namespace}-landmark {
+	/* %bb-vr--large, %bb-landmark */
+	margin-bottom: map-deep-get($bb-vr, 'large', 'mbpx'  );
+	margin-bottom: map-deep-get($bb-vr, 'large', 'mb'  );
+}
+%#{$namespace}-vr--x-large,  {
+	/* %bb-vr--x-large */
+	margin-bottom: map-deep-get($bb-vr, 'x-large', 'mbpx'  );
+	margin-bottom: map-deep-get($bb-vr, 'x-large', 'mb'  );
+}
+
+
+hgroup,
+ul,ol,dl,
+blockquote,p,address,
+table,figure,
+pre,
+//*Objects and abstractions */ 
+%sass-margin-bottom,
+.media {
+    @extend %#{$namespace}-vr;
+}
+
+// --- Spacing --- //
+$bb-spacing: (
+	base: map-get($bb-font, line-height-ratio),
+	em: map-get($bb-font, line-height-ratio) + 0em,
+	px: px(map-get($bb-font, size), map-get($bb-font, line-height-ratio)),
+	half: map-get($bb-font, line-height-ratio) / 2,
+	em--half: map-get($bb-font, line-height-ratio) / 2 + 0em,
+	px--half: px(map-get($bb-font, size), map-get($bb-font, line-height-ratio)) / 2,
+	third: map-get($bb-font, line-height-ratio) / 3,
+	em--third: map-get($bb-font, line-height-ratio) / 3 + 0em,
+	px--third: px(map-get($bb-font, size), map-get($bb-font, line-height-ratio)) / 3,
+	two-thirds: map-get($bb-font, line-height-ratio) / 3 * 2,
+	em--two-thirds: map-get($bb-font, line-height-ratio) / 3 * 2 + 0em,
+	px--two-thirds: px(map-get($bb-font, size), map-get($bb-font, line-height-ratio)) / 3 * 2,
+	horizontal: 1em,
+)!default;
+
+$bb-test-spacing: true!default;
+@if ($bb-test-spacing == true) {
+	.spacing-test {
+		/* spacing */
+		font-size: map-get($bb-spacing, base);
+		/* em */
+		font-size: map-get($bb-spacing, em);
+		/* px */
+		font-size: map-get($bb-spacing, px);
+		
+		/* half */
+		font-size: map-get($bb-spacing, half);
+		/* em */
+		font-size: map-get($bb-spacing, em--half);
+		/* px */
+		font-size: map-get($bb-spacing, px--half);
+		
+		/* third */
+		font-size: map-get($bb-spacing, third);
+		/* em */
+		font-size: map-get($bb-spacing, em--third);
+		/* px */
+		font-size: map-get($bb-spacing, px--third);
+		
+		/* two-thirds */
+		font-size: map-get($bb-spacing, two-thirds);
+		/* em */
+		font-size: map-get($bb-spacing, em--two-thirds);
+		/* px */
+		font-size: map-get($bb-spacing, px--two-thirds);
+	}
+	
+	.#{$namespace}-vr {
+		@extend %#{$namespace}-vr;
+	}
+	.#{$namespace}-vr--half {
+		@extend %#{$namespace}-vr--half;
+	}
+	.#{$namespace}-vr--small {
+		@extend %#{$namespace}-vr--small;
+	}
+	.#{$namespace}-vr--medium {
+		@extend %#{$namespace}-vr--medium;
+	}
+	.#{$namespace}-vr--large {
+		@extend %#{$namespace}-vr--large;
+	}
+	.#{$namespace}-vr--x-large {
+		@extend %#{$namespace}-vr--x-large;
+	}
+}

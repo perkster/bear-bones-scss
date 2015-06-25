@@ -1,54 +1,52 @@
-/********************  Bear Bones / Base / Accessibility ******************/
+/********************  Bear Bones / Base / ACCESSIBILITY ******************/
 
+	//**
+	//* Accessibility classes:
+	//* Taken from  http://webaim.org/techniques/css/invisiblecontent/ 
+	//* http://a11yproject.com/posts/how-to-hide-content/
+	//* Hides content off screen without resorting to negative text indent. Good for rtl, too
+	//*/
 
-
-/*
- * Accessibility classes:
- * Taken from  http://webaim.org/techniques/css/invisiblecontent/ 
- * http://a11yproject.com/posts/how-to-hide-content/
- * Hides content off screen without resorting to negative text indent. Good for rtl, too
- */
-
-@mixin accessibility{
-    position: absolute;
-    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-    clip: rect(1px, 1px, 1px, 1px);
-    padding:0;
-    border:0;
-    height: 1px;
-    width: 1px;
-    overflow: hidden;
+@mixin bb-accessibility{
+	position: absolute;
+	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+	clip: rect(1px, 1px, 1px, 1px);
+	padding:0;
+	border:0;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
 	&:focus { 
 		position:relative; 
 		width:auto; 
 		height:auto; 
 	}
 }
-%accessibility, .accessibility,
-.visuallyhidden, .screen-reader-text, .skiplink{
-    @include accessibility;
+
+@if ($bb-base-accessibility == true) {
+	
+	//**
+	// * Useful links for referencing
+	// * Don't use outline: none unless ABSOLUTELY necessary http://www.outlinenone.com/
+	// * Don't use title tags on links: http://blog.silktide.com/2013/01/i-thought-title-text-improved-accessibility-i-was-wrong/
+	// * Practical aria examples: http://heydonworks.com/practical_aria_examples/#input-tooltip
+	// */
+
+	%#{$namespace}-accessibility {
+		@include bb-accessibility;
+	}
+	.accessibility,
+	.visuallyhidden, .screen-reader-text, .skiplink{
+		@extend %#{$namespace}-accessibility;
+	}
+	
+	
+	input:focus + [role="tooltip"] {
+		display: block;
+		position: absolute;
+		top: 100%;
+	}
+
 }
 
-input:focus + [role="tooltip"] {
-	display: block;
-	position: absolute;
-	top: 100%;
-}
 
-@if $responsive{
-    @each $state in palm, lap, lap-and-up, portable, desk, desk-wide{
-        @include media-query(#{$state}){
-            .accessibility--#{$state},
-            .visuallyhidden--#{$state}{
-                @include accessibility;
-            }
-        }
-    }
-}
-
-/**
- * Useful links for referencing
- * Don't use outline: none unless ABSOLUTELY necessary http://www.outlinenone.com/
- * Don't use title tags on links: http://blog.silktide.com/2013/01/i-thought-title-text-improved-accessibility-i-was-wrong/
- * Practicle aria examples: http://heydonworks.com/practical_aria_examples/#input-tooltip
- */

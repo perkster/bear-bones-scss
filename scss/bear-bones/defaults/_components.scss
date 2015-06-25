@@ -1,0 +1,110 @@
+//*-------     Defaults / COMPONENTS ---------*/
+
+/*
+// ------------- ?? ------------- //
+$bb-components- : true!default;
+$bb-test- : false!default;
+$bb--default: (
+)!default;
+$bb--custom: ()!default;
+$bb-: map-extend($bb--default, $bb--custom, true);
+*/
+
+
+
+// ************* COMPONENTS  ************* //
+// ------------- HEADERS ------------- //
+$bb-components-headers : true!default;
+$bb-test-headers : false!default;
+$bb-headers-default: (
+	'icon':(
+		'color' : $gray,
+		'left':(
+			'icon-size': 1.5em,
+			'heading-size' : 1.5em,
+			'subheading-size' : 1em,
+			'p-size' : 0.9em,
+			'vertical-align' : middle,
+			'padding-left': 0.75*$bb-base-spacing-unit
+		),
+		'center':(
+			'icon-size' : 2em,
+			'heading-size' : 1.5em,
+			'subheading-size' : 1em,
+			'p-size' : 0.9em,
+		),
+	),
+	'image':(
+		'left':(
+			'heading-size' : 1.5em,
+			'subheading-size' : 1em,
+			'p-size': 0.9em,
+			'margin-top': 0.165em,
+			'width' : 2.5em,
+			'vertical-align' : middle,
+		),
+		'center':(
+			'heading-size' : 1.5em,
+			'subheading-size' : 1em,
+			'p-size': 0.9em,
+			'margin-top': 0.165em,
+			'width' : 2.5em,
+			'vertical-align' : middle
+		),
+	)
+)!default;
+$bb-headers-custom: ()!default;
+$bb-headers: map-extend($bb-headers-default, $bb-headers-custom, true);
+
+
+
+// ------------- REVOLUTION SLIDER ------------- //
+$bb-components-revslider : true!default;
+$bb-test-revslider : false!default;
+$bb-revslider-default: (
+	'bullet':(
+		'bgc' : white,
+		'bgc--selected' : $gray	,
+		'width' : 1em,
+		'height' : 1em,
+		'border' : 0,
+		'padding' : null,
+		'margin' : null,
+		'radius' : null,
+		'style' : 'square',
+	)
+)!default;
+$bb-revslider-custom: ()!default;
+$bb-revslider: map-extend($bb-revslider-default, $bb-revslider-custom, true);
+
+// ------------- SEARCH ------------- //
+$bb-components-search : true!default;
+$bb-test-search : false!default;
+$bb-search-default: (
+)!default;
+$bb-search-custom: ()!default;
+$bb-search: map-extend($bb-search-default, $bb-search-custom, true);
+
+
+// ------------- SOCIAL ------------- //
+$bb-components-social : true!default;
+$bb-test-social : false!default;
+$bb-social-default: (
+	'bgc': map-deep-get($bb-colors, 'accent-color', 'bgc'),
+	'bgc--hover': 'social',
+	'color' : white,
+	'color--hover': white,
+	'fa-padding' : 0.28em,
+	'width' : 1.5em,
+	'radius' : null,
+	'size' : 1em,
+)!default;
+$bb-social-custom: ()!default;
+$bb-social: map-extend($bb-social-default, $bb-social-custom, true);
+
+
+//* Form variables NOW ON _defaults/html */
+
+
+//* Meanumenu */
+$meanmenu_bg_color			:	map-deep-get($bb-colors, 'accent-color', 'bgc')!default;

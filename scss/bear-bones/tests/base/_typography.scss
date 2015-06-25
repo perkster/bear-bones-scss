@@ -1,0 +1,36 @@
+
+//************ VERTICAL RHYTM TESTS *************/
+.landmark {
+	@extend %bb-landmark;
+}
+
+	.spacing-test {
+		/* spacing */
+		font-size: map-get($bb-spacing, base);
+		/* em */
+		font-size: map-get($bb-spacing, em);
+		/* px */
+		font-size: map-get($bb-spacing, px);
+		
+		/* half */
+		font-size: map-get($bb-spacing, half);
+		/* em */
+		font-size: map-get($bb-spacing, em--half);
+		/* px */
+		font-size: map-get($bb-spacing, px--half);
+		
+		/* third */
+		font-size: map-get($bb-spacing, third);
+		/* em */
+		font-size: map-get($bb-spacing, em--third);
+		/* px */
+		font-size: map-get($bb-spacing, px--third);
+		
+		/* two-thirds */
+		font-size: map-get($bb-spacing, two-thirds);
+		/* em */
+		font-size: map-get($bb-spacing, em--two-thirds);
+		/* px */
+		font-size: map-get($bb-spacing, px--two-thirds);
+	}
+

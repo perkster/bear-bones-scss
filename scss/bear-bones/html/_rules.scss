@@ -1,55 +1,117 @@
-@if $use-rules == true{
+@if ($bb-html-rules == true) {
 
-/********************  Bear Bones / Html / RULES ******************/
-//** Taken from inuit.css: Horizontal rules, extend `hr`. Demo: jsfiddle.net/inuitcss/L6GuZ */
-%rule {
-	border:none;
-    border-bottom-width:1px;
-    border-bottom-style:solid;
-    margin-bottom:$base-spacing-unit--px - 1px;
-    margin-bottom:(($base-spacing-unit--px - 1px) / $base-font-size)*1rem;
-}
+/********************  Bear Bones / HTML / RULES ******************/
+// Taken from http://codepen.io/ibrahimjabbari/pen/ozinB
 
-.rule, .rule--accent_color, .rule--accent_color2 {
-	@extend %rule;
-}
+	hr {
+		border-top: 1px solid map-get($bb-colors, 'hr'); 
+	}
 
-//* Colors */
-.rule{
-    color:$base-ui-color;
-}
-.rule--accent_color {
-	color: $accent_color;
-}
-.rule--accent_color2 {
-	color: $accent_color2;
-}
+	%#{$namespace}-hr--gradient {
+		height: 10px;
+		border: 0;
+		box-shadow: 0 10px 10px -10px map-get($bb-colors, 'hr') inset;
+	}
+	
+	%#{$namespace}-hr--gradient-horizontal {
+		height: 1px;
+		border: 0;
+		//background-image: -webkit-linear-gradient(left, map-get($bb-colors, 'bgc'), map-get($bb-colors, 'hr'), map-get($bb-colors, 'bgc'));
+		//background-image: -moz-linear-gradient(left, map-get($bb-colors, 'bgc'), map-get($bb-colors, 'hr'), map-get($bb-colors, 'bgc'));
+		//background-image: -ms-linear-gradient(left, map-get($bb-colors, 'bgc'), map-get($bb-colors, 'hr'), map-get($bb-colors, 'bgc'));
+		//background-image: -o-linear-gradient(left, map-get($bb-colors, 'bgc'), map-get($bb-colors, 'hr'), map-get($bb-colors, 'bgc')); 
+		@include linear-gradient(left, map-get($bb-colors, 'bgc'), map-get($bb-colors, 'hr'), map-get($bb-colors, 'bgc'));
+	}
+	 
+	%#{$namespace}-hr--heart {
+		border: 0;
+		border-top: 4px double map-get($bb-colors, 'hr');
+		text-align: center;
+		&:after {
+			content: '\002665';
+			display: inline-block;
+			position: relative;
+			top: -15px;
+			padding: 0 10px;
+			background: map-get($bb-colors, 'bgc');
+			color: map-get($bb-colors, 'hr');
+			font-size: 18px;
+		}
+	}
+ 
+	%#{$namespace}-hr--scissors {
+		border: 0;
+		border-top: 1px dashed map-get($bb-colors, 'hr'); 
+		&:after {
+			content: '\002702'; 
+			display: inline-block; 
+			position: relative; 
+			top: -12px; 
+			left: 40px; 
+			padding: 0 3px; 
+			background: map-get($bb-colors, 'bgc');
+			color: map-get($bb-colors, 'hr');
+			font-size: 18px; 
+		}
+	}
+	
+	%#{$namespace}-hr--ornament {
+		border: 0;
+		border-top: 1px solid map-get($bb-colors, 'hr'); 
+		text-align: center;
+		&:after {
+			content: '§';
+			display: inline-block; 
+			position: relative; 
+			top: -14px;
+			padding: 0 10px;
+			background: map-get($bb-colors, 'bgc');
+			color: map-get($bb-colors, 'hr');
+			font-size: 18px;
+			-webkit-transform: rotate(60deg);
+			-moz-transform: rotate(60deg);
+			transform: rotate(60deg);
+		}
+	}
+	
+	%#{$namespace}-hr--grain {
+		height: 30px; 
+		border: 0;
+		border-style: solid; 
+		border-color: map-get($bb-colors, 'hr'); 
+		border-width: 1px 0 0 0; 
+		border-radius: 20px; 
+		&:before {
+			content: '';
+			display: block; 
+			height: 30px;
+			margin-top: -31px; 
+			border-color: map-get($bb-colors, 'hr');
+			border-style: solid; 
+			border-width: 0 0 1px 0; 
+			border-radius: 20px; 
+		}
+	}
+	
+}//endif
 
-//** styles */
-.rule--dotted{
-    border-bottom-style:dotted;
+@if ($bb-test-rules == true) {
+	.hr--gradient {
+		@extend %bb-hr--gradient;
+	}
+	.hr--gradient-horizontal {
+		@extend %bb-hr--gradient-horizontal;
+	}
+	.hr--heart {
+		@extend %bb-hr--heart;
+	}
+	.hr--scissors {
+		@extend %bb-hr--scissors;
+	}
+	.hr--ornament {
+		@extend %bb-hr--ornament;
+	}
+	.hr--grain {
+		@extend %bb-hr--grain;
+	}
 }
-
-.rule--dashed{
-    border-bottom-style:dashed;
-}
-.rule--ornament{
-    position:relative;
-
-    &:after{
-        content:"\00A7";
-        position:absolute;
-        top:   0;
-        right: 0;
-        left:  0;
-        line-height:0;
-        text-align:center;
-    }
-
-    //** Pass in an arbitrary ornament though a data attribute, e.g.: <hr class="rule  rule--ornament" data-ornament="!">  */
-    &[data-ornament]:after{
-        content:attr(data-ornament);
-    }
-}
-
-}//* endif */

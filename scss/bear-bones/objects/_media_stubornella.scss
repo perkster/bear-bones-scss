@@ -1,4 +1,4 @@
-@if $bb-use-media-stubornella == true{
+@if $bb-objects-media-stubornella == true{
 
 /********************  Bear Bones / Objects / MEDIA STUBORNELLA ******************/
 	
@@ -10,17 +10,17 @@
 	}
 	%media__img, %media__object, %media__image {
 		float:left; 
-		margin-right: $base-spacing-unit--em;
+		margin-right: $bb-base-spacing-unit;
 		&:nth-child(n){
 			display:block;
 		}
 	}
-	%media__img--rev,%media__object--rev {float:right; margin-left: $base-spacing-unit--em;}
+	%media__img--rev,%media__object--rev {float:right; margin-left: $bb-base-spacing-unit;}
 
     //** `.img`s in `.islet`s need an appropriately sized margin.  */
 	%media__img--islet {
     //.islet .media__img, .islet .media__object{
-        margin-right:$half-spacing-unit--em;
+        margin-right:$bb-base-spacing-unit--islet;
     }
 
 }//*endif */

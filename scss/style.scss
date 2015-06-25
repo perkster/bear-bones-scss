@@ -1,0 +1,66 @@
+/*!
+Theme Name: 	Bear Bones by Perkster Solutions
+Description: 	Bear Bones theme please see readme file
+Version:		1.0.1
+Notes:  		This theme was developed by Wendy Shoef of http://www.perkstersolutions.com
+				Perkster Solutions works with designers in helping them bring their work online!
+				Copy this file and the scss folder to your own project to customize.
+*/
+
+//*-------------------     STYLE.CSS  -------------------*/
+//compass to import
+//@import "compass/css3"; 
+//Don't need to call here as it is called in PrePros. If you don't use PrePros
+//then you will need to uncomment the @import directive
+//@TODO: remove compass dependencies
+
+
+
+//*------------------------ LOAD PLUGINS -----------------------------*/
+
+//************* RESPONSIVE DESIGN **************/
+//For instructions on using: http://include-media.com/documentation/
+$breakpoints: (
+	'phone': 320px, 
+	'smartphone':425px,
+	'tablet': 768px,
+	'lap': 1024px,
+	'desk': 1224px,
+	'desk-wide': 1366px,
+	'menu-bp' : 600px,  //This is the main breakpoint for the menu where a responsive side menu will be used
+	'menu-mobile' : 425px  //Sometimes further modifications of the menu are necessary for smaller screens
+);
+//@TODO: Put breakpoints in theme and test to make sure they work
+@import "plugins/include-media";
+
+//NOTE: Include media is not in the theme file as it is our preferred method of creating responsive websites and is thus required on all
+
+
+//************* STANDARDIZED COLORS **************/
+@import "plugins/color-me-sass/color-me-sass";
+@import "plugins/color-name-hue/color-name-hue";
+
+
+//************* LOAD BOURBON **************/
+@import "bourbon/bourbon";
+@import "theme/bourbon-setup";
+
+//*------------------------ LOAD DEFAULTS AND BEAR BONES -----------------------------*/
+@import "theme/theme-style";
+@import "theme/bb-setup";
+@import "bear-bones/bear-bones";
+
+//************* LOAD JS & OTHER PLUGINS TO BE USED IN THEME **************/
+@import "plugins/infield-label-js";
+
+
+
+//*------------------------ LOAD THEME ----------------------------*/
+
+@import "theme/theme";
+
+//* Example of sprite with compass
+/*@import "compass/utilities/sprites";
+@import "icon/*.png";
+@include all-icon-sprites; */
+

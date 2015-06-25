@@ -1,0 +1,36 @@
+//*-------     Defaults / LAYOUTS ---------*/
+
+
+// ************* LAYOUTS ************* //
+$bb-layouts-topbar : true!default;
+$bb-test-topbar : false!default;
+$bb-topbar-default: (
+	'topbar':(
+		'bgc' : map-deep-get($bb-colors, 'topbar', 'bgc'),
+		'color' : map-deep-get($bb-colors, 'topbar', 'color'),
+		'full' : true,
+		'height' : $bb-base-line-height,
+		'link' : map-deep-get($bb-colors, 'topbar', 'link'),
+		'link--hover' : map-deep-get($bb-colors, 'topbar', 'link--hover'),
+		'navbar' : 'justified', //options: navbar, justified
+		'padding': null,
+		'size' : 1rem,
+		'submenu' : true,
+		'whitespace' : true
+	),
+	'second' : (
+		'bgc' : map-deep-get($bb-colors, 'second-topbar', 'bgc'),
+		'color' :  map-deep-get($bb-colors, 'second-topbar', 'color'),
+		'full' : true,
+		'height' : $bb-base-line-height,
+		'link' : map-deep-get($bb-colors, 'second-topbar', 'link'),
+		'link--hover' : map-deep-get($bb-colors, 'second-topbar', 'link--hover'),
+		'navbar' : 'justified', //options: navbar, justified
+		'padding' : null,
+		'size' : 1rem,
+		'submenu' : true,
+		'whitespace' : true,
+	)
+)!default;
+$bb-topbar-custom: ()!default;
+$bb-topbar: map-extend($bb-topbar-default, $bb-topbar-custom, true);

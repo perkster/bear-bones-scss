@@ -1,0 +1,67 @@
+/********************* Bear Bones / Typography / TYPOGRAPHY ********************/
+
+@mixin bb_fontSize($size, $line-height: false, $unit : 1rem) {
+	@if (unitless($size)) {
+		font-size: $size * $unit;
+	} @else {
+		font-size: $size;
+	}
+	@if $line-height != false{
+        line-height:ceil($size / map-get($bb-font, line-height-ratio)) * (map-get($bb-font, line-height-ratio) / $size);
+		line-height: $line-height;
+    }
+}
+
+html{
+	
+    font:#{map-get($bb-font, size)}/#{map-get($bb-font, line-height-ratio) * 1rem} map-get($bb-font, family);
+	line-height: map-get($bb-font, line-height-ratio);
+	//letter-spacing: -.31em;
+	@if ($bb-use-include-media == true) {
+		@include media("screen", "<=phone") {
+			/* Phone */
+			font:#{map-get($bb-font, size--phone)}/#{map-get($bb-font, line-height-ratio) * 1rem} map-get($bb-font, family);
+		}
+		@include media("screen", ">phone","<=tablet") {
+			/* Tablet */
+			font:#{map-get($bb-font, size--tablet)}/#{map-get($bb-font, line-height-ratio) * 1rem} map-get($bb-font, family);
+		}
+	}
+}
+
+body {
+	color: map-get($bb-colors, 'font');
+}
+
+a {
+	color: map-get($bb-colors, 'link');
+	text-decoration: none;
+	&:hover {
+		color: map-get($bb-colors, 'link--hover');
+	}
+	&:focus { 
+		outline: thin dotted; 
+	}
+}
+
+
+
+//.container-wrapper { font-size: 1rem; }
+@if ($bb-test-typography == true) {
+	.typography-test {
+		/* base font size */
+		font-size: map-get($bb-font, size);
+		/* phone font size */
+		font-size: map-get($bb-font, size--phone);
+		/* tablet font size */
+		font-size: map-get($bb-font, size--tablet);
+		/* line-height-ratio */
+		line-height: map-get($bb-font, line-height-ratio);
+		/* family */
+		font-family: map-get($bb-font, family);
+
+		/* 
+		font-size: map-get($bb-font, );
+		*/
+	}
+}

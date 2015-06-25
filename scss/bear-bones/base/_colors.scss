@@ -1,97 +1,274 @@
-//********************  Bear Bones / Base / Colors ******************/
-//* defaults for various functions */
-
-$off-wht: rgba(white,.4)!default;
-
-
-/* @TODO: Change color scheme to be consistent throughout theme, for example:
- * $error--box 		:	rgb(218,79,73);
- * $error--box-font :	darken ($error--box, 50%);
- * $error--btn		:	rgb(255,0,0);
- * $error--btn-font	:	rgb(255,255,255);
- */
-
-//* Helper colors */
-$alert_color 				: 	rgb(252,248,227)!default;				//light yellow
-$error_color 				: 	rgb(255,0,0)!default;					//red
-$error_light_color 			: 	lighten($error_color, 40%)!default;		//light red
-$info_color 				: 	rgb(217,237,247)!default;				//light blue
-$info_dark_color			: 	#0165fc!default; 						//bright blue
-$inverse_color 				: 	rgb(65,65,65)!default;					//grey inverse
-$success_color 				: 	rgb(91,183,91)!default;					//green
-$success_light_color 		: 	lighten($success_color, 35%)!default;		//light green
-$warning_color			 	: 	rgb(250,167,50)!default;					//dark yellow
-
-$alert_color_font 			:	darken($alert_color, 60%)!default;
-$error_color_font			:	white!default;
-$error_light_color_font		:	darken($error_color, 20%)!default;
-$info_color_font			:	darken($info_color, 50%)!default;
-$info_dark_color_font		:	white!default;
-$inverse_color_font			:	white!default;
-$success_color_font			:	white!default;
-$success_light_color_font	:	darken($success_color, 30%)!default;
-$warning_color_font			:	white!default;
- 
-
-//* Basic colors */ 
-$color--purple						: 	#9A68C7!default;
-$color--blue						: 	#3BA9E4!default;
-$color--green						: 	#75B343!default;
-$color--orange						:	 #FF6A42!default;
-$color--gray-light					:	 #999!default;
-$color--lightergrey				:	 #888!default;
-
-//* Neutral colors */
-$neutralcolor 				:	 rgb(71,63,63);
-$midneutralcolor 			: 	darken($neutralcolor,25%);
-$darkneutralcolor 			: 	darken($neutralcolor,50%);
-$lightneutralcolor 			:	 lighten($neutralcolor,25%);
-$lighterneutralcolor 		:	 lighten($neutralcolor,50%);
-$lightestneutralcolor 		:	 lighten($neutralcolor,70%);
-
-//* social colors */
-$twitterblue				:	rgb(64,153,255)!default; // #4099FF
-$facebookblue					:	rgb(48,72,144)!default;	// #304890
-$linkedinblue					:	rgb(39,104,168)!default; // #2768A8
-$gplusred						:	rgb(219,74,55)!default;  // #DB4A37
+/********************  Bear Bones / Base / COLORS ******************/
+//COLORS renamed using https://github.com/RichardBray/color-me-sass http://richbray.me/cms/ - So AWESOME
+//Big shout out for http://www.color-blindness.com/color-name-hue/ for getting me going in this direction!
+//Requires both plugin files: color-me-sass & color-name-hue
 
 
-//* Default values for colors */
-$background-color				:	white!default;
-$font-color					:	#222!default;
+//*------------------------
+//http://codepen.io/davidhalford/pen/wlDxL
+//mixin that calculates if text needs to be light or dark
+//depending on the background color passed.
+//From this W3C document: http://www.webmasterworld.com/r.cgi?f=88&d=9769&url=http://www.w3.org/TR/AERT#color-contrast
+//Color brightness is determined by the following formula: 
+//((Red value X 299) + (Green value X 587) + (Blue value X 114)) / 1000
+//------------------------*/
 
-//* Accent colors */
-$accent-color				:	 #336699!default;
-$accent-color--font			:	 #fff!default;
-$accent-color--link			:	 lighten($accent-color, 40)!default;
-$accent-color2				:	 #466477!default;
-$accent-color2--font		:	 #fff!default;
-$accent-color2--link		:	 lighten($accent-color2, 40)!default;
-$accent-color3				:	rgb(96, 142, 192)!default; 	//moderate blue
-$accent-color3--font		:	 #fff!default;
-$accent-color3--link		:	 lighten($accent-color3, 40)!default;
+@function bb_colorContrast($n, $fontColor : map-get($bb-colors, 'font--dark')) {
+  $color-brightness: round((red($n) * 299) + (green($n) * 587) + (blue($n) * 114) / 1000);
+  $light-color: round((red(#ffffff) * 299) + (green(#ffffff) * 587) + (blue(#ffffff) * 114) / 1000);
+  $font-color--light: map-get($bb-colors, 'font--light');
+  $font-color--dark: map-get($bb-colors, 'font--dark');
+  
+  @if abs($color-brightness) < ($light-color/2){
+	@if (lightness($fontColor) > 50) {
+		@return $fontColor;
+	} @else {
+		@return $font-color--light;
+	}
+  }
 
-//* Links */
-$link-color					:	 $accent-color!default;
-$link-hover-color			: 	$accent-color2!default;
+  @else {
+	@if (lightness($fontColor) < 50) {
+    	@return $fontColor;
+	} @else {
+		@return $font-color--dark;
+	}
+  }
+}
 
-//* Headings */
-$heading-color				: $accent-color2!default;
+// Mixin to set background-color, border, font, link & hover based off of $bb_colors map (in colors)
+// $map : ( 'theme' ( 'background': $papayaWhip, 'border': $macaroniAndCheese, 'font': $treePoppy, 'link': darken($treePoppy, 20%),	'link-hover': darken($treePoppy, 40%) ) );
+
+@mixin bb_colorBlock( $bgc : #999, $bd : #000, $c : #222, $link : false, $lc : #000, $lch : #111, $borderStyle : thin solid  ) {
+	background-color: $bgc;
+	border: $bd $borderStyle;
+	color: bb_colorContrast($bgc, $c);
+	@if( $link == true ) {
+		a {
+			color: bb_colorContrast($bgc, $lc);
+			&:hover {
+				color: bb_colorContrast($bgc, $lch);
+			}
+		}
+	}
+}
+
+//Calls bb_colorBlock but uses a map with colors, see $bb_colors for example on how to set up map
+// For example:
+// $bb_accent_colors: ( 'accent-color': ( 'background': #666666, 'border': darken(#666666,20), 'font': #fff, 'link': lighten(#666666,40), 'link-hover': lighten(#666666,30) ) ) ;
+@mixin bb_colorMapBlock ( $theme : 'light-red', $map : $bb_colors, $link : false, $borderStyle : thin solid  ) {
+	@include bb_colorBlock ( 
+		map-deep-get($map, $theme, 'background' ), 
+		map-deep-get($map, $theme, 'border'  ),
+		map-deep-get($map, $theme, 'font'  ),
+		$link,
+		map-deep-get($map, $theme, 'link'  ),
+		map-deep-get($map, $theme, 'link-hover'  )
+	);
+}
+
+
+@function set-hover-color($color) {
+  @if (lightness($color) > 50) {
+	// Lighter color, return dark color
+	$color : darken($color, 10%);    
+  } @else {
+	// Darker color, return light color
+    $color : lighten ($color, 10%); 
+  }
+  @return $color;
+}
+
+@mixin text-class ( $color : false, $color_hover : false) {
+	color: $color;
+	@if ( $color_hover  ) {
+		&:hover, &:focus {
+			color: set-hover-color($color);
+		}
+	}
+}
+
 
 //*Base color used for borders and stuff */
-$base-ui-color				: 	#444!default;
-$border-color    			: 	lighten($base-ui-color, 60%)!default;
+//$base-ui-color				: 	#444!default;
+//$border-color    			: 	lighten($base-ui-color, 60%)!default;
 
-//* Nav */
-$main-nav__color			: 	white!default;
-$main-nav__color--hover		: 	white!default;
-$main-nav__font				: 	$font-color!default;
-$main-nav__font--hover		: 	$accent-color!default;
 
-$main-nav__submenu__color			: white!default;
-$main-nav__submenu__color--hover	: white!default;
-$main-nav__submenu__font			: $font-color!default;
-$main-nav__submenu__font--hover		: $accent-color!default;
+$bb-colors-themes: (
+	//error
+	'light-red': (
+		'bgc': $mistyRose,
+		'border': $monaLisa,
+		'font': $orangeRed,
+		'link': darken($orangeRed, 20%),
+		'link-hover': darken($orangeRed, 40%),
+	),
+	//success
+	'light-green': (
+		'bgc': $honeydew,
+		'border': $pastelGreen,
+		'font': $forestGreen,
+		'link': darken($forestGreen, 20%),
+		'link-hover': darken($forestGreen, 40%),
+	),
+	//warning
+	'light-yellow': (
+		'bgc': $earlyDawn,
+		'border': $buff,
+		'font': $goldenBrown,
+		'link': darken($goldenBrown, 20%),
+		'link-hover': darken($goldenBrown, 40%),
+	),
+	//warning
+	'light-blue': (
+		'bgc': $pattensBlue,
+		'border': $lightBlue,
+		'font': $royalBlue,
+		'link': darken($royalBlue, 20%),
+		'link-hover': darken($royalBlue, 40%),
+		'link-color': white,
+	),
+	//alert
+	'peach': (
+		'bgc': $papayaWhip,
+		'border': $macaroniAndCheese,
+		'font': $treePoppy,
+		'link': darken($treePoppy, 20%),
+		'link-hover': darken($treePoppy, 40%),
+	),
+	//error
+	'bright-red': (
+		'bgc': $redLastfm,
+		'border': $redChestnut,
+		'font': white,
+		'link': $mistyRose,
+		'link-hover': darken($mistyRose, 30%),
+	),
+	'gray':(
+		//Grays
+		'darkest' : $eclipse, 
+		'darker' : $charcoal, 
+		'dark' : $aluminum,
+		'gray' : $grey,
+		'light' : $gainsboro, 
+		'lightest': $whiteSmoke
+	),
+	//taken from http://viget.com/extend/sass-maps-are-awesome
+	'social':(
+		bandcamp: #4e9bac,
+		delicious: #248cff,
+		facebook: #3b5998,
+		ficly: #b51c2c,
+		flickr: #0063db,
+		github: #4183c4,
+		google-plus: #dd4b39,
+		instagram: #517fa4,
+		kickstarter: #76cc1e,
+		lanyrd: #152e51,
+		lastfm: #d51007,
+		linkedin: #007bb6,
+		photodrop: #cdb6e3,
+		pinterest: #cb2027,
+		rdio: #0088da,
+		soundcloud: #f60,
+		twitter: #00aced,
+		vimeo: #aad450,
+		youtube: #b00
+	),
+	'accent-color': ( 
+		'bgc': #336699, 
+		'border': darken(#336699,20), 
+		'font': #fff, 
+		'link': lighten(#336699, 40), 
+		'link-hover': lighten(lighten(#336699, 40),30) 
+	),
+	'accent-color2': ( 
+		'bgc': #00B2CA, 
+		'border': darken(#00B2CA,20), 
+		'font': #fff, 
+		'link': darken(#00B2CA, 40),
+		'link-hover': lighten(darken(#00B2CA, 40),20) 
+	),
+	'accent-color3': ( 
+		'bgc': rgb(96, 142, 192), 
+		'border': darken(rgb(96, 142, 192),20), 
+		'font': #fff, 
+		'link': lighten(rgb(96, 142, 192), 40),
+		'link-hover': lighten(lighten(rgb(96, 142, 192), 40),20) 
+	),
+) !default;
 
-$main-nav-color2--font		:	 #fff!default;
+$bb-colors-default: (
+	'bgc': white,
+	'font': #222,
+	'font--dark': #222,
+	'font--light': #fff,
+	'link': #000,
+	'link--hover': #111,
+	'hr': #222,
+	'ui': #f9f9f9,
+	'ui--dark': map-deep-get($bb-colors-themes, 'gray', 'dark'),
+	'topbar': (
+		'bgc' : black,
+		'color' : white,
+		'link' : white,
+		'link--hover' : map-deep-get($bb-colors-themes, 'gray', 'lightest'),
+	),
+	'second-topbar': (
+		'bgc' : map-deep-get($bb-colors-themes, 'gray', 'dark'),
+		'color' : white,
+		'link' : white,
+		'link--hover' : map-deep-get($bb-colors-themes, 'gray', 'light'),
+	),
+	'menu':(
+		'bgc': #fff,
+		'list':(
+			'bgc': #fff,
+			'border-color' : null,
+			'color': black,
+		),
+		'item':(
+			'bgc': #fff,
+			'border-color' : null,
+			'color': black,
+		),
+		'link': (
+			'bgc': white,
+			'border-color': null,
+			'color': $charcoal,
+		),
+		'link-hover': (
+			'bgc': white,
+			'border-color': null,
+			'color': $nobel,
+		),
+	),
+	'submenu':(
+		'bgc': #fff,
+		'list':(
+			'bgc': #fff,
+			'border-color' : null,
+			'color': black,
+		),
+		'item':(
+			'bgc': #fff,
+			'border-color' : null,
+			'color': black,
+		),
+		'link': (
+			'bgc': white,
+			'border-color': null,
+			'color': $charcoal,
+		),
+		'link-hover': (
+			'bgc': white,
+			'border-color': null,
+			'color': $nobel,
+		),
+	)
+)!default;
+$bb-colors-custom: ()!default;
+
+$bb-colors: map-extend($bb-colors-default, $bb-colors-themes, $bb-colors-custom, true);
+
 

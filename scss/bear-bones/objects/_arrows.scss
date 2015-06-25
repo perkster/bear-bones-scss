@@ -1,6 +1,9 @@
+/********************  Bear Bones / Objects / ARROWS ******************/
 //* CSS Arrows http://css-tricks.com/snippets/css/css-triangle/ */
+// These are object based so should be set as a div or other object, not inline. 
+// For inline, it might make more sense to use text-classes %arrow-up, %arrow-up--small
 
-@mixin arrow($direction : right, $size : 1em, $color : $accent-color ) {
+@mixin bb_arrowObject($direction : right, $size : 1em, $color : $accent-color ) {
 	width: 0;
 	height: 0;
 	border-color: transparent $color;
@@ -15,9 +18,28 @@
 		border-left: $size solid transparent;
 		border-right: $size solid transparent;
 		border-bottom: $size solid $color;
-	} @elseif $direction == bottom {
+	} @elseif $direction == up {
 		border-left: $size solid transparent;
 		border-right: $size solid transparent;
 		border-top: $size solid $color;
 	}
+}
+
+
+$bb-test-arrows : true!default;
+@if $bb-test-arrows == true {
+
+	.arrow-test-right {
+		@include bb_arrowObject ( );
+	}
+	.arrow-test-left {
+		@include bb_arrowObject ( left, 20px, red);
+	}
+	.arrow-test-down {
+		@include bb_arrowObject ( down, 60px, red);
+	}
+	.arrow-test-up {
+		@include bb_arrowObject ( up, 5px, black);
+	}
+
 }

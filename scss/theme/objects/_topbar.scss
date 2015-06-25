@@ -1,26 +1,32 @@
 /************ Theme / Objects / TOPBAR *************/
-.topbar-wrapper {
-	background-color: black;
-	@extend %full-width-wrapper;
+
+.topbar, .second-topbar {
+	padding-left: 286px; //this is the width of the logo once it is at its full height
 }
 .topbar {
-	@extend %full-width-inner;
-	.search-box {
-		width: 15em;
-		float: right;
-		margin: 8px 0;
-		&:after {
-			content: "\f002";
-			font-family: FontAwesome;
-			display: block;
-			margin-top: -1.5em;	
-			margin-left: 13.5em;
-			color: $pavlova;
-		}
-		.searchform__input {
-			background-color: $bianca;
-			
-		}
-		
+	.widget-1 {
+		@extend %bb-navbar--justified;
 	}
+}
+.second-topbar {
+	//@extend %bb-grid;
+	.menu-sample-menu {
+		@include bb_listColor('menu');
+		.menu-item-has-children {
+			@include bb_listColor('submenu');
+		}
+	}
+	.widget-1 {
+		//menu
+		@extend %bb-navbar;
+		@extend %bb-grid-item;
+		width: 5/6 * 100%;
+	}
+	.widget-2 {
+		//search
+		@extend %bb-grid-item;
+		width: 1/6 * 100%;
+
+	}
+	
 }
